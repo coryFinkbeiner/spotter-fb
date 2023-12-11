@@ -27,8 +27,17 @@
 
 
 
-import * as functions from 'firebase-functions';
+// import * as functions from 'firebase-functions';
 
-export const helloWorld = functions.https.onRequest((request, response) => {
-  response.send('HELLO')
-})
+// export const helloWorld = functions.https.onRequest((request, response) => {
+//   response.send('HELLO')
+// })
+
+
+
+const functions = require('firebase-functions');
+
+exports.yourFunctionName = functions.https.onRequest((request, response) => {
+  // Your function logic here
+  response.send('Hello, Firebase!');
+});
