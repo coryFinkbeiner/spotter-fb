@@ -18,19 +18,13 @@ const spotifyApi = new SpotifyWebApi({
 
 
 
-
 exports.testBody = functions.https.onRequest((req, res) => {
-  console.log({req})
+  res.json( req )
 });
-
 
 exports.helloWorld = functions.https.onRequest((req, res) => {
   res.json({ message: "Hello, World!" });
 });
-
-
-
-
 
 
 
