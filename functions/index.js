@@ -15,10 +15,6 @@ const { onRequest } = require("firebase-functions/v2/https");
 
 const cors = require('cors')({ origin: true });
 
-exports.testBody = onRequest((req, res) => {
-  res.json( req )
-});
-
 exports.helloWorld = onRequest((req, res) => {
   res.json({ message: "Hello, World!" });
 });

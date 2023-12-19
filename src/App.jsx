@@ -1,7 +1,12 @@
 import axios from 'axios';
 import './App.css'
 
+import useSpotifyAuth from './hooks/useSpotifyAuth';
+
+
 function App({code}) {
+
+  const accessToken = useSpotifyAuth(code);
 
 
   return (
@@ -19,7 +24,7 @@ function App({code}) {
         }}
       >Hello World</button>
 
-      <div style={{color: 'white'}}>{code}</div>
+      <div style={{color: 'white'}}>{accessToken}</div>
     </div>
 
   )
