@@ -1,14 +1,8 @@
-// The Cloud Functions for Firebase SDK to create Cloud Functions and triggers.
-const functions = require("firebase-functions");
-const SpotifyWebApi = require('spotify-web-api-node');
-
-
 // const clientId = functions.config().spotify.clientid;
 // const clientSecret = functions.config().spotify.clientsecret;
 // const redirectUri = functions.config().spotify.redirecturi;
 
-// console.log({clientId})
-
+const SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
   redirectUri: "http://localhost:5173",
@@ -16,19 +10,20 @@ const spotifyApi = new SpotifyWebApi({
   clientSecret: "c554932f43e34836a364f73aa45d97af",
 });
 
+// const functions = require("firebase-functions");
+const { onRequest } = require("firebase-functions/v2/https");
 
+const cors = require('cors')({ origin: true });
 
-exports.testBody = functions.https.onRequest((req, res) => {
+exports.testBody = onRequest((req, res) => {
   res.json( req )
 });
 
-exports.helloWorld = functions.https.onRequest((req, res) => {
+exports.helloWorld = onRequest((req, res) => {
   res.json({ message: "Hello, World!" });
 });
 
-
-
-exports.refreshToken = functions.https.onRequest(async (req, res) => {
+exports.refreshToken = onRequest(async (req, res) => {
   try {
     const refreshToken = req.body.refreshToken;
     const data = await spotifyApi.refreshAccessToken();
@@ -42,7 +37,7 @@ exports.refreshToken = functions.https.onRequest(async (req, res) => {
   }
 });
 
-exports.login = functions.https.onRequest(async (req, res) => {
+exports.login = onRequest(async (req, res) => {
   try {
     const code = req.body.code;
     const data = await spotifyApi.authorizationCodeGrant(code);
