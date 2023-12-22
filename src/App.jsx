@@ -3,6 +3,9 @@ import axios from 'axios';
 import './App.css';
 import AppLayout from './components/layout/AppLayout';
 import Home from './pages/Home';
+import Library from './pages/Library';
+import Search from './pages/Search';
+import Seeder from './pages/Seeder';
 
 
 import {
@@ -21,6 +24,10 @@ function App({code}) {
         createBrowserRouter(createRoutesFromElements(
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
+            <Route path='/library' element={<Library />} />
+            <Route path='/search' element={<Search />} />
+            <Route path='/seeder' element={<Seeder />} />
+
           </Route>
         ))
       }

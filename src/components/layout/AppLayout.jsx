@@ -8,7 +8,7 @@ function AppLayout({ children }) {
     <div
       style={{
         display: 'grid',
-        gridTemplateRows: '1fr 5fr',
+        gridTemplateRows: '1fr 5.6fr',
         height: '92vh',
         width: '40rem',
         backgroundColor: 'darkOrange',
