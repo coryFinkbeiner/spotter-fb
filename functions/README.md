@@ -3,10 +3,6 @@
 FUNCTIONS
 
 
-
-
-
-
 firebase emulators:start --only functions
 
   in one terminal
