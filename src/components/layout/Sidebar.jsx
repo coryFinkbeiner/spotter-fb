@@ -1,12 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Sidebar() {
+function Sidebar({ library }) {
+
+  const { albums, playlists } = library;
+
+  const [ radio, setRadio ] = useState(albums);
+
   return (
     <div
       style={{
-        backgroundColor: 'green'
+        backgroundColor: 'green',
+        display: 'grid',
+        gridTemplateRows: '1fr 14.9fr',
       }}
-    >Sidebar</div>
+    >
+      <div
+        style={{
+          backgroundColor: 'red',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+
+        }}
+      >
+
+        <div
+          onClick={() => setRadio(albums)}
+        >Albums</div>
+
+        <div
+          onClick={() => setRadio(playlists)}
+        >Playlists</div>
+      </div>
+      <div
+        style={{
+
+        }}
+      >
+        render here
+      </div>
+    </div>
   )
 }
 
