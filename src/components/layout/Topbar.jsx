@@ -17,14 +17,23 @@ function Topbar() {
         to="/library"
         style={{}}
       >
-       Library
+       <div>
+         Library
+       </div>
       </NavLink>
 
       <NavLink
         to="/search"
         style={{}}
       >
-       Search
+       <div
+        style={{
+          backgroundColor: 'grey',
+          height: '100%',
+        }}
+       >
+         Search
+       </div>
       </NavLink>
 
       <NavLink

@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Library from './pages/Library';
 import Search from './pages/Search';
 import Seeder from './pages/Seeder';
+import LibraryHome from './pages/library/LibraryHome';
 
 
 import {
@@ -24,10 +25,11 @@ function App({code}) {
         createBrowserRouter(createRoutesFromElements(
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
-            <Route path='/library' element={<Library />} />
+            <Route path='/library' element={<Library />}>
+              <Route index element={<LibraryHome />} />
+            </Route>
             <Route path='/search' element={<Search />} />
             <Route path='/seeder' element={<Seeder />} />
-
           </Route>
         ))
       }
