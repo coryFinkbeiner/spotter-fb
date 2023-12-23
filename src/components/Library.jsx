@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { useData } from '../DataProvider'
+import React, { useState } from 'react';
+import { useData } from '../DataProvider';
+import Collection from './child/Collection';
 
 function Library() {
   const { albums, playlists } = useData().library;
@@ -40,7 +41,12 @@ function Library() {
 
           }}
         >
-          render here
+          {collectionData.items?.map((item, index) => (
+              <Collection
+                key={index}
+                item={item}
+              />
+          ))}
         </div>
       </div>
   )

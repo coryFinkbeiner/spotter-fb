@@ -5,7 +5,6 @@ import getLibrary from './data/getLibrary';
 
 const DataProvider = ({ code, children }) => {
   const accessToken = useSpotifyAuth(code);
-
   const { albums, playlists } = getLibrary(accessToken);
 
   const value = {
