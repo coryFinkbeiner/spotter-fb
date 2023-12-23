@@ -1,44 +1,53 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import Library from '../Library';
+import Dashboard from '../Dashboard';
 
-function Sidebar({ library }) {
 
-  const { albums, playlists } = library;
-
-  const [ radio, setRadio ] = useState(albums);
+function Sidebar() {
 
   return (
     <div
       style={{
-        backgroundColor: 'green',
         display: 'grid',
-        gridTemplateRows: '1fr 14.9fr',
+        gridTemplateRows: '1fr 5fr',
       }}
     >
+      <Dashboard />
+
       <div
         style={{
-          backgroundColor: 'red',
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-
+          gridTemplateRows: '1fr 14.9fr',
+          backgroundColor: 'green',
         }}
       >
-
+        <div>Library</div>
         <div
-          onClick={() => setRadio(albums)}
-        >Albums</div>
+          style={{
+            backgroundColor: 'pink',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
 
+          }}
+        >
+
+          <div
+            // onClick={() => setRadio(albums)}
+          >Albums</div>
+
+          <div
+            // onClick={() => setRadio(playlists)}
+          >Playlists</div>
+        </div>
         <div
-          onClick={() => setRadio(playlists)}
-        >Playlists</div>
-      </div>
-      <div
-        style={{
+          style={{
 
-        }}
-      >
-        render here
+          }}
+        >
+          render here
+        </div>
       </div>
-    </div>
+      </div>
   )
 }
 
