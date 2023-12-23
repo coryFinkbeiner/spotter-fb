@@ -6,8 +6,6 @@ function Library() {
   const [ radio, setRadio ] = useState('albums');
   const collectionData = radio === 'albums' ? albums : playlists;
 
-
-
   console.log({collectionData})
 
   return (
@@ -36,6 +34,7 @@ function Library() {
             onClick={() => setRadio('playlists')}
           >Playlists</div>
         </div>
+
         <div
           style={{
 
