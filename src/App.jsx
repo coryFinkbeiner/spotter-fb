@@ -24,7 +24,6 @@ function App({code}) {
             <Route index element={<Home />} />
             <Route path='/Search' element={<Search />} />
             <Route path='/GetRecommendations' element={<GetRecommendations />} />
-
           </Route>
         ))
       }
