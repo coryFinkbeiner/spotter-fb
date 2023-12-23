@@ -36,17 +36,36 @@ function Library() {
           >Playlists</div>
         </div>
 
+        {/* Render Box */}
         <div
           style={{
-
+            position: 'relative',
+            padding: '2px',
+            background: 'lightRed',
+            height: '100%',
           }}
         >
-          {collectionData.items?.map((item, index) => (
+          <div
+            style={{
+              display: 'grid',
+              gridGap: '2px',
+              position: 'absolute',
+              overflowY: 'scroll',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              padding: '2px',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+            }}
+          >
+            {collectionData?.items.map((item, index) => (
               <Collection
                 key={index}
                 item={item}
               />
-          ))}
+            ))}
+          </div>
         </div>
       </div>
   )
