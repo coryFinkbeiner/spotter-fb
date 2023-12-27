@@ -13,9 +13,9 @@ function Container({ children }) {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
+        gridTemplateColumns: '1fr 1.41fr',
         height: '93vh',
-        width: '40rem',
+        width: '30rem',
         // backgroundColor: 'darkOrange',
       }}
     >
@@ -35,11 +35,11 @@ function Container({ children }) {
       <div
         style={{
           display: 'grid',
-          gridTemplateRows: '7fr 1fr',
+          gridTemplateRows: '1fr 9fr',
         }}
       >
-        <Outlet />
         <Bank />
+        <Outlet />
       </div>
 
     </div>
