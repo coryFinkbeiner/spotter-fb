@@ -1,8 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Sidebar from './Sidebar';
+import Nav from './Nav';
+import Left from '../Left';
+import Bank from '../Bank'
 
-function AppLayout({ children }) {
+// all four here?
+
+function Container({ children }) {
+
 
   return (
     <div
@@ -15,7 +20,18 @@ function AppLayout({ children }) {
       }}
     >
 
-      <Sidebar />
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateRows: '1fr 9fr',
+        }}
+      >
+        <Nav />
+        <Left />
+
+      </div>
+
+
       <div
         style={{
           display: 'grid',
@@ -23,15 +39,11 @@ function AppLayout({ children }) {
         }}
       >
         <Outlet />
-        <div
-          style={{
-            backgroundColor: 'red'
-          }}
-        >Lowbar</div>
+        <Bank />
       </div>
 
     </div>
   );
 }
 
-export default AppLayout;
+export default Container
