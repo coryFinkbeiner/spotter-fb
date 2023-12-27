@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useData } from '../DataProvider';
 import Collection from './child/Collection';
 
 function Library() {
   const { albums, playlists } = useData().library;
   const [ radio, setRadio ] = useState('albums');
+  const [ imageUrl, setImageUrl ] = useState('');
   const collectionData = radio === 'albums' ? albums : playlists;
-
-  console.log({collectionData})
 
   return (
     <div
@@ -26,11 +25,9 @@ function Library() {
 
           }}
         >
-
           <div
             onClick={() => setRadio('albums')}
           >Albums</div>
-
           <div
             onClick={() => setRadio('playlists')}
           >Playlists</div>
