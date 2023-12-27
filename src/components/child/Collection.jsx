@@ -4,18 +4,12 @@ function Collection({
   key,
   item,
 }) {
-  const [ imageUrl, setImageUrl ] =useState(null)
 
-  useEffect(() => {
-    if (!item) return
-    if (item.album) {
-      setImageUrl(item.album.images[0].url)
-    } else if (item.images[0]) {
-      setImageUrl(item.images[0].url)
-    } else {
-      setImageUrl("https://i.scdn.co/image/ab67616d0000b2732ba0863533344c205a1e3669")
-    }
-  }, [item])
+  const imageUrl = item.album && item.album.images && item.album.images[0]
+    ? item.album.images[0].url
+    : item.images && item.images[0]
+      ? item.images[0].url
+      : "https://i.scdn.co/image/ab67616d0000b2732ba0863533344c205a1e3669";
 
   return (
     <div
