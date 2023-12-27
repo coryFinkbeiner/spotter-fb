@@ -22,8 +22,8 @@ function App({code}) {
         createBrowserRouter(createRoutesFromElements(
           <Route path="/" element={<Container />}>
             <Route index element={<Home />} />
-            <Route path='/Search' element={<Search />} />
-            <Route path='/GetRecommendations' element={<GetRecommendations />} />
+            {/* <Route path='/Search' element={<Search />} />
+            <Route path='/GetRecommendations' element={<GetRecommendations />} /> */}
           </Route>
         ))
       }

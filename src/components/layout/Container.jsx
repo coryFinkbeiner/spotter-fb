@@ -13,7 +13,7 @@ function Container({ children }) {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 1.41fr',
+        gridTemplateRows: '1fr 9fr',
         height: '93vh',
         width: '30rem',
         // backgroundColor: 'darkOrange',
@@ -23,24 +23,14 @@ function Container({ children }) {
       <div
         style={{
           display: 'grid',
-          gridTemplateRows: '1fr 9fr',
+          gridTemplateColumns: '1fr 1.41fr',
         }}
       >
         <Nav />
-        <Left />
-
-      </div>
-
-
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateRows: '1fr 9fr',
-        }}
-      >
         <Bank />
-        <Outlet />
       </div>
+
+      <Outlet />
 
     </div>
   );
