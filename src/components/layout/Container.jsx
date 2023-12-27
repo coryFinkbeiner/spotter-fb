@@ -1,13 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Nav from './Nav';
-import Left from '../Left';
-import Bank from '../Bank'
+import Bank from '../Bank';
 
-// all four here?
+
 
 function Container({ children }) {
-
 
   return (
     <div
@@ -19,7 +17,6 @@ function Container({ children }) {
         // backgroundColor: 'darkOrange',
       }}
     >
-
       <div
         style={{
           display: 'grid',
@@ -29,9 +26,7 @@ function Container({ children }) {
         <Nav />
         <Bank />
       </div>
-
       <Outlet />
-
     </div>
   );
 }

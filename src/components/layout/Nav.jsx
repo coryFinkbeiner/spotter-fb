@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { NavLink } from "react-router-dom"
 
 function Nav() {
   return (
@@ -9,9 +10,17 @@ function Nav() {
         backgroundColor: 'darkRed',
       }}
     >
-      <div>Home NavLink</div>
-      <div>Spotify logo</div>
-      <div>Thread</div>
+
+      <NavLink to="/" style={{ textDecoration: 'none', color: 'white' }}>
+        <div>Home NavLink</div>
+      </NavLink>
+      <NavLink to="/spotify" style={{ textDecoration: 'none', color: 'white' }}>
+        <div>Spotify logo</div>
+      </NavLink>
+      <NavLink to="/thread" style={{ textDecoration: 'none', color: 'white' }}>
+        <div>Thread</div>
+      </NavLink>
+
     </div>
   )
 }

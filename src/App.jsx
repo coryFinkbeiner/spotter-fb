@@ -11,6 +11,8 @@ import Container from './components/layout/Container';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import GetRecommendations from './pages/GetRecommendations';
+import MySpotify from './pages/MySpotify';
+import Thread from './pages/Thread';
 
 
 
@@ -22,8 +24,8 @@ function App({code}) {
         createBrowserRouter(createRoutesFromElements(
           <Route path="/" element={<Container />}>
             <Route index element={<Home />} />
-            {/* <Route path='/Search' element={<Search />} />
-            <Route path='/GetRecommendations' element={<GetRecommendations />} /> */}
+            <Route path='/spotify' element={<MySpotify />} />
+            <Route path='/thread' element={<Thread />} />
           </Route>
         ))
       }
