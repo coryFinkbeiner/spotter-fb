@@ -1,6 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useData } from '../DataProvider';
+import BankCollection from './child/BankCollection';
 
 export default function Bank() {
+  const { bank, setBank } = useData();
+
+
   return (
     <div
     style={{
@@ -8,30 +13,18 @@ export default function Bank() {
         gridTemplateColumns: '1fr 1fr 1fr 1fr',
     }}
     >
-      <div
-        style={{
-          backgroundColor: 'purple',
-        }}
-      >1
-      </div>
-      <div
-        style={{
-          backgroundColor: 'black',
-        }}
-      >2
-      </div>
-      <div
-        style={{
-          backgroundColor: 'darkgreen',
-        }}
-      >3
-      </div>
-      <div
-        style={{
-          backgroundColor: 'darkOrange',
-        }}
-      >4
-      </div>
+      <BankCollection
+        item={bank.one}
+      />
+      <BankCollection
+        item={bank.two}
+      />
+      <BankCollection
+        item={bank.three}
+      />
+      <BankCollection
+        item={bank.four}
+      />
 
 
     </div>
