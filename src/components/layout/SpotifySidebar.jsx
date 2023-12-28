@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
-import Library from './Library';
+import Library from '../Library';
 
 function SpotifySidebar() {
   return (
@@ -30,30 +30,8 @@ function SpotifySidebar() {
         </NavLink>
 
       </div>
-      <div
-        style={{
-          backgroundColor: 'blue',
-          backgroundColor: 'black',
-          display: 'grid',
-          gridTemplateRows: '1fr 18fr',
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: 'blue',
-          }}
-        >
 
-        </div>
-        <div
-          style={{
-            // backgroundColor: 'pink',
-          }}
-        >
-          <Library />
-
-        </div>
-      </div>
+      <Library />
     </div>
   )
 }

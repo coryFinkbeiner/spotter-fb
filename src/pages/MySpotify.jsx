@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import SpotifySidebar from '../components/SpotifySidebar'
+import SpotifySidebar from '../components/layout/SpotifySidebar'
 
 
 function MySpotify({ children }) {
