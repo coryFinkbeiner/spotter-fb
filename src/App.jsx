@@ -5,14 +5,14 @@ import {
   Route,
 } from "react-router-dom";
 import React from 'react';
-import axios from 'axios';
 import './App.css';
 import Container from './components/layout/Container';
 import Home from './pages/Home';
-import Search from './pages/Search';
-import GetRecommendations from './pages/GetRecommendations';
+import Search from './pages/sub/Search';
+import Recommendations from './pages/sub/Recommendations';
 import MySpotify from './pages/MySpotify';
 import Thread from './pages/Thread';
+import SpotifyHome from './pages/sub/SpotifyHome';
 
 
 
@@ -24,7 +24,13 @@ function App({code}) {
         createBrowserRouter(createRoutesFromElements(
           <Route path="/" element={<Container />}>
             <Route index element={<Home />} />
-            <Route path='/spotify' element={<MySpotify />} />
+            <Route path='/spotify' element={<MySpotify />} >
+
+              <Route index element={<SpotifyHome />} />
+
+              <Route path='/spotify/recommendations' element={<Recommendations />} />
+              <Route path='/spotify/search' element={<Search />} />
+            </Route>
             <Route path='/thread' element={<Thread />} />
           </Route>
         ))

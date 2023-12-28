@@ -14,7 +14,6 @@ function Container({ children }) {
         gridTemplateRows: '1fr 9fr',
         height: '93vh',
         width: '30rem',
-        // backgroundColor: 'darkOrange',
       }}
     >
       <div

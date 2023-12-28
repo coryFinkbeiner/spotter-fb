@@ -15,9 +15,9 @@ function Dashboard() {
         to="/"
         style={{}}
       >
-       <div>
-         Home
-       </div>
+        <div>
+          Home
+        </div>
       </Link>
 
       <Link

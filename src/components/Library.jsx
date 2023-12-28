@@ -13,7 +13,6 @@ function Library() {
         style={{
           display: 'grid',
           gridTemplateRows: '1fr 14.9fr',
-          backgroundColor: 'green',
           height: '100%'
         }}
       >
@@ -21,7 +20,7 @@ function Library() {
           style={{
             backgroundColor: 'pink',
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: '1fr 1fr 1fr',
 
           }}
         >
@@ -31,6 +30,9 @@ function Library() {
           <div
             onClick={() => setRadio('playlists')}
           >Playlists</div>
+          <div
+            onClick={() => setRadio('recommendations')}
+          >Recs</div>
         </div>
 
         {/* Render Box */}
