@@ -14,6 +14,7 @@ import MySpotify from './pages/MySpotify';
 import Thread from './pages/Thread';
 import SpotifyHome from './pages/sub/SpotifyHome';
 
+import Library from './pages/Library';
 
 
 function App({code}) {
@@ -25,9 +26,7 @@ function App({code}) {
           <Route path="/" element={<Container />}>
             <Route index element={<Home />} />
             <Route path='/spotify' element={<MySpotify />} >
-
-              <Route index element={<SpotifyHome />} />
-
+              <Route index element={<Library />} />
               <Route path='/spotify/recommendations' element={<Recommendations />} />
               <Route path='/spotify/search' element={<Search />} />
             </Route>

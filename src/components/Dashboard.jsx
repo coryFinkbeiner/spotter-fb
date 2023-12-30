@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link, NavLink } from "react-router-dom"
+import React from 'react';
+import { Link, NavLink } from "react-router-dom";
 
 function Dashboard() {
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateRows: '1fr 1fr 1fr',
+        gridTemplateColumns: '1fr 1fr 1fr',
 
-        backgroundColor: 'orange',
+        // backgroundColor: 'lightBlue',
       }}
     >
       <Link
@@ -16,7 +16,7 @@ function Dashboard() {
         style={{}}
       >
         <div>
-          Home
+          H
         </div>
       </Link>
 
@@ -30,15 +30,15 @@ function Dashboard() {
           height: '100%',
         }}
        >
-         Search
+         S
        </div>
       </Link>
 
       <Link
-        to="/GetRecommendations"
+        to="/recommendations"
         style={{}}
       >
-        Get Recommendations
+        G
       </Link>
 
     </div>

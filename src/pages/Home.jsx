@@ -2,11 +2,7 @@ import React from 'react'
 
 function Home() {
   return (
-    <div
-    style={{
-      backgroundColor: 'blue',
-    }}
-    >Home</div>
+    <div>Home</div>
   )
 }
 
