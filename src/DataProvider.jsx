@@ -15,12 +15,12 @@ const DataProvider = ({ code, children }) => {
   })
 
   const value = {
+    accessToken,
     library: {
       albums,
       playlists,
     },
-    setBank,
-    bank,
+    bank, setBank,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
