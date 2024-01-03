@@ -6,21 +6,19 @@ function Nav() {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr 1fr',
+        gridTemplateRows: '1fr 1fr 1fr',
         backgroundColor: 'darkRed',
       }}
     >
-
       <NavLink to="/" style={{ textDecoration: 'none', color: 'white' }}>
-        <div>Home NavLink</div>
+        <div>Home</div>
       </NavLink>
-      <NavLink to="/spotify" style={{ textDecoration: 'none', color: 'white' }}>
-        <div>Spotify logo</div>
+      <NavLink to="/search" style={{ textDecoration: 'none', color: 'white' }}>
+        <div>Search</div>
       </NavLink>
-      <NavLink to="/thread" style={{ textDecoration: 'none', color: 'white' }}>
-        <div>Thread</div>
+      <NavLink to="/recommendations" style={{ textDecoration: 'none', color: 'white' }}>
+        <div>Get Recs</div>
       </NavLink>
-
     </div>
   )
 }

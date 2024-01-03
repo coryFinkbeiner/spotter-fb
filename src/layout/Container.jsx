@@ -1,9 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Nav from './Nav';
-import Bank from '../Bank';
-
-
+import LibrarySide from '../components/LibrarySide';
+import Bank from '../components/Bank';
 
 function Container({ children }) {
 
@@ -18,9 +17,18 @@ function Container({ children }) {
     >
       <div
         style={{
-          backgroundColor: 'red',
+          display: 'grid',
+          gridTemplateRows: '1fr 6fr',
         }}
-      >Sidebar
+      >
+        <Nav />
+        <div
+          style={{
+            backgroundColor: 'darkOrange',
+          }}
+        >
+          <LibrarySide />
+        </div>
       </div>
 
       <div
@@ -30,20 +38,9 @@ function Container({ children }) {
           gridTemplateRows: '10fr 1fr',
         }}
       >
-        <div
-          style={{
-            backgroundColor: 'yellow',
-          }}
-        >outlet
-        </div>
+        <Outlet />
 
-        <div
-          style={{
-            backgroundColor: 'purple',
-          }}
-        >Spotbar
-
-        </div>
+        <Bank />
 
       </div>
 

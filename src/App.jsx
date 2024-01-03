@@ -6,15 +6,11 @@ import {
 } from "react-router-dom";
 import React from 'react';
 import './App.css';
-import Container from './components/layout/Container';
+import Container from './layout/Container';
 import Home from './pages/Home';
-import Search from './pages/sub/Search';
-import Recommendations from './pages/sub/Recommendations';
-import MySpotify from './pages/MySpotify';
-import Thread from './pages/Thread';
-import SpotifyHome from './pages/sub/SpotifyHome';
+import Search from './pages/Search';
+import Recommendations from './pages/Recommendations';
 
-import Library from './pages/Library';
 
 
 function App({code}) {
@@ -24,7 +20,9 @@ function App({code}) {
       router={
         createBrowserRouter(createRoutesFromElements(
           <Route path="/" element={<Container />}>
-
+            <Route index element={<Home />} />
+            <Route path='search' element={<Search />} />
+            <Route path='recommendations' element={<Recommendations />} />
           </Route>
         ))
       }
