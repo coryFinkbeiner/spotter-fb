@@ -1,9 +1,26 @@
 import React from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
-// import Dashboard from '../components/Dashboard';
-
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import LibrarySide from '../components/LibrarySide';
+import RecSide from '../components/RecSide';
+import SearchSide from '../components/SearchSide';
 
 function MySpotify({ children }) {
+  const location = useLocation();
+
+  // could turn this into a Library function
+  const renderSideComponent = () => {
+    switch (location.pathname) {
+      case '/spotify':
+        return <LibrarySide />;
+      case '/spotify/recommendations':
+        return <RecSide />;
+      case '/spotify/search':
+        return <SearchSide />;
+      default:
+        return null; // You can provide a default component or handle unknown routes as needed
+    }
+  }
+
   return (
     <div
       style={{
@@ -11,14 +28,7 @@ function MySpotify({ children }) {
         gridTemplateColumns: '1fr 1.41fr',
       }}
     >
-
-      <div
-        style={{
-          backgroundColor: 'brown',
-        }}
-      >
-
-
+      <div>
         <div
           style={{
             backgroundColor: 'black',
@@ -36,21 +46,7 @@ function MySpotify({ children }) {
             <div>Search</div>
           </NavLink>
         </div>
-
-
-
-
-        <div
-          style={{
-            backgroundColor: 'lightGrey',
-          }}
-        >
-          L or R or S -Side
-        </div>
-
-
-
-
+        {renderSideComponent()}
       </div>
       <Outlet />
     </div>

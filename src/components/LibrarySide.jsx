@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useData } from '../DataProvider';
 import Collection from './child/Collection';
 
-function Library() {
+function LibrarySide() {
   const { albums, playlists } = useData().library;
   const [ radio, setRadio ] = useState('albums');
   const [ imageUrl, setImageUrl ] = useState('');
   const collectionData = radio === 'albums' ? albums : playlists;
 
   return (
-
+    <>
       <div
         style={{
           backgroundColor: 'pink',
@@ -29,12 +29,12 @@ function Library() {
         >Recs</div>
       </div>
 
-      {/* Render Box */}
+
       <div
         style={{
           position: 'relative',
           padding: '2px',
-          background: 'lightRed',
+          backgroundColor: 'lightRed',
           height: '100%',
         }}
       >
@@ -60,8 +60,8 @@ function Library() {
           ))}
         </div>
       </div>
-
+    </>
   )
 }
 
-export default Library
+export default LibrarySide
