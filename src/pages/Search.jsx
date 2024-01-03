@@ -4,17 +4,17 @@ import getSearchResults from '../data/getSearchResults';
 
 function Search() {
   const { accessToken } = useData();
-  const [query, setQuery] = useState('');
-  const [radio, setRadio] = useState('album');
-  const [focus, setFocus] = useState(false)
-
-
+  const [ query, setQuery ] = useState('');
+  const [ radio, setRadio ] = useState('album');
+  const [ focus, setFocus ] = useState(false);
+  // const [ searchResults, setSearchResults ] = useState({});
 
   const searchResults = getSearchResults({
-    accessToken,
-    query: 'radiohead',
-    type: 'radio',
+    accessToken: accessToken,
+    query: query,
+    type: radio,
   })
+
   console.log(searchResults)
 
   const handleChange = (event) => {

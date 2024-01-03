@@ -2,10 +2,13 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const DataContext = createContext();
 import useSpotifyAuth from './hooks/useSpotifyAuth';
 import getLibrary from './data/getLibrary';
+import getSearchResults from './data/getSearchResults';
 
 const DataProvider = ({ code, children }) => {
   const accessToken = useSpotifyAuth(code);
   const { albums, playlists } = getLibrary(accessToken);
+
+
 
   const [ bank, setBank ] = useState({
     one: null,
