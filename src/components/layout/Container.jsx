@@ -11,21 +11,42 @@ function Container({ children }) {
     <div
       style={{
         display: 'grid',
-        gridTemplateRows: '1fr 9fr',
+        gridTemplateColumns: '1fr 1.97fr',
         height: '93vh',
-        width: '30rem',
+        width: '32rem',
       }}
     >
       <div
         style={{
+          backgroundColor: 'red',
+        }}
+      >Sidebar
+      </div>
+
+      <div
+        style={{
+          backgroundColor: 'blue',
           display: 'grid',
-          gridTemplateColumns: '1fr 1.41fr',
+          gridTemplateRows: '10fr 1fr',
         }}
       >
-        <Nav />
-        <Bank />
+        <div
+          style={{
+            backgroundColor: 'yellow',
+          }}
+        >outlet
+        </div>
+
+        <div
+          style={{
+            backgroundColor: 'purple',
+          }}
+        >Spotbar
+
+        </div>
+
       </div>
-      <Outlet />
+
     </div>
   );
 }

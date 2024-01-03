@@ -24,15 +24,7 @@ function App({code}) {
       router={
         createBrowserRouter(createRoutesFromElements(
           <Route path="/" element={<Container />}>
-            <Route index element={<Home />} />
-            <Route path='/spotify' element={<MySpotify />} >
-              <Route index element={<Library />} />
-              <Route path='/spotify/recommendations' element={<Recommendations />}>
-                {/* <Route index element={<RecHome />} /> */}
-              </Route>
-              <Route path='/spotify/search' element={<Search />} />
-            </Route>
-            <Route path='/thread' element={<Thread />} />
+
           </Route>
         ))
       }
