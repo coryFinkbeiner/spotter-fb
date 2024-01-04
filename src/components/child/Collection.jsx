@@ -14,6 +14,7 @@ function Collection({
       ? item.images[0].url
       : "https://i.scdn.co/image/ab67616d0000b2732ba0863533344c205a1e3669";
 
+
   return (
     <div
       style={{

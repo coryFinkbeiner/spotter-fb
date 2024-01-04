@@ -28,7 +28,7 @@ function getSearchResults({
         console.log('API error', error);
       }
     })();
-  }, [accessToken]);
+  }, [accessToken, query, type]);
 
   return {
     results
