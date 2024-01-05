@@ -10,13 +10,13 @@ import Container from './layout/Container';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import Recommendations from './pages/Recommendations';
-
 import PickArtist from './pages/sub/PickArtist';
 import PickSong from './pages/sub/PickSong';
 import PickGenre from './pages/sub/PickGenre';
 import Settings from './pages/sub/Settings';
 import Spot from './pages/Spot';
 import Thread from './pages/Thread';
+import Collection from './pages/Collection'
 
 function App({code}) {
   return (
@@ -34,6 +34,7 @@ function App({code}) {
             </Route>
             <Route path='spot' element={<Spot />} />
             <Route path='thread' element={<Thread />} />
+            <Route path='collection' element={<Collection />} />
           </Route>
         ))
       }

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-function Spot() {
+function Collection() {
   const location = useLocation();
   const passedState = location.state;
   console.log(passedState);
 
   return (
-    <div>Spot</div>
+    <div>Collection</div>
   )
 }
 
-export default Spot
+export default Collection
