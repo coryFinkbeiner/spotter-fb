@@ -31,15 +31,9 @@ function Recommendations({children}) {
               gridTemplateRows: '1fr 1fr 1fr 1fr',
             }}
           >
-            {/* <NavLink to="/recommendations/PickArtist">
-              Pick Artist
-            </NavLink>
-            <NavLink to="/recommendations">
-              Settings
-            </NavLink> */}
 
             <NavLink to="/recommendations/PickArtist" style={{ textDecoration: 'none', color: 'white' }}>
-              <div>A</div>
+              A
             </NavLink>
             <NavLink to="/recommendations/PickSong" style={{ textDecoration: 'none', color: 'white' }}>
               <div>S</div>

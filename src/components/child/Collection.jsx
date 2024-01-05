@@ -38,45 +38,38 @@ function Collection({
               height: '20%',
               backgroundColor: 'red',
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr 1fr 1fr',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              bottom: '0%'
             }}
           >
             <div
               style={{
-                backgroundColor: 'purple',
+                backgroundColor: 'red',
               }}
               onClick={() => {
                 item.imageUrl = imageUrl
-                setBank({...bank, one: item })
+                setBank({...bank, red: item })
               }}
             ></div>
             <div
               style={{
-                backgroundColor: 'black',
+                backgroundColor: 'yellow',
               }}
               onClick={() => {
                 item.imageUrl = imageUrl
-                setBank({...bank, two: item })
+                setBank({...bank, yellow: item })
               }}
             ></div>
             <div
               style={{
-                backgroundColor: 'darkGreen',
+                backgroundColor: 'blue',
               }}
               onClick={() => {
                 item.imageUrl = imageUrl
-                setBank({...bank, three: item })
+                setBank({...bank, blue: item })
               }}
             ></div>
-            <div
-              style={{
-                backgroundColor: 'darkOrange',
-              }}
-              onClick={() => {
-                item.imageUrl = imageUrl
-                setBank({...bank, four: item })
-              }}
-            ></div>
+
           </div>
 
         </>

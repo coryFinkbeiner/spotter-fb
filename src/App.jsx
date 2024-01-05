@@ -15,12 +15,10 @@ import PickArtist from './pages/sub/PickArtist';
 import PickSong from './pages/sub/PickSong';
 import PickGenre from './pages/sub/PickGenre';
 import Settings from './pages/sub/Settings';
-
-
-
+import Spot from './pages/Spot';
+import Thread from './pages/Thread';
 
 function App({code}) {
-
   return (
     <RouterProvider
       router={
@@ -34,12 +32,13 @@ function App({code}) {
               <Route path='PickSong' element={<PickSong />} />
               <Route path='PickGenre' element={<PickGenre />} />
             </Route>
+            <Route path='spot' element={<Spot />} />
+            <Route path='thread' element={<Thread />} />
           </Route>
         ))
       }
     />
   )
-
 }
 
 export default App
