@@ -8,8 +8,31 @@ const sliderStyle = {
   gridGap: '5px'
 }
 
+const SliderElement = ({ attributeName, placeholderMin = 0, placeholderMax = 100, setMin, setMax, setTarget }) => {
+  return (
+    <div style={sliderStyle}>
+      <div>{attributeName}</div>
+      <textarea
+        style={{ resize: 'none' }}
+        placeholder={placeholderMin}
+        onChange={(e) => setMin(e.target.value)}
+      />
+      <textarea
+        style={{ resize: 'none' }}
+        placeholder={placeholderMax}
+        onChange={(e) => setMax(e.target.value)}
+      />
+      <textarea
+        style={{ resize: 'none' }}
+        onChange={(e) => setTarget(e.target.value)}
+      />
+    </div>
+  );
+};
+
 
 function Recommendations() {
+
   const [ minAcousticness, setMinAcousticness ] = useState(null);
   const [ maxAcousticness, setMaxAcousticness ] = useState(null);
   const [ targetAcousticness, setTargetAcousticness ] = useState(null);
@@ -58,13 +81,13 @@ function Recommendations() {
   const [ maxTempo, setMaxTempo ] = useState(null);
   const [ targetTempo, setTargetTempo ] = useState(null);
 
-  // const [ min, setMin ] = useState(null);
-  // const [ max, setMax ] = useState(null);
-  // const [ target, setTarget ] = useState(null);
+  const [ minTimeSignature, setMinTimeSignature ] = useState(null);
+  const [ maxTimeSignature, setMaxTimeSignature ] = useState(null);
+  const [ targetTimeSignature, setTargetTimeSignature ] = useState(null);
 
-  // const [ min, setMin ] = useState(null);
-  // const [ max, setMax ] = useState(null);
-  // const [ target, setTarget ] = useState(null);
+  const [ minValence, setMinValence ] = useState(null);
+  const [ maxValence, setMaxValence ] = useState(null);
+  const [ targetValence, setTargetValence ] = useState(null);
 
 
 
@@ -74,23 +97,52 @@ function Recommendations() {
       style={{
         backgroundColor: 'red',
         display: 'grid',
-        gridTemplateRows: '.65fr 8fr',
+        gridTemplateRows: '1.8fr 8fr',
       }}
     >
+
       <div
         style={{
-          backgroundColor: 'grey',
           display: 'grid',
-          gridTemplateColumns: '1.3fr 1fr 1fr 1fr 1fr 1fr',
+          gridTemplateColumns: '1fr 1.5fr',
         }}
       >
-        <div>get rec</div>
-        <div>1/add</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
+        <div
+          style={{
+            backgroundColor: 'orange',
+            display: 'grid',
+            gridTemplateColumns: '1fr 2.5fr',
+          }}
+        >
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateRows: '1fr 1fr 1fr',
+            }}
+          >
+            <div>Artist</div>
+            <div>Song</div>
+            <div>Genre</div>
+          </div>
+        </div>
+        <div
+          style={{
+            backgroundColor: 'grey',
+            display: 'grid',
+            gridTemplateColumns: '1.3fr 1fr 1fr 1fr 1fr 1fr',
+          }}
+        >
+          <div>get rec</div>
+          <div>1/add</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+        </div>
       </div>
+
+
+
       <div
         style={{
           display: 'grid',
@@ -112,193 +164,133 @@ function Recommendations() {
 
         </div>
 
-        {/* slider / scroll container */}
         <div
           style={{
             backgroundColor: 'brown',
           }}
         >
 
-          <div style={sliderStyle}>
-            <div>Acousticness</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinAcousticness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='100'
-              onChange={(e) => setMaxAcousticness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetAcousticness(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Acousticness"
+            placeholderMin={0}
+            placeholderMax={100}
+            setMin={setMinAcousticness}
+            setMax={setMaxAcousticness}
+            setTarget={setTargetAcousticness}
+          />
 
+          <SliderElement
+            attributeName="Danceability"
+            placeholderMin={0}
+            placeholderMax={100}
+            setMin={setMinDanceability}
+            setMax={setMaxDanceability}
+            setTarget={setTargetDanceability}
+          />
 
-          <div style={sliderStyle}>
-            <div>Danceability</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinDanceability(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='100'
-              onChange={(e) => setMaxDanceability(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetDanceability(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Duration (seconds)"
+            setMin={setMinDuration}
+            setMax={setMaxDuration}
+            setTarget={setTargetDuration}
+          />
 
-          <div style={sliderStyle}>
-            <div>Duration (seconds)</div>
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setMinDuration(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setMaxDuration(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetDuration(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Energy"
+            placeholderMin={0}
+            placeholderMax={100}
+            setMin={setMinEnergy}
+            setMax={setMaxEnergy}
+            setTarget={setTargetEnergy}
+          />
 
-          <div style={sliderStyle}>
-            <div>Energy</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinEnergy(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='100'
-              onChange={(e) => setMaxEnergy(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetEnergy(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Instrumentalness"
+            placeholderMin={0}
+            placeholderMax={100}
+            setMin={setMinInstrumentalness}
+            setMax={setMaxInstrumentalness}
+            setTarget={setTargetInstrumentalness}
+          />
 
-          <div style={sliderStyle}>
-            <div>Instrumentalness</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinInstrumentalness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='100'
-              onChange={(e) => setMaxInstrumentalness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetInstrumentalness(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Key"
+            placeholderMin={0}
+            placeholderMax={11}
+            setMin={setMinKey}
+            setMax={setMaxKey}
+            setTarget={setTargetKey}
+          />
 
-          <div style={sliderStyle}>
-            <div>Key</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinKey(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='11'
-              onChange={(e) => setMaxKey(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetKey(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Liveness"
+            placeholderMin={0}
+            placeholderMax={100}
+            setMin={setMinLiveness}
+            setMax={setMaxLiveness}
+            setTarget={setTargetLiveness}
+          />
 
-          <div style={sliderStyle}>
-            <div>Liveness</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinLiveness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='100'
-              onChange={(e) => setMaxLiveness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetLiveness(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Loudness"
+            setMin={setMinLoudness}
+            setMax={setMaxLoudness}
+            setTarget={setTargetLoudness}
+          />
 
-          <div style={sliderStyle}>
-            <div>Loudness</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='?'
-              onChange={(e) => setMinLoudness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='?'
-              onChange={(e) => setMaxLoudness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetLoudness(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Mode"
+            placeholderMin={0}
+            placeholderMax={100}
+            setMin={setMinMode}
+            setMax={setMaxMode}
+            setTarget={setTargetMode}
+          />
 
-          <div style={sliderStyle}>
-            <div>Mode</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinMode(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='100'
-              onChange={(e) => setMaxMode(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetMode(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Popularity"
+            placeholderMin={0}
+            placeholderMax={100}
+            setMin={setMinPopularity}
+            setMax={setMaxPopularity}
+            setTarget={setTargetPopularity}
+          />
 
-          <div style={sliderStyle}>
-            <div>Popularity</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinPopularity(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='100'
-              onChange={(e) => setMaxPopularity(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetPopularity(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Speechiness"
+            placeholderMin={0}
+            placeholderMax={100}
+            setMin={setMinSpeechiness}
+            setMax={setMaxSpeechiness}
+            setTarget={setTargetSpeechiness}
+          />
 
-          <div style={sliderStyle}>
-            <div>Speechiness</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinSpeechiness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='100'
-              onChange={(e) => setMaxSpeechiness(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetSpeechiness(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Tempo (bpm)"
+            placeholderMin={0}
+            placeholderMax={100}
+            setMin={setMinTempo}
+            setMax={setMaxTempo}
+            setTarget={setTargetTempo}
+          />
 
-          <div style={sliderStyle}>
-            <div>Tempo (bpm)</div>
-            <textarea style={{ resize: 'none', }}
-              placeholder='0'
-              onChange={(e) => setMinTempo(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              placeholder='100'
-              onChange={(e) => setMaxTempo(event.target.value)}
-            />
-            <textarea style={{ resize: 'none', }}
-              onChange={(e) => setTargetTempo(event.target.value)}
-            />
-          </div>
+          <SliderElement
+            attributeName="Time Signature"
+            placeholderMin={0}
+            placeholderMax={11}
+            setMin={setMinTimeSignature}
+            setMax={setMaxTimeSignature}
+            setTarget={setTargetTimeSignature}
+          />
 
-
+          <SliderElement
+            attributeName="Valence"
+            placeholderMin={0}
+            placeholderMax={11}
+            setMin={setMinValence}
+            setMax={setMaxValence}
+            setTarget={setTargetValence}
+          />
 
         </div>
 
