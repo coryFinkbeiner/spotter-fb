@@ -24,10 +24,9 @@ function Collection({
       }}
     >
 
-
       <Link
         to={'collection'}
-        state={'test'}
+        state={item}
       >
         <div
           style={{
@@ -42,17 +41,13 @@ function Collection({
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
-
         </div>
       </Link>
 
       <div
         style={{
-
-
           display: 'grid',
           gridTemplateColumns: '1fr 1fr 1fr',
-
         }}
       >
         <div

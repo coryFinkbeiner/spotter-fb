@@ -16,7 +16,7 @@ import PickGenre from './pages/sub/PickGenre';
 import Settings from './pages/sub/Settings';
 import Spot from './pages/Spot';
 import Thread from './pages/Thread';
-import Collection from './pages/Collection'
+import CollectionView from './pages/CollectionView'
 
 function App({code}) {
   return (
@@ -34,7 +34,7 @@ function App({code}) {
             </Route>
             <Route path='spot' element={<Spot />} />
             <Route path='thread' element={<Thread />} />
-            <Route path='collection' element={<Collection />} />
+            <Route path='collection' element={<CollectionView />} />
           </Route>
         ))
       }
