@@ -16,7 +16,6 @@ function Search() {
     query: query,
     type: radio,
   })
-  console.log({results})
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -77,16 +76,7 @@ function Search() {
           >Artists</div>
 
         </div>
-
-        <div
-          style={{
-
-          }}
-        > year range
-
-        </div>
-
-
+        <div> year range </div>
       </div>
       <div
         style={{
@@ -108,10 +98,10 @@ function Search() {
           }}
         >
           {radio === 'track' &&
-            results?.tracks?.items.map((item, index) => (
+            results?.tracks?.items.map((track, index) => (
               <Track
                 key={index}
-                item={item}
+                track={track}
               />
             ))
           }

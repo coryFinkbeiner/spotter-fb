@@ -1,8 +1,27 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import Track from '../components/child/Track';
+import { useData } from '../DataProvider';
+import getPlaylistTracks from '../data/getPlaylistTracks';
+
+
 
 function CollectionView() {
   const item = useLocation().state
+  const { accessToken } = useData();
+
+  let trackArray = [];
+
+  // check if album
+  if (item.album) trackArray = item.album.tracks.items;
+
+  if (item.tracks) {
+    trackArray = getPlaylistTracks(
+      accessToken,
+      item.id,
+    )
+  }
+
 
   const imageUrl = item.album && item.album.images && item.album.images[0]
     ? item.album.images[0].url
@@ -47,22 +66,47 @@ function CollectionView() {
         <div
           style={{
             backgroundColor: 'blue',
-
           }}
         >
-
-      </div>
-
+        </div>
 
       </div>
       <div
         style={{
           backgroundColor: 'red',
-
+          position: 'relative',
         }}
       >
 
-      </div>
+
+
+          <div
+            style={{
+              display: 'grid',
+              gridGap: '2px',
+              position: 'absolute',
+              overflowY: 'scroll',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              gridTemplateColumns: `repeat(1, 1fr)`,
+            }}
+          >
+
+            {trackArray?.map((track, index) => (
+              <Track
+                key={index}
+                track={track}
+                imageUrl={imageUrl}
+              />
+            ))}
+
+          </div>
+        </div>
+
+
+
 
     </div>
   )
