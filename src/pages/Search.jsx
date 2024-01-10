@@ -9,13 +9,13 @@ function Search() {
   const { accessToken } = useData();
   const [ query, setQuery ] = useState('');
   const [ radio, setRadio ] = useState('album');
-  const rows = radio === 'track' ? '1' : '4'
+  const rows = radio === 'track' ? '1' : '4';
 
   const { results } = getSearchResults({
     accessToken: accessToken,
     query: query,
     type: radio,
-  })
+  });
 
   const handleChange = (event) => {
     setQuery(event.target.value);

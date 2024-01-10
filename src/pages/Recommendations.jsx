@@ -4,6 +4,7 @@ import Seeds from '../components/Seeds';
 
 function Recommendations({children}) {
 
+  const [ seeds, setSeeds ] = useState([]);
 
   return (
     <div
@@ -48,11 +49,11 @@ function Recommendations({children}) {
           </div>
 
         </div>
-        <Seeds />
+        <Seeds seeds={seeds} setSeeds={setSeeds}/>
       </div>
 
 
-      <Outlet />
+      <Outlet context={[seeds, setSeeds]}/>
 
 
 

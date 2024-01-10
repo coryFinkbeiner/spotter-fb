@@ -4,8 +4,6 @@ import Track from '../components/child/Track';
 import { useData } from '../DataProvider';
 import getPlaylistTracks from '../data/getPlaylistTracks';
 
-
-
 function CollectionView() {
   const item = useLocation().state
   const { accessToken } = useData();
@@ -21,7 +19,6 @@ function CollectionView() {
       item.id,
     )
   }
-
 
   const imageUrl = item.album && item.album.images && item.album.images[0]
     ? item.album.images[0].url
@@ -78,8 +75,6 @@ function CollectionView() {
         }}
       >
 
-
-
           <div
             style={{
               display: 'grid',
@@ -104,9 +99,6 @@ function CollectionView() {
 
           </div>
         </div>
-
-
-
 
     </div>
   )
