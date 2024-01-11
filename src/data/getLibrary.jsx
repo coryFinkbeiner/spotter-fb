@@ -36,7 +36,7 @@ function getLibrary(accessToken) {
         setPlaylists(playlistResponse.data)
 
       } catch (error) {
-        console.log('API error', error);
+        // console.log('API error', error);
       }
     })();
   }, [accessToken]);

@@ -1,19 +1,13 @@
 import React, { useState }  from 'react';
 
-
-
 function Track({
   key,
   track,
   imageUrl,
 }) {
 
-  console.log({track})
-
-  // Search
+  // from Search
   if (track.album) imageUrl = track.album.images[0].url
-
-
 
   return (
     <div

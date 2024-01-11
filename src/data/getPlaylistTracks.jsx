@@ -5,7 +5,8 @@ function getPlaylistTracks(
   accessToken,
   playlist_id
 ) {
-  const [ results, setResults ] = useState(null);
+  const [ playlistData, setPlaylistData ] = useState({});
+  const [ playlistTracks, setPlaylistTracks ] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -21,16 +22,18 @@ function getPlaylistTracks(
           //   playlist_id: "3cEYpjA9oz9GiPac4AsH4n",
           // },
         });
-        setResults(response.data.items)
+        setPlaylistData(response.data);
+        setPlaylistTracks(response.data.items)
       } catch (error) {
         console.log('API error', error);
       }
     })();
   }, [accessToken, playlist_id]);
 
-  return (
-    results
-  )
+  return {
+    playlistData,
+    playlistTracks
+  }
 }
 
 export default getPlaylistTracks

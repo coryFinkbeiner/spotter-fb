@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Track from '../components/child/Track';
 import { useData } from '../DataProvider';
@@ -7,24 +7,28 @@ import getPlaylistTracks from '../data/getPlaylistTracks';
 function CollectionView() {
   const item = useLocation().state
   const { accessToken } = useData();
+  const [imageUrl, setImageUrl] = useState("https://i.scdn.co/image/ab67616d0000b2732ba0863533344c205a1e3669");
 
-  let trackArray = [];
+  const [trackArray, setTrackArray] = useState([]);
 
-  // check if album
-  if (item.album) trackArray = item.album.tracks.items;
+  const { playlistData, playlistTracks } = getPlaylistTracks(accessToken, item.id);
 
-  if (item.tracks) {
-    trackArray = getPlaylistTracks(
-      accessToken,
-      item.id,
-    )
-  }
+  useEffect(() => {
 
-  const imageUrl = item.album && item.album.images && item.album.images[0]
-    ? item.album.images[0].url
-    : item.images && item.images[0]
-      ? item.images[0].url
-      : "https://i.scdn.co/image/ab67616d0000b2732ba0863533344c205a1e3669";
+    if (item.album) {
+      setTrackArray(item.album.tracks.items);
+      setImageUrl(item.album.images[0].url);
+    }
+
+    // check if playlist
+    if (item.tracks) {
+      if (item.images[0].url) setImageUrl(item.images[0].url);
+      setTrackArray(playlistTracks)
+    }
+
+  }, [item, accessToken]);
+
+
 
   return (
     <div

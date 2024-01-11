@@ -13,8 +13,6 @@ const DataProvider = ({ code, children }) => {
     blue: [],
   })
 
-
-
   const value = {
     accessToken,
     library: { albums, playlists, },

@@ -9,6 +9,26 @@ function Collection({
   const { bank, setBank } = useData();
   const [isHovering, setIsHovering] = useState(false);
 
+  // let trackArray = [];
+
+  // // check if album
+  // if (item.album) {
+  //   trackArray = item.album.tracks.items;
+  //   imageUrl = item.album.images[0].url;
+  // }
+
+  // // check if playlist
+  // if (item.tracks) {
+  //   let trackResponse = getPlaylistTracks(
+  //     accessToken,
+  //     item.id,
+  //   );
+  //   trackArray = trackResponse.
+  //   imageUrl = item.images[0].url;
+  // }
+
+
+
   const imageUrl = item.album && item.album.images && item.album.images[0]
     ? item.album.images[0].url
     : item.images && item.images[0]
