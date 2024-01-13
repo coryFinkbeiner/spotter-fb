@@ -7,16 +7,16 @@ import getSearchResults from './data/getSearchResults';
 const DataProvider = ({ code, children }) => {
   const accessToken = useSpotifyAuth(code);
   const { albums, playlists } = getLibrary(accessToken);
-  const [ bank, setBank ] = useState({
-    red: [],
-    yellow: [],
-    blue: [],
-  })
+  const [ redSpot, setRedSpot ] = useState([]);
+  const [ yellowSpot, setYellowSpot ] = useState([]);
+  const [ blueSpot, setBlueSpot ] = useState([]);
 
   const value = {
     accessToken,
-    library: { albums, playlists, },
-    bank, setBank,
+    library: { albums, playlists },
+    redSpot, setRedSpot,
+    yellowSpot, setYellowSpot,
+    blueSpot, setBlueSpot,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

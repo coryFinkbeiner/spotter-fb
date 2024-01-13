@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 import { Link } from 'react-router-dom';
+import getPlaylistTracks from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/data/getPlaylistTracks.jsx';
 
 function Collection({
   key,
@@ -10,8 +11,29 @@ function Collection({
   lineOne,
   lineTwo,
 }) {
-  const { bank, setBank } = useData();
-  const [isHovering, setIsHovering] = useState(false);
+  const { accessToken } = useData();
+  const {
+    redSpot, setRedSpot,
+    yellowSpot, setYellowSpot,
+    blueSpot, setBlueSpot,
+  } = useData();
+  const [ isHovering, setIsHovering ] = useState(false);
+  const [ trackArray, setTrackArray ] = useState([]);
+
+
+
+
+  useEffect(() => {
+    if (item.album) {
+      setTrackArray(item.album.tracks.items);
+    }
+    if (item.tracks) {
+      const { playlistData, playlistTracks } = getPlaylistTracks(accessToken, item.id);
+      setTrackArray(playlistTracks)
+    }
+  }, [accessToken]);
+
+
 
   return (
     <div
@@ -23,7 +45,14 @@ function Collection({
 
       <Link
         to={'collection'}
-        state={item}
+        state={{
+          item,
+          imageUrl,
+          type,
+          lineOne,
+          lineTwo,
+          trackArray
+        }}
       >
         <div
           style={{
@@ -53,7 +82,8 @@ function Collection({
           }}
           onClick={() => {
             item.imageUrl = imageUrl
-            setBank({...bank, red: item })
+            console.log({item})
+            setRedSpot([...redSpot, ...trackArray])
           }}
         ></div>
         <div
@@ -62,7 +92,7 @@ function Collection({
           }}
           onClick={() => {
             item.imageUrl = imageUrl
-            setBank({...bank, yellow: item })
+            setYellowSpot([...yellowSpot, ...trackArray])
           }}
         ></div>
         <div
@@ -71,7 +101,7 @@ function Collection({
           }}
           onClick={() => {
             item.imageUrl = imageUrl
-            setBank({...bank, blue: item })
+            setBlueSpot([...blueSpot, ...trackArray])
           }}
         ></div>
 
