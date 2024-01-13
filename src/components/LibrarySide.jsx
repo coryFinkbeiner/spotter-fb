@@ -5,17 +5,18 @@ import Collection from './child/Collection';
 function LibrarySide() {
   const { albums, playlists } = useData().library;
   const [ radio, setRadio ] = useState('albums');
-  const [ imageUrl, setImageUrl ] = useState('');
+
   const collectionData = radio === 'albums' ? albums : playlists;
+  // console.log({collectionData})
+
 
   return (
     <>
+      {/* radio buttons */}
       <div
         style={{
-          backgroundColor: 'pink',
           display: 'grid',
           gridTemplateColumns: '1fr 1fr 1fr',
-
         }}
       >
         <div
@@ -24,17 +25,12 @@ function LibrarySide() {
         <div
           onClick={() => setRadio('playlists')}
         >Playlists</div>
-        <div
-          onClick={() => setRadio('recommendations')}
-        >Recs</div>
       </div>
-
-
+      {/* box to render chosen collection items */}
       <div
         style={{
           position: 'relative',
           padding: '2px',
-          backgroundColor: 'lightRed',
           height: '100%',
         }}
       >
@@ -48,16 +44,39 @@ function LibrarySide() {
             right: 0,
             bottom: 0,
             left: 0,
-            padding: '2px',
             gridTemplateColumns: 'repeat(2, 1fr)',
           }}
         >
-          {collectionData?.items.map((item, index) => (
-            <Collection
-              key={index}
-              item={item}
-            />
-          ))}
+          {collectionData?.items.map((item, index) => {
+
+            let imageUrl = 'https://i.scdn.co/image/ab67616d0000b2732ba0863533344c205a1e3669';
+            let type = '';
+            let lineOne = 'lineOne';
+            let lineTwo = 'lineTwo';
+
+            if (item.album && item.album.images && item.album.images[0]) {
+              imageUrl = item.album.images[0].url;
+              type = 'album';
+              lineOne = item.album.name;
+              lineTwo = item.album.artists[0].name;
+            } else if (item.images && item.images[0]) {
+              imageUrl = item.images[0].url;
+              type = 'playlist';
+              lineOne = item.name;
+              lineTwo = item.owner.display_name;
+            }
+
+            return (
+              <Collection
+                key={index}
+                item={item}
+                imageUrl={imageUrl}
+                type={type}
+                lineOne={lineOne}
+                lineTwo={lineTwo}
+              />
+            )
+          })}
         </div>
       </div>
     </>
@@ -65,3 +84,4 @@ function LibrarySide() {
 }
 
 export default LibrarySide
+

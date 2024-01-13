@@ -5,36 +5,13 @@ import { Link } from 'react-router-dom';
 function Collection({
   key,
   item,
+  imageUrl,
+  type,
+  lineOne,
+  lineTwo,
 }) {
   const { bank, setBank } = useData();
   const [isHovering, setIsHovering] = useState(false);
-
-  // let trackArray = [];
-
-  // // check if album
-  // if (item.album) {
-  //   trackArray = item.album.tracks.items;
-  //   imageUrl = item.album.images[0].url;
-  // }
-
-  // // check if playlist
-  // if (item.tracks) {
-  //   let trackResponse = getPlaylistTracks(
-  //     accessToken,
-  //     item.id,
-  //   );
-  //   trackArray = trackResponse.
-  //   imageUrl = item.images[0].url;
-  // }
-
-
-
-  const imageUrl = item.album && item.album.images && item.album.images[0]
-    ? item.album.images[0].url
-    : item.images && item.images[0]
-      ? item.images[0].url
-      : "https://i.scdn.co/image/ab67616d0000b2732ba0863533344c205a1e3669";
-
 
   return (
     <div

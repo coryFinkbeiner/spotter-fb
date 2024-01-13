@@ -8,27 +8,21 @@ function CollectionView() {
   const item = useLocation().state
   const { accessToken } = useData();
   const [imageUrl, setImageUrl] = useState("https://i.scdn.co/image/ab67616d0000b2732ba0863533344c205a1e3669");
-
   const [trackArray, setTrackArray] = useState([]);
-
   const { playlistData, playlistTracks } = getPlaylistTracks(accessToken, item.id);
 
   useEffect(() => {
-
+    // check if album
     if (item.album) {
       setTrackArray(item.album.tracks.items);
       setImageUrl(item.album.images[0].url);
     }
-
     // check if playlist
     if (item.tracks) {
       if (item.images[0].url) setImageUrl(item.images[0].url);
       setTrackArray(playlistTracks)
     }
-
   }, [item, accessToken]);
-
-
 
   return (
     <div
@@ -70,7 +64,6 @@ function CollectionView() {
           }}
         >
         </div>
-
       </div>
       <div
         style={{
@@ -78,7 +71,6 @@ function CollectionView() {
           position: 'relative',
         }}
       >
-
           <div
             style={{
               display: 'grid',
@@ -92,7 +84,6 @@ function CollectionView() {
               gridTemplateColumns: `repeat(1, 1fr)`,
             }}
           >
-
             {trackArray?.map((track, index) => (
               <Track
                 key={index}
@@ -100,10 +91,8 @@ function CollectionView() {
                 imageUrl={imageUrl}
               />
             ))}
-
           </div>
         </div>
-
     </div>
   )
 }
