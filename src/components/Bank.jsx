@@ -9,8 +9,6 @@ export default function Bank() {
     yellowSpot, setYellowSpot,
     blueSpot, setBlueSpot,
   } = useData();
-
-
   return (
     <div
       style={{
@@ -18,28 +16,34 @@ export default function Bank() {
         gridTemplateColumns: '1fr 1fr 1fr 1fr',
       }}
     >
-      <NavLink
-        to={'/thread'}
+      <NavLink to={'/thread'}
         style={{ textDecoration: 'none', color: 'white', backgroundColor: 'white' }}>
         Thread
       </NavLink>
-
-
       <NavLink
         to={'/spot'}
-        state={redSpot}
+        state={{
+          spot: redSpot,
+          color: 'red',
+        }}
         style={{ textDecoration: 'none', color: 'white', backgroundColor: 'red' }}>
         R
       </NavLink>
-      <NavLink to={'/spot'} state={yellowSpot} style={{ textDecoration: 'none', color: 'white', backgroundColor: 'yellow' }}>
+      <NavLink to={'/spot'} state={{
+          spot: yellowSpot,
+          color: 'yellow',
+        }}
+        style={{ textDecoration: 'none', color: 'white', backgroundColor: 'yellow' }}>
         Y
       </NavLink>
-
-      <NavLink to={'/spot'} state={blueSpot} style={{ textDecoration: 'none', color: 'white', backgroundColor: 'blue' }}>
+      <NavLink to={'/spot'}
+        state={{
+          spot: blueSpot,
+          color: 'blue',
+        }}
+        style={{ textDecoration: 'none', color: 'white', backgroundColor: 'blue' }}>
         B
       </NavLink>
-
-
     </div>
   )
 }

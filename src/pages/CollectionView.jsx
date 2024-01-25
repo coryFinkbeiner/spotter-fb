@@ -77,8 +77,8 @@ function CollectionView() {
             {trackArray?.map((track, index) => (
               <Track
                 key={index}
-                track={track}
-                imageUrl={imageUrl}
+                track
+                imageUrl
               />
             ))}
           </div>

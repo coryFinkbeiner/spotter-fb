@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 import getPlaylistTracks from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/data/getPlaylistTracks.jsx';
 
 function Collection({
-  key,
-  item,
-  imageUrl,
-  type,
-  lineOne,
-  lineTwo,
-}) {
-  const { accessToken } = useData();
+    key,
+    item,
+    imageUrl,
+    type,
+    lineOne,
+    lineTwo,
+  }) {
   const {
+    accessToken,
     redSpot, setRedSpot,
     yellowSpot, setYellowSpot,
     blueSpot, setBlueSpot,
@@ -20,8 +20,7 @@ function Collection({
   const [ isHovering, setIsHovering ] = useState(false);
   const [ trackArray, setTrackArray ] = useState([]);
 
-
-
+  // console.log({trackArray})
 
   useEffect(() => {
     if (item.album) {
@@ -32,8 +31,6 @@ function Collection({
       setTrackArray(playlistTracks)
     }
   }, [accessToken]);
-
-
 
   return (
     <div
@@ -104,9 +101,7 @@ function Collection({
             setBlueSpot([...blueSpot, ...trackArray])
           }}
         ></div>
-
       </div>
-
     </div>
   )
 }
