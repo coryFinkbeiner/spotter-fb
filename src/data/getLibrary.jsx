@@ -45,7 +45,6 @@ function getLibrary(accessToken) {
     albums,
     playlists
   }
-
 }
 
 export default getLibrary

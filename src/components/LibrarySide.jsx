@@ -7,8 +7,6 @@ function LibrarySide() {
   const [ radio, setRadio ] = useState('albums');
 
   const collectionData = radio === 'albums' ? albums : playlists;
-  // console.log({collectionData})
-
 
   return (
     <>

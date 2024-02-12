@@ -1,5 +1,5 @@
 
-const albums = {
+export const libraryAlbums = {
   href: "https://api.spotify.com/v1/me/albums?offset=0&limit=50&locale=en-US,en;q=0.9",
   items: [
 
@@ -72,7 +72,7 @@ const albums = {
 }
 
 
-const playlists = {
+export const libraryPlaylists = {
   href: "https://api.spotify.com/v1/users/j9qnui1zy8xf6nnuemleq5qfu/playlists?offset=0&limit=50",
   items: [
     {

@@ -25,7 +25,7 @@ function getSearchResults({
         });
         setResults(response.data)
       } catch (error) {
-        console.log('API error', error);
+        // console.log('API error', error);
       }
     })();
   }, [accessToken, query, type]);

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import getPlaylistTracks from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/data/getPlaylistTracks.jsx';
 
 function Collection({
-    key,
     item,
     imageUrl,
     type,
