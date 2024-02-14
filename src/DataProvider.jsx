@@ -8,10 +8,6 @@ const DataProvider = ({ code, children }) => {
 
   const accessToken = useSpotifyAuth(code);
 
-  // const [ searchResults, setSearchResults ] = useState(null)
-
-  const [ searchTerm, setSearchTerm ] = useState('');
-
   const { albums, playlists } = getLibrary(accessToken);
   const [ redSpot, setRedSpot ] = useState([]);
   const [ yellowSpot, setYellowSpot ] = useState([]);
