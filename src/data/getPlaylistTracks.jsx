@@ -30,10 +30,7 @@ function getPlaylistTracks(
     })();
   }, [accessToken, playlist_id]);
 
-  return {
-    playlistData,
-    playlistTracks
-  }
+  return { playlistTracks }
 }
 
 export default getPlaylistTracks

@@ -14,6 +14,8 @@ function CollectionView() {
   } = useLocation().state
   const { accessToken } = useData();
 
+  console.log({trackArray})
+
   return (
     <div
       style={{

@@ -17,8 +17,6 @@ function Search() {
     type: radio,
   });
 
-  console.log({results})
-
   const handleChange = (event) => {
     setQuery(event.target.value);
   };

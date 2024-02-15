@@ -9,6 +9,7 @@ function Collection({
     type,
     lineOne,
     lineTwo,
+    trackArray
   }) {
   const {
     accessToken,
@@ -17,7 +18,6 @@ function Collection({
     blueSpot, setBlueSpot,
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
-  const [ trackArray, setTrackArray ] = useState([]);
 
   return (
     <div
