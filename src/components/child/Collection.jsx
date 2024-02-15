@@ -19,18 +19,6 @@ function Collection({
   const [ isHovering, setIsHovering ] = useState(false);
   const [ trackArray, setTrackArray ] = useState([]);
 
-  // console.log({trackArray})
-
-  useEffect(() => {
-    if (item.album) {
-      setTrackArray(item.album.tracks.items);
-    }
-    if (item.tracks) {
-      const { playlistData, playlistTracks } = getPlaylistTracks(accessToken, item.id);
-      setTrackArray(playlistTracks)
-    }
-  }, [accessToken]);
-
   return (
     <div
       style={{

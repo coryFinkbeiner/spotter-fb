@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '../DataProvider';
-import Collection from './child/Collection';
+import SidePlaylists from './child/SidePlaylists';
+import SideAlbums from './child/SideAlbums';
 
 function LibrarySide() {
   const { albums, playlists } = useData().library;
   const [ radio, setRadio ] = useState('albums');
-
-  const collectionData = radio === 'albums' ? albums : playlists;
 
   return (
     <>
@@ -45,36 +44,9 @@ function LibrarySide() {
             gridTemplateColumns: 'repeat(2, 1fr)',
           }}
         >
-          {collectionData?.items.map((item, index) => {
 
-            let imageUrl = 'https://i.scdn.co/image/ab67616d0000b2732ba0863533344c205a1e3669';
-            let type = '';
-            let lineOne = 'lineOne';
-            let lineTwo = 'lineTwo';
+        {radio === 'playlists' ? <SidePlaylists playlists={playlists}/> : <SideAlbums albums={albums}/>}
 
-            if (item.album && item.album.images && item.album.images[0]) {
-              imageUrl = item.album.images[0].url;
-              type = 'album';
-              lineOne = item.album.name;
-              lineTwo = item.album.artists[0].name;
-            } else if (item.images && item.images[0]) {
-              imageUrl = item.images[0].url;
-              type = 'playlist';
-              lineOne = item.name;
-              lineTwo = item.owner.display_name;
-            }
-
-            return (
-              <Collection
-                key={index}
-                item={item}
-                imageUrl={imageUrl}
-                type={type}
-                lineOne={lineOne}
-                lineTwo={lineTwo}
-              />
-            )
-          })}
         </div>
       </div>
     </>
