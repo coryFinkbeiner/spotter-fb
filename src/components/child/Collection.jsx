@@ -35,7 +35,7 @@ function Collection({
           type,
           lineOne,
           lineTwo,
-          trackArray
+          trackArray,
         }}
       >
         <div

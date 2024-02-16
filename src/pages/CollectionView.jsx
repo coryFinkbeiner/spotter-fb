@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Track from '../components/child/Track';
-import { useData } from '../DataProvider';
 
 function CollectionView() {
   const {
@@ -12,7 +11,6 @@ function CollectionView() {
     lineTwo,
     trackArray
   } = useLocation().state
-  const { accessToken } = useData();
 
   console.log({trackArray})
 

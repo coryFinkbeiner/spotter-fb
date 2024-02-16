@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useData } from '../DataProvider';
 import SidePlaylists from './child/SidePlaylists';
 import SideAlbums from './child/SideAlbums';
 
 function LibrarySide() {
-  const { albums, playlists } = useData().library;
   const [ radio, setRadio ] = useState('albums');
 
   return (
@@ -45,7 +43,7 @@ function LibrarySide() {
           }}
         >
 
-        {radio === 'playlists' ? <SidePlaylists playlists={playlists}/> : <SideAlbums albums={albums}/>}
+        {radio === 'playlists' ? <SidePlaylists /> : <SideAlbums />}
 
         </div>
       </div>

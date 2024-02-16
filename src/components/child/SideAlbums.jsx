@@ -1,7 +1,9 @@
 import React from 'react';
 import Collection from './Collection';
+import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 
-function SideAlbums({albums}) {
+function SideAlbums() {
+  const { albums } = useData().library;
 
   return (
     <>

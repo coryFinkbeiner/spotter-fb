@@ -1,10 +1,11 @@
 import React from 'react';
 import Collection from './Collection';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
-import getPlaylistTracks from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/data/getPlaylistTracks.jsx'
+import getPlaylistTracks from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/data/getPlaylistTracks.jsx';
 
-function SidePlaylists({playlists}) {
+function SidePlaylists() {
   const { accessToken } = useData();
+  const { playlists } = useData().library;
 
   return (
     <>
