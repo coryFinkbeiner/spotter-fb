@@ -1,9 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import SidePlaylists from './child/SidePlaylists';
-import SideAlbums from './child/SideAlbums';
+import Collection from './child/Collection';
+import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
+import Album from './Album';
+import Playlist from './Playlist';
 
 function LibrarySide() {
+  const { albums, playlists } = useData();
   const [ radio, setRadio ] = useState('albums');
+
+  const Playlists = (
+    <>
+      {playlists?.items.map((item, index) => {
+        // const { playlistTracks } = getPlaylistTracks(accessToken, item.id);
+
+        return (
+          <Playlist
+            key={index}
+            item={item}
+            imageUrl={item.images[0]?.url}
+            type={'playlist'}
+            lineOne={item.name}
+            lineTwo={item.owner.display_name}
+            trackArray={[]}
+          />
+        );
+      })}
+    </>
+  );
+
+  const Albums = (
+    <>
+      {albums?.items.map((item, index) => (
+        <Album
+          key={index}
+          item={item}
+          imageUrl={item.album.images[0].url}
+          type={'album'}
+          lineOne={item.album.name}
+          lineTwo={item.album.artists[0].name}
+          trackArray={item.album.tracks.items}
+        />
+      ))}
+    </>
+  );
+
+
 
   return (
     <>
@@ -43,7 +84,7 @@ function LibrarySide() {
           }}
         >
 
-        {radio === 'playlists' ? <SidePlaylists /> : <SideAlbums />}
+        {radio === 'playlists' ? Playlists : Albums}
 
         </div>
       </div>

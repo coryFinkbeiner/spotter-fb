@@ -12,8 +12,6 @@ function CollectionView() {
     trackArray
   } = useLocation().state
 
-  console.log({trackArray})
-
   return (
     <div
       style={{
@@ -78,7 +76,7 @@ function CollectionView() {
               <Track
                 key={index}
                 track
-                imageUrl
+                imageU
               />
             ))}
           </div>

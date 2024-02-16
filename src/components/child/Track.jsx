@@ -9,6 +9,8 @@ function Track({
   // from Search
   if (track.album) imageUrl = track.album.images[0].url
 
+
+
   return (
     <div
       style={{

@@ -15,7 +15,7 @@ const DataProvider = ({ code, children }) => {
 
   const value = {
     accessToken,
-    library: { albums, playlists },
+    albums, playlists,
     redSpot, setRedSpot,
     yellowSpot, setYellowSpot,
     blueSpot, setBlueSpot,
