@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import getPlaylistTracks from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/data/getPlaylistTracks.jsx';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 
-
 function Playlist({
   item,
   imageUrl,
@@ -29,15 +28,15 @@ function Playlist({
     >
 
       <Link
-        to={'collection'}
-        state={{
-          item,
-          imageUrl,
-          type,
-          lineOne,
-          lineTwo,
-          trackArray,
-        }}
+        to={'selection/playlist'}
+        // state={{
+        //   item,
+        //   imageUrl,
+        //   type,
+        //   lineOne,
+        //   lineTwo,
+        //   trackArray,
+        // }}
       >
         <div
           style={{

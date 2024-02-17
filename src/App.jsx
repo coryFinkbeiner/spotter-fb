@@ -16,7 +16,11 @@ import PickGenre from './pages/sub/PickGenre';
 import Settings from './pages/sub/Settings';
 import Spot from './pages/Spot';
 import Thread from './pages/Thread';
-import CollectionView from './pages/CollectionView'
+import SelectedAlbum from './pages/sub/SelectedAlbum';
+import SelectedPlaylist from './pages/sub/SelectedPlaylist';
+import SelectedArtist from './pages/sub/SelectedArtist';
+import Selection from './layout/Selection';
+
 
 function App({code}) {
   return (
@@ -24,6 +28,7 @@ function App({code}) {
       router={
         createBrowserRouter(createRoutesFromElements(
           <Route path="/" element={<Container />}>
+
             <Route index element={<Home />} />
 
             <Route path='search' element={<Search />} />
@@ -36,8 +41,15 @@ function App({code}) {
             </Route>
 
             <Route path='spot' element={<Spot />} />
+
             <Route path='thread' element={<Thread />} />
-            <Route path='collection' element={<CollectionView />} />
+
+            <Route path='selection' element={<Selection />}>
+              <Route path='album' element={<SelectedAlbum />} />
+              <Route path='playlist' element={<SelectedPlaylist />} />
+              <Route path='artist' element={<SelectedArtist />} />
+            </Route>
+
           </Route>
         ))
       }

@@ -11,8 +11,6 @@ function LibrarySide() {
   const Playlists = (
     <>
       {playlists?.items.map((item, index) => {
-        // const { playlistTracks } = getPlaylistTracks(accessToken, item.id);
-
         return (
           <Playlist
             key={index}
@@ -43,8 +41,6 @@ function LibrarySide() {
       ))}
     </>
   );
-
-
 
   return (
     <>

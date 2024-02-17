@@ -13,7 +13,6 @@ function Recommendations({children}) {
         gridTemplateRows: '1fr 5.4fr',
       }}
     >
-
       <div
         style={{
           display: 'grid',
@@ -32,7 +31,6 @@ function Recommendations({children}) {
               gridTemplateRows: '1fr 1fr 1fr 1fr',
             }}
           >
-
             <NavLink to="/recommendations/PickArtist" style={{ textDecoration: 'none', color: 'white' }}>
               A
             </NavLink>
@@ -47,15 +45,13 @@ function Recommendations({children}) {
               <div>S</div>
             </NavLink>
           </div>
-
         </div>
+
         <Seeds seeds={seeds} setSeeds={setSeeds}/>
+
       </div>
 
-
       <Outlet context={[seeds, setSeeds]}/>
-
-
 
     </div>
   )

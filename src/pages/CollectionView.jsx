@@ -28,7 +28,6 @@ function CollectionView() {
         <div
           style={{
             backgroundColor: 'green',
-
           }}
         >
           <div
@@ -43,9 +42,7 @@ function CollectionView() {
             }}
           >
           </div>
-
         </div>
-
         <div
           style={{
             backgroundColor: 'blue',

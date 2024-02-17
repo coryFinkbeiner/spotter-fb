@@ -3,6 +3,7 @@ import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-a
 import { Link } from 'react-router-dom';
 
 function Album({
+  key,
   item,
   imageUrl,
   type,
@@ -27,15 +28,15 @@ function Album({
     >
 
       <Link
-        to={'collection'}
-        state={{
-          item,
-          imageUrl,
-          type,
-          lineOne,
-          lineTwo,
-          trackArray,
-        }}
+        to={'selection/album'}
+        // state={{
+        //   item,
+        //   imageUrl,
+        //   type,
+        //   lineOne,
+        //   lineTwo,
+        //   trackArray,
+        // }}
       >
         <div
           style={{
