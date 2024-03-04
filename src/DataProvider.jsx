@@ -4,6 +4,7 @@ import useSpotifyAuth from './hooks/useSpotifyAuth';
 import getLibrary from './data/getLibrary';
 import getSearchResults from './data/getSearchResults';
 import getPlaylistTracks2 from './data/getPlaylistTracks';
+import axios from 'axios';
 
 const DataProvider = ({ code, children }) => {
 
@@ -48,42 +49,23 @@ const DataProvider = ({ code, children }) => {
         track.uri = itemT.uri;
 
         album.tracks.push(track);
-
       }
+
       newAlbums.push(album);
     }
 
-
-    // console.log({playlists})
-
     for (const itemP of playlists.items) {
 
-      // console.log(itemP)
-
       const playlist = {};
-
-      playlist.image = itemP.images[0].url;
+      playlist.image = itemP.images[0] ? itemP.images[0].url : 'https://i.scdn.co/image/ab67616d0000b2732529c50c11cb07f6f9e3ab29';
       playlist.id = itemP.id;
       playlist.owner = itemP.owner.display_name;
-      playlist.tracks = [];
+      playlist.tracks_href = itemP.tracks.href;
 
-      const { playlistTracks } = getPlaylistTracks2(accessToken, itemP.id)
-
-      console.log({playlistTracks})
-
+      newPlaylists.push(playlist)
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    setMyPlaylists(newPlaylists)
     setMyAlbums(newAlbums)
 
   }, [ accessToken, albums, playlists ])
