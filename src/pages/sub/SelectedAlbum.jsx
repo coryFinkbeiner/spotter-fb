@@ -3,6 +3,7 @@ import React from 'react';
 function SelectedAlbum() {
   return (
     <>
+      {/* top */}
       <div
         style={{
           display: 'grid',
@@ -18,6 +19,8 @@ function SelectedAlbum() {
         </div>
       </div>
 
+
+      {/* render tracks */}
       <div
         style={{
           backgroundColor: 'red',
@@ -53,3 +56,4 @@ function SelectedAlbum() {
 }
 
 export default SelectedAlbum
+

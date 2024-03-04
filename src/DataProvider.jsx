@@ -13,6 +13,54 @@ const DataProvider = ({ code, children }) => {
   const [ yellowSpot, setYellowSpot ] = useState([]);
   const [ blueSpot, setBlueSpot ] = useState([]);
 
+  const [ myAlbums, setMyAlbums ] = useState([]);
+  const [ myPlaylists, setMyPlaylists ] = useState([]);
+
+
+  // console.log({albums})
+  // console.log({playlists})
+
+
+  useEffect(() => {
+    if (!albums) return
+
+    const newAlbums = [];
+    const newPlaylists = [];
+
+    for (const itemA of albums.items) {
+
+
+      const album = {};
+
+      album.image = itemA.album.images[0].url;
+      album.id = itemA.album.id;
+      album.artistName = itemA.album.artists[0].name;
+      album.tracks = [];
+
+
+      for (const itemT of itemA.album.tracks.items) {
+
+        const track = {};
+        track.name = itemT.name;
+        track.albumImage = itemA.album.images[0].url;
+        track.artistName = itemT.artists[0].name;
+        track.uri = itemT.uri
+
+        album.tracks.push(track)
+
+      }
+
+      newAlbums.push(album)
+
+    }
+
+    console.log({newAlbums})
+
+
+  }, [ accessToken, albums, playlists ])
+
+
+
   const value = {
     accessToken,
     albums, playlists,

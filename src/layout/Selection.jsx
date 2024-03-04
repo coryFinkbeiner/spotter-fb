@@ -22,8 +22,9 @@ function Selection() {
       }}
     >
 
-        <Outlet />
-      </div>
+      <Outlet />
+
+    </div>
 
   )
 }
