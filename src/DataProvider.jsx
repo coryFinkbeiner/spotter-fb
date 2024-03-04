@@ -3,6 +3,7 @@ const DataContext = createContext();
 import useSpotifyAuth from './hooks/useSpotifyAuth';
 import getLibrary from './data/getLibrary';
 import getSearchResults from './data/getSearchResults';
+import getPlaylistTracks2 from './data/getPlaylistTracks';
 
 const DataProvider = ({ code, children }) => {
 
@@ -29,12 +30,12 @@ const DataProvider = ({ code, children }) => {
 
     for (const itemA of albums.items) {
 
-
       const album = {};
 
       album.image = itemA.album.images[0].url;
       album.id = itemA.album.id;
       album.artistName = itemA.album.artists[0].name;
+      album.name = itemA.album.name;
       album.tracks = [];
 
 
@@ -44,18 +45,46 @@ const DataProvider = ({ code, children }) => {
         track.name = itemT.name;
         track.albumImage = itemA.album.images[0].url;
         track.artistName = itemT.artists[0].name;
-        track.uri = itemT.uri
+        track.uri = itemT.uri;
 
-        album.tracks.push(track)
+        album.tracks.push(track);
 
       }
+      newAlbums.push(album);
+    }
 
-      newAlbums.push(album)
+
+    // console.log({playlists})
+
+    for (const itemP of playlists.items) {
+
+      // console.log(itemP)
+
+      const playlist = {};
+
+      playlist.image = itemP.images[0].url;
+      playlist.id = itemP.id;
+      playlist.owner = itemP.owner.display_name;
+      playlist.tracks = [];
+
+      const { playlistTracks } = getPlaylistTracks2(accessToken, itemP.id)
+
+      console.log({playlistTracks})
 
     }
 
-    console.log({newAlbums})
 
+
+
+
+
+
+
+
+
+
+
+    setMyAlbums(newAlbums)
 
   }, [ accessToken, albums, playlists ])
 
