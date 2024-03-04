@@ -44,11 +44,11 @@ function App({code}) {
 
             <Route path='thread' element={<Thread />} />
 
-            <Route path='selection' element={<Selection />}>
-              <Route path='album' element={<SelectedAlbum />} />
-              <Route path='playlist' element={<SelectedPlaylist />} />
-              <Route path='artist' element={<SelectedArtist />} />
-            </Route>
+
+            <Route path='album' element={<SelectedAlbum />} />
+            <Route path='playlist' element={<SelectedPlaylist />} />
+            <Route path='artist' element={<SelectedArtist />} />
+
 
           </Route>
         ))

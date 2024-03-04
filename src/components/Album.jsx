@@ -4,12 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Album({
   key,
-  item,
-  imageUrl,
-  type,
-  lineOne,
-  lineTwo,
-  trackArray
+  album
 }) {
   const {
     accessToken,
@@ -28,19 +23,12 @@ function Album({
     >
 
       <Link
-        to={'selection/album'}
-        // state={{
-        //   item,
-        //   imageUrl,
-        //   type,
-        //   lineOne,
-        //   lineTwo,
-        //   trackArray,
-        // }}
+        to={'album'}
+        state={{album}}
       >
         <div
           style={{
-            backgroundImage: `url(${imageUrl})`,
+            backgroundImage: `url(${album.image})`,
             backgroundSize: 'cover', // Options: 'auto', 'contain', 'cover', or specific values like '50% 50%'
             backgroundPosition: 'center',
             height: '85px',
@@ -60,14 +48,15 @@ function Album({
           gridTemplateColumns: '1fr 1fr 1fr',
         }}
       >
+
+
         <div
           style={{
             backgroundColor: 'red',
           }}
           onClick={() => {
-            item.imageUrl = imageUrl
-            console.log({item})
-            setRedSpot([...redSpot, ...trackArray])
+            // item.imageUrl = imageUrl
+            setRedSpot([...redSpot, ...album.tracks])
           }}
         ></div>
         <div
@@ -75,8 +64,8 @@ function Album({
             backgroundColor: 'yellow',
           }}
           onClick={() => {
-            item.imageUrl = imageUrl
-            setYellowSpot([...yellowSpot, ...trackArray])
+            // item.imageUrl = imageUrl
+            setYellowSpot([...yellowSpot, ...album.tracks])
           }}
         ></div>
         <div
@@ -84,10 +73,14 @@ function Album({
             backgroundColor: 'blue',
           }}
           onClick={() => {
-            item.imageUrl = imageUrl
-            setBlueSpot([...blueSpot, ...trackArray])
+            // item.imageUrl = imageUrl
+            setBlueSpot([...blueSpot, ...album.tracks])
           }}
         ></div>
+
+
+
+
       </div>
     </div>
   )

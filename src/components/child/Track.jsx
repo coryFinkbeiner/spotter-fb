@@ -2,14 +2,10 @@ import React, { useState }  from 'react';
 
 function Track({
   key,
-  track,
-  imageUrl,
+  track
 }) {
 
-  // from Search
-  if (track.album) imageUrl = track.album.images[0].url
-
-
+  console.log({track})
 
   return (
     <div
@@ -21,7 +17,7 @@ function Track({
       <div>{key}</div>
       <div
         style={{
-          backgroundImage: `url(${imageUrl})`,
+          // backgroundImage: `url(${imageUrl})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '80%',

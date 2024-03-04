@@ -5,38 +5,34 @@ import Album from './Album';
 import Playlist from './Playlist';
 
 function LibrarySide() {
-  const { albums, playlists } = useData();
+  const { myAlbums, myPlaylists } = useData();
   const [ radio, setRadio ] = useState('albums');
 
-  const Playlists = (
-    <>
-      {playlists?.items.map((item, index) => {
-        return (
-          <Playlist
-            key={index}
-            item={item}
-            imageUrl={item.images[0]?.url}
-            type={'playlist'}
-            lineOne={item.name}
-            lineTwo={item.owner.display_name}
-            trackArray={[]}
-          />
-        );
-      })}
-    </>
-  );
+
+  // const Playlists = (
+  //   <>
+  //     {myPlaylists?.items.map((item, index) => {
+  //       return (
+  //         <Playlist
+  //           key={index}
+  //           item={item}
+  //           imageUrl={item.images[0]?.url}
+  //           type={'playlist'}
+  //           lineOne={item.name}
+  //           lineTwo={item.owner.display_name}
+  //           trackArray={[]}
+  //         />
+  //       );
+  //     })}
+  //   </>
+  // );
 
   const Albums = (
     <>
-      {albums?.items.map((item, index) => (
+      {myAlbums?.map((album, index) => (
         <Album
           key={index}
-          item={item}
-          imageUrl={item.album.images[0].url}
-          type={'album'}
-          lineOne={item.album.name}
-          lineTwo={item.album.artists[0].name}
-          trackArray={item.album.tracks.items}
+          album={album}
         />
       ))}
     </>
@@ -80,7 +76,9 @@ function LibrarySide() {
           }}
         >
 
-        {radio === 'playlists' ? Playlists : Albums}
+        {/* {radio === 'playlists' ? Playlists : Albums} */}
+
+        {Albums}
 
         </div>
       </div>

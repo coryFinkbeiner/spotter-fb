@@ -1,8 +1,23 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/components/child/Track.jsx'
 
 function SelectedAlbum() {
+
+  const location = useLocation();
+  const { album } = location.state;
+
+  console.log(album.tracks)
+
+
   return (
-    <>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateRows: '1fr 5.4fr',
+      }}
+    >
+
       {/* top */}
       <div
         style={{
@@ -40,17 +55,15 @@ function SelectedAlbum() {
             gridTemplateColumns: `repeat(1, 1fr)`,
           }}
         >
-          {/* {trackArray?.map((track, index) => (
+          {album.tracks.map((track, index) => (
             <Track
               key={index}
               track
-              imageU
             />
-          ))} */}
+          ))}
         </div>
       </div>
-
-    </>
+    </div>
 
   )
 }
