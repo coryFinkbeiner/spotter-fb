@@ -16,31 +16,6 @@ function Album({
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
 
-  const [trackArray, setTrackArray] = useState(tracks);
-
-
-
-
-  const handleClick = async () => {
-    if (Array.isArray(tracks)) return
-    try {
-      const response = await fetch(`https://api.spotify.com/v1/albums/${id}/tracks`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${accessToken}`
-        }
-      });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      // Now you can do whatever you want with the fetched data
-      setTrackArray(data.items)
-      console.log({data})
-    } catch (error) {
-      console.error('Error fetching album tracks:', error);
-    }
-  };
 
 
   return (
@@ -54,16 +29,15 @@ function Album({
       <Link
         to={'/selection'}
         state={{
-          trackArray,
+          key,
           image,
           name,
           artistName,
           tracks,
           id,
         }}
-        onClick={handleClick}
-
       >
+
         <div
           style={{
             backgroundImage: `url(${image})`,

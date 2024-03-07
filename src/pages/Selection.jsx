@@ -6,15 +6,40 @@ import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-a
 function Selection() {
   const location = useLocation();
   const {
-    trackArray,
     image,
     name,
     artistName,
     tracks,
-    id, } = location.state;
+    id,
+  } = location.state;
   const {
+    accessToken,
     spots, setSpots,
   } = useData();
+
+  const [ trackArray, setTrackArray ] = useState(tracks);
+
+  if (trackArray === null) {
+    (async () => {
+      try {
+        const response = await fetch(`https://api.spotify.com/v1/albums/${id}/tracks`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          }
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setTrackArray(data.items);
+        console.log({ data });
+      } catch (error) {
+        console.error('Error fetching album tracks:', error);
+      }
+    })();
+  }
+
 
   return (
     <div
@@ -111,13 +136,13 @@ function Selection() {
             gridTemplateColumns: `repeat(1, 1fr)`,
           }}
         >
-          {/* {item.album.tracks.items.map((track, index) => (
+          {trackArray?.map((track, index) => (
             <Track
               key={index}
               track={track}
-              image={item.album.images[0].url}
+              image={image}
             />
-          ))} */}
+          ))}
         </div>
       </div>
     </div>

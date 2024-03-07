@@ -91,7 +91,7 @@ function Track({
           gridTemplateRows: '1.2fr 1fr',
         }}
       >
-        {/* <div>{track.name}</div>
+        {/* <div>{track.}</div>
         <div>{track.artistName}</div> */}
       </div>
       <div>dur</div>

@@ -32,9 +32,10 @@ function LibrarySide() {
             <Album
               key={index}
               image={item.album.images[0].url}
-              name={'test'}
+              name={item.album.name}
               tracks={item.album.tracks.items}
-              artistName={'test'}
+              artistName={item.album.artists[0].name}
+              data={item}
             />
           ))}
         </div>

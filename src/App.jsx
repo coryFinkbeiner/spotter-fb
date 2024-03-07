@@ -24,6 +24,8 @@ function App({code}) {
     <RouterProvider
       router={
         createBrowserRouter(createRoutesFromElements(
+
+
           <Route path="/" element={<Container />}>
 
             <Route index element={<Home />} />
@@ -44,6 +46,8 @@ function App({code}) {
             <Route path='selection' element={<Selection />} />
 
           </Route>
+
+
         ))
       }
     />
