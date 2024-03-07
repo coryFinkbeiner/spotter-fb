@@ -25,7 +25,6 @@ function Playlist({
     track.artistName = item.track.artists[0].name;
     track.albumImage = item.track.album.images[0].url;
     track.uri = item.track.uri;
-
     playlist.tracks.push(track);
   }
 

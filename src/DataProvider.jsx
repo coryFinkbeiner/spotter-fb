@@ -8,9 +8,11 @@ import axios from 'axios';
 const DataProvider = ({ code, children }) => {
   const accessToken = useSpotifyAuth(code);
   const { albums, playlists } = getLibrary(accessToken);
-  const [ redSpot, setRedSpot ] = useState([]);
-  const [ yellowSpot, setYellowSpot ] = useState([]);
-  const [ blueSpot, setBlueSpot ] = useState([]);
+  const [ spots, setSpots ] = useState({
+    red: [],
+    yellow: [],
+    blue: []
+  });
   const [ myAlbums, setMyAlbums ] = useState([]);
   const [ myPlaylists, setMyPlaylists ] = useState([]);
 
@@ -59,9 +61,7 @@ const DataProvider = ({ code, children }) => {
   const value = {
     accessToken,
     myAlbums, myPlaylists,
-    redSpot, setRedSpot,
-    yellowSpot, setYellowSpot,
-    blueSpot, setBlueSpot,
+    spots, setSpots,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

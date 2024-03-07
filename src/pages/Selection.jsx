@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/components/child/Track.jsx';
-import getPlaylistTracks from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/data/getPlaylistTracks.jsx';
-import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 
 
 function Selection() {
@@ -10,35 +8,20 @@ function Selection() {
   const { collection } = location.state;
   const [line1,  setLine1] = useState('');
   const [line2, setLine2] = useState('');
-  const { accessToken } = useData();
-  const { playlistTracks } = getPlaylistTracks(accessToken, collection.id)
 
 
   useEffect(() => {
     if (collection.type === 'album') {
       // setLine1(collection.)
-
     }
     if (collection.type === 'playlist') {
       // setLine1(collection.)
-
-      collection.tracks = [];
-
-      for (const item of playlistTracks) {
-        const track = {};
-        track.name = item.track.name;
-        track.albumName = item.track.album.name;
-        track.artistName = item.track.artists[0].name;
-        track.albumImage = item.track.album.images[0].url;
-        track.uri = item.track.uri;
-
-        collection.tracks.push(track);
-      }
-
-
     }
 
-  }, [collection])
+  }, [])
+
+
+
 
 
   return (
