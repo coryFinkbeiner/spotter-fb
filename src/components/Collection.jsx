@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 import { Link } from 'react-router-dom';
 
-function Album({
-  key,
-  album
-}) {
+function Collection({ collection }) {
   const {
-    accessToken,
-    redSpot, setRedSpot,
-    yellowSpot, setYellowSpot,
-    blueSpot, setBlueSpot,
+    redSpot,
+    setRedSpot,
+    yellowSpot,
+    setYellowSpot,
+    blueSpot,
+    setBlueSpot,
   } = useData();
-  const [ isHovering, setIsHovering ] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   return (
     <div
@@ -21,15 +20,14 @@ function Album({
         gridTemplateRows: '7fr 1fr',
       }}
     >
-
       <Link
-        to={'album'}
-        state={{album}}
+        to={collection.type}
+        state={{ collection }}
       >
         <div
           style={{
-            backgroundImage: `url(${album.image})`,
-            backgroundSize: 'cover', // Options: 'auto', 'contain', 'cover', or specific values like '50% 50%'
+            backgroundImage: `url(${collection.image})`,
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             height: '85px',
             width: '85px',
@@ -38,8 +36,7 @@ function Album({
           }}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
-        >
-        </div>
+        ></div>
       </Link>
 
       <div
@@ -52,30 +49,23 @@ function Album({
           style={{
             backgroundColor: 'red',
           }}
-          onClick={() => {
-            setRedSpot([...redSpot, ...album.tracks])
-          }}
+          onClick={() => handleSpotClick(collection.tracks)}
         ></div>
         <div
           style={{
             backgroundColor: 'yellow',
           }}
-          onClick={() => {
-            setYellowSpot([...yellowSpot, ...album.tracks])
-          }}
+          onClick={() => handleSpotClick(collection.tracks)}
         ></div>
         <div
           style={{
             backgroundColor: 'blue',
           }}
-          onClick={() => {
-            setBlueSpot([...blueSpot, ...album.tracks])
-          }}
+          onClick={() => handleSpotClick(collection.tracks)}
         ></div>
-
       </div>
     </div>
-  )
+  );
 }
 
-export default Album;
+export default Collection;

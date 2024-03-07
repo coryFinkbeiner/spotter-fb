@@ -1,42 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Collection from './child/Collection';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
-import Album from './Album';
-import Playlist from './Playlist';
+import Collection from './Collection';
 
 function LibrarySide() {
   const { myAlbums, myPlaylists } = useData();
   const [ radio, setRadio ] = useState('albums');
+  const [ collections, setCollections ] = useState([]);
 
-
-  // const Playlists = (
-  //   <>
-  //     {myPlaylists?.items.map((item, index) => {
-  //       return (
-  //         <Playlist
-  //           key={index}
-  //           item={item}
-  //           imageUrl={item.images[0]?.url}
-  //           type={'playlist'}
-  //           lineOne={item.name}
-  //           lineTwo={item.owner.display_name}
-  //           trackArray={[]}
-  //         />
-  //       );
-  //     })}
-  //   </>
-  // );
-
-  const Albums = (
-    <>
-      {myAlbums?.map((album, index) => (
-        <Album
-          key={index}
-          album={album}
-        />
-      ))}
-    </>
-  );
+  useEffect(() => {
+    if (radio === 'albums') setCollections(myAlbums);
+    if (radio === 'playlists') setCollections(myPlaylists);
+  }, [ radio ])
 
   return (
     <>
@@ -75,11 +49,12 @@ function LibrarySide() {
             gridTemplateColumns: 'repeat(2, 1fr)',
           }}
         >
-
-        {/* {radio === 'playlists' ? Playlists : Albums} */}
-
-        {Albums}
-
+          {collections?.map((collection, index) => (
+            <Collection
+              key={index}
+              collection={collection}
+            />
+          ))}
         </div>
       </div>
     </>

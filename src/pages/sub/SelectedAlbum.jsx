@@ -7,9 +7,6 @@ function SelectedAlbum() {
   const location = useLocation();
   const { album } = location.state;
 
-  console.log(album.tracks)
-
-
   return (
     <div
       style={{
@@ -58,7 +55,7 @@ function SelectedAlbum() {
           {album.tracks.map((track, index) => (
             <Track
               key={index}
-              track
+              track={track}
             />
           ))}
         </div>

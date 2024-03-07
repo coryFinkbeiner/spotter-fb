@@ -4,12 +4,8 @@ import getPlaylistTracks from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-r
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 
 function Playlist({
-  item,
-  imageUrl,
-  type,
-  lineOne,
-  lineTwo,
-  trackArray
+  key,
+  playlist,
 }) {
   const {
     accessToken,
@@ -18,6 +14,20 @@ function Playlist({
     blueSpot, setBlueSpot,
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
+  const { playlistTracks } = getPlaylistTracks(accessToken, playlist.id)
+
+  playlist.tracks = [];
+
+  for (const item of playlistTracks) {
+    const track = {};
+    track.name = item.track.name;
+    track.albumName = item.track.album.name;
+    track.artistName = item.track.artists[0].name;
+    track.albumImage = item.track.album.images[0].url;
+    track.uri = item.track.uri;
+
+    playlist.tracks.push(track);
+  }
 
   return (
     <div
@@ -26,21 +36,13 @@ function Playlist({
         gridTemplateRows: '7fr 1fr',
       }}
     >
-
       <Link
-        to={'selection/playlist'}
-        // state={{
-        //   item,
-        //   imageUrl,
-        //   type,
-        //   lineOne,
-        //   lineTwo,
-        //   trackArray,
-        // }}
+        to={'playlist'}
+        state={{playlist}}
       >
         <div
           style={{
-            backgroundImage: `url(${imageUrl})`,
+            backgroundImage: `url(${playlist.image})`,
             backgroundSize: 'cover', // Options: 'auto', 'contain', 'cover', or specific values like '50% 50%'
             backgroundPosition: 'center',
             height: '85px',
@@ -65,9 +67,7 @@ function Playlist({
             backgroundColor: 'red',
           }}
           onClick={() => {
-            item.imageUrl = imageUrl
-            console.log({item})
-            setRedSpot([...redSpot, ...trackArray])
+            setRedSpot([...redSpot, ...playlist.tracks])
           }}
         ></div>
         <div
@@ -75,8 +75,7 @@ function Playlist({
             backgroundColor: 'yellow',
           }}
           onClick={() => {
-            item.imageUrl = imageUrl
-            setYellowSpot([...yellowSpot, ...trackArray])
+            setYellowSpot([...yellowSpot, ...playlist.tracks])
           }}
         ></div>
         <div
@@ -84,8 +83,7 @@ function Playlist({
             backgroundColor: 'blue',
           }}
           onClick={() => {
-            item.imageUrl = imageUrl
-            setBlueSpot([...blueSpot, ...trackArray])
+            setBlueSpot([...blueSpot, ...playlist.tracks])
           }}
         ></div>
       </div>

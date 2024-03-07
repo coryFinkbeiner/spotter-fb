@@ -26,10 +26,12 @@ const DataProvider = ({ code, children }) => {
       album.artistName = itemA.album.artists[0].name;
       album.name = itemA.album.name;
       album.tracks = [];
+      album.type = 'album';
 
       for (const itemT of itemA.album.tracks.items) {
         const track = {};
         track.name = itemT.name;
+        track.albumName = itemA.album.name;
         track.albumImage = itemA.album.images[0].url;
         track.artistName = itemT.artists[0].name;
         track.uri = itemT.uri;
@@ -45,6 +47,7 @@ const DataProvider = ({ code, children }) => {
       playlist.id = itemP.id;
       playlist.owner = itemP.owner.display_name;
       playlist.tracks_href = itemP.tracks.href;
+      playlist.type = 'playlist';
       newPlaylists.push(playlist)
     }
 

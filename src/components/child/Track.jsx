@@ -5,7 +5,7 @@ function Track({
   track
 }) {
 
-  console.log({track})
+  // console.log({track})
 
   return (
     <div
@@ -17,7 +17,7 @@ function Track({
       <div>{key}</div>
       <div
         style={{
-          // backgroundImage: `url(${imageUrl})`,
+          backgroundImage: `url(${track.albumImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '80%',
@@ -30,8 +30,8 @@ function Track({
           gridTemplateRows: '1.2fr 1fr',
         }}
       >
-        <div>song</div>
-        <div>artist</div>
+        <div>{track.name}</div>
+        <div>{track.artistName}</div>
       </div>
       <div>dur</div>
 
