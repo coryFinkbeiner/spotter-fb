@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '../DataProvider';
 import getSearchResults from '../data/getSearchResults';
-import Collection from '../components/child/Collection';
 import Track from '../components/child/Track';
 import Artist from '../components/child/Artist';
 
@@ -105,14 +104,14 @@ function Search() {
               />
             ))
           }
-          {radio === 'album' &&
+          {/* {radio === 'album' &&
             results?.albums?.items.map((item, index) => (
               <Collection
                 key={index}
                 item={item}
               />
             ))
-          }
+          } */}
           {radio === 'artist' &&
             results?.artists?.items.map((item, index) => (
               <Artist

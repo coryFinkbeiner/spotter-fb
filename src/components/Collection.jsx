@@ -21,7 +21,7 @@ function Collection({ collection }) {
       }}
     >
       <Link
-        to={collection.type}
+        to={'selection'}
         state={{ collection }}
       >
         <div

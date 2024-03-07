@@ -16,10 +16,7 @@ import PickGenre from './pages/sub/PickGenre';
 import Settings from './pages/sub/Settings';
 import Spot from './pages/Spot';
 import Thread from './pages/Thread';
-import SelectedAlbum from './pages/sub/SelectedAlbum';
-import SelectedPlaylist from './pages/sub/SelectedPlaylist';
-import SelectedArtist from './pages/sub/SelectedArtist';
-import Selection from './layout/Selection';
+import Selection from './pages/Selection';
 
 
 function App({code}) {
@@ -45,9 +42,8 @@ function App({code}) {
             <Route path='thread' element={<Thread />} />
 
 
-            <Route path='album' element={<SelectedAlbum />} />
-            <Route path='playlist' element={<SelectedPlaylist />} />
-            <Route path='artist' element={<SelectedArtist />} />
+            <Route path='selection' element={<Selection />} />
+
 
 
           </Route>

@@ -5,7 +5,7 @@ import Collection from './Collection';
 function LibrarySide() {
   const { myAlbums, myPlaylists } = useData();
   const [ radio, setRadio ] = useState('albums');
-  const [ collections, setCollections ] = useState([]);
+  const [ collections, setCollections ] = useState(myAlbums);
 
   useEffect(() => {
     if (radio === 'albums') setCollections(myAlbums);
