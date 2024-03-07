@@ -7,7 +7,6 @@ function Album({
   item
 }) {
   const {
-    accessToken,
     spots, setSpots,
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);

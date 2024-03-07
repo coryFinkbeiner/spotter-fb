@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/components/child/Track.jsx';
-
+import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 
 function Selection() {
   const location = useLocation();
-  const { collection } = location.state;
-
-
-
-
-
-
+  const { item } = location.state;
+  const {
+    spots, setSpots,
+  } = useData();
 
   return (
     <div
@@ -25,14 +22,66 @@ function Selection() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 2.2fr',
+          gridTemplateColumns: '1fr 1.85fr',
         }}
       >
         <div
           style={{
-            backgroundColor: 'green',
+            backgroundImage: `url(${item.album.images[0].url})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
-        >{collection.type}
+        ></div>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '3fr 1fr',
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: 'yellow',
+            }}
+          >
+
+          </div>
+          <div
+            style={{
+              backgroundColor: 'black',
+              display: 'grid',
+              gridTemplateRows: '1fr 1fr 1fr',
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: 'red',
+              }}
+              onClick={() => setSpots(prevSpots => ({
+                ...spots,
+                red: [...spots.red, ...item.album.tracks.items]
+              }))}
+            ></div>
+            <div
+              style={{
+                backgroundColor: 'yellow',
+              }}
+              onClick={() => setSpots(prevSpots => ({
+                ...spots,
+                yellow: [...spots.yellow, ...item.album.tracks.items]
+              }))}
+            ></div>
+            <div
+              style={{
+                backgroundColor: 'blue',
+              }}
+              onClick={() => setSpots(prevSpots => ({
+                ...spots,
+                blue: [...spots.blue, ...item.album.tracks.items]
+              }))}
+            ></div>
+
+
+          </div>
 
         </div>
       </div>
@@ -57,7 +106,7 @@ function Selection() {
             gridTemplateColumns: `repeat(1, 1fr)`,
           }}
         >
-          {collection.tracks?.map((track, index) => (
+          {item.album.tracks.items.map((track, index) => (
             <Track
               key={index}
               track={track}

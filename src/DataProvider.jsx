@@ -13,40 +13,6 @@ const DataProvider = ({ code, children }) => {
     blue: []
   });
 
-  // useEffect(() => {
-  //   if (!albums) return
-  //   const newAlbums = [];
-
-  //   for (const itemA of albums.items) {
-  //     const album = {
-  //       image: itemA.album.images[0].url,
-  //       id: itemA.album.id,
-  //       artistName: itemA.album.artists[0].name,
-  //       name: itemA.album.name,
-  //       type: 'album',
-  //       tracks: [],
-  //     };
-
-  //       for (const itemT of itemA.album.tracks.items) {
-  //         const track = {
-  //           name: itemT.name,
-  //           albumName: itemA.album.name,
-  //           albumImage: itemA.album.images[0].url,
-  //           artistName: itemT.artists[0].name,
-  //           uri: itemT.uri,
-  //         };
-  //         album.tracks.push(track);
-  //       }
-
-  //       newAlbums.push(album);
-  //     }
-
-  //   }
-
-  //   setMyAlbums(newAlbums)
-
-  // }, [ accessToken, albums, playlists ])
-
   const value = {
     accessToken,
     albums,
