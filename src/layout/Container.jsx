@@ -24,7 +24,7 @@ function Container({ children }) {
         <Nav />
         <div
           style={{
-            backgroundColor: 'darkOrange',
+            // backgroundColor: 'darkOrange',
           }}
         >
           <LibrarySide />
@@ -33,7 +33,7 @@ function Container({ children }) {
 
       <div
         style={{
-          backgroundColor: 'blue',
+          // backgroundColor: 'blue',
           display: 'grid',
           gridTemplateRows: '10fr 1fr',
         }}

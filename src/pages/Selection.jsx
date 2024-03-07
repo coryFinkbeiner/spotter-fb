@@ -5,7 +5,13 @@ import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-a
 
 function Selection() {
   const location = useLocation();
-  const { item } = location.state;
+  const {
+    trackArray,
+    image,
+    name,
+    artistName,
+    tracks,
+    id, } = location.state;
   const {
     spots, setSpots,
   } = useData();
@@ -27,7 +33,7 @@ function Selection() {
       >
         <div
           style={{
-            backgroundImage: `url(${item.album.images[0].url})`,
+            backgroundImage: `url(${image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -40,7 +46,7 @@ function Selection() {
         >
           <div
             style={{
-              backgroundColor: 'yellow',
+              backgroundColor: 'white',
             }}
           >
 
@@ -58,7 +64,7 @@ function Selection() {
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
-                red: [...spots.red, ...item.album.tracks.items]
+                red: [...spots.red, ...trackArray]
               }))}
             ></div>
             <div
@@ -67,7 +73,7 @@ function Selection() {
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
-                yellow: [...spots.yellow, ...item.album.tracks.items]
+                yellow: [...spots.yellow, ...trackArray]
               }))}
             ></div>
             <div
@@ -76,7 +82,7 @@ function Selection() {
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
-                blue: [...spots.blue, ...item.album.tracks.items]
+                blue: [...spots.blue, ...trackArray]
               }))}
             ></div>
 
@@ -89,7 +95,6 @@ function Selection() {
       {/* render tracks */}
       <div
         style={{
-          backgroundColor: 'red',
           position: 'relative',
         }}
       >
@@ -106,12 +111,13 @@ function Selection() {
             gridTemplateColumns: `repeat(1, 1fr)`,
           }}
         >
-          {item.album.tracks.items.map((track, index) => (
+          {/* {item.album.tracks.items.map((track, index) => (
             <Track
               key={index}
               track={track}
+              image={item.album.images[0].url}
             />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

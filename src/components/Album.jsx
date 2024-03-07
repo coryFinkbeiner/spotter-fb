@@ -4,12 +4,44 @@ import { Link } from 'react-router-dom';
 
 function Album({
   key,
-  item
+  image,
+  name,
+  artistName,
+  tracks,
+  id,
 }) {
   const {
+    accessToken,
     spots, setSpots,
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
+
+  const [trackArray, setTrackArray] = useState(tracks);
+
+
+
+
+  const handleClick = async () => {
+    if (Array.isArray(tracks)) return
+    try {
+      const response = await fetch(`https://api.spotify.com/v1/albums/${id}/tracks`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      // Now you can do whatever you want with the fetched data
+      setTrackArray(data.items)
+      console.log({data})
+    } catch (error) {
+      console.error('Error fetching album tracks:', error);
+    }
+  };
+
 
   return (
     <div
@@ -20,12 +52,21 @@ function Album({
     >
 
       <Link
-        to={'selection'}
-        state={{item}}
+        to={'/selection'}
+        state={{
+          trackArray,
+          image,
+          name,
+          artistName,
+          tracks,
+          id,
+        }}
+        onClick={handleClick}
+
       >
         <div
           style={{
-            backgroundImage: `url(${item.album.images[0].url})`,
+            backgroundImage: `url(${image})`,
             backgroundSize: 'cover', // Options: 'auto', 'contain', 'cover', or specific values like '50% 50%'
             backgroundPosition: 'center',
             height: '85px',
@@ -45,7 +86,7 @@ function Album({
           gridTemplateColumns: '1fr 1fr 1fr',
         }}
       >
-        <div
+        {/* <div
           style={{
             backgroundColor: 'red',
           }}
@@ -71,7 +112,7 @@ function Album({
             ...spots,
             blue: [...spots.blue, ...item.album.tracks.items]
           }))}
-        ></div>
+        ></div> */}
       </div>
     </div>
   )

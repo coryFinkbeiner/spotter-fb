@@ -31,7 +31,10 @@ function LibrarySide() {
           {albums?.items.map((item, index) => (
             <Album
               key={index}
-              item={item}
+              image={item.album.images[0].url}
+              name={'test'}
+              tracks={item.album.tracks.items}
+              artistName={'test'}
             />
           ))}
         </div>

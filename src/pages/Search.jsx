@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useData } from '../DataProvider';
 import getSearchResults from '../data/getSearchResults';
 import Track from '../components/child/Track';
+import Album from '../components/Album';
 
 function Search() {
   const { accessToken } = useData();
@@ -103,14 +104,18 @@ function Search() {
               />
             ))
           }
-          {/* {radio === 'album' &&
+          {radio === 'album' &&
             results?.albums?.items.map((item, index) => (
-              <Collection
+              <Album
                 key={index}
-                item={item}
+                image={item.images[0].url}
+                name={'test'}
+                tracks={null}
+                artistName={'test'}
+                id={item.id}
               />
             ))
-          } */}
+          }
 
         </div>
       </div>
