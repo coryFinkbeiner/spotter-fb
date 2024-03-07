@@ -41,10 +41,7 @@ function App({code}) {
 
             <Route path='thread' element={<Thread />} />
 
-
             <Route path='selection' element={<Selection />} />
-
-
 
           </Route>
         ))

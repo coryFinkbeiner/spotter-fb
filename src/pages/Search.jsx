@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useData } from '../DataProvider';
 import getSearchResults from '../data/getSearchResults';
 import Track from '../components/child/Track';
-import Artist from '../components/child/Artist';
 
 function Search() {
   const { accessToken } = useData();
@@ -112,14 +111,7 @@ function Search() {
               />
             ))
           } */}
-          {radio === 'artist' &&
-            results?.artists?.items.map((item, index) => (
-              <Artist
-                key={index}
-                item={item}
-              />
-            ))
-          }
+
         </div>
       </div>
     </div>

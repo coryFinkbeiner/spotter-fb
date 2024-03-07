@@ -46,7 +46,7 @@ const DataProvider = ({ code, children }) => {
       playlist.image = itemP.images[0] ? itemP.images[0].url : 'https://i.scdn.co/image/ab67616d0000b2732529c50c11cb07f6f9e3ab29';
       playlist.id = itemP.id;
       playlist.owner = itemP.owner.display_name;
-      playlist.tracks_href = itemP.tracks.href;
+      // playlist.tracks_href = itemP.tracks.href;
       playlist.type = 'playlist';
       newPlaylists.push(playlist)
     }

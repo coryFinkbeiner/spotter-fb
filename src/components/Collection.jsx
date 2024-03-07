@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 import { Link } from 'react-router-dom';
 
@@ -12,6 +12,19 @@ function Collection({ collection }) {
     setBlueSpot,
   } = useData();
   const [isHovering, setIsHovering] = useState(false);
+
+  const [line1,  setLine1] = useState('');
+  const [line2, setLine2] = useState('');
+
+  useEffect(() => {
+    if (collection.type === 'album') {
+      // setLine1(collection.)
+    }
+    if (collection.type === 'playlist') {
+      // setLine1(collection.)
+    }
+
+  }, [])
 
   return (
     <div
