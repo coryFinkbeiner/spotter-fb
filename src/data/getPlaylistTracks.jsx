@@ -3,9 +3,8 @@ import axios from 'axios';
 
 function getPlaylistTracks(
   accessToken,
-  playlist_id
+  playlist_id,
 ) {
-  const [ playlistData, setPlaylistData ] = useState({});
   const [ playlistTracks, setPlaylistTracks ] = useState([]);
 
   useEffect(() => {
@@ -22,8 +21,8 @@ function getPlaylistTracks(
           //   playlist_id: "3cEYpjA9oz9GiPac4AsH4n",
           // },
         });
-        setPlaylistData(response.data);
         setPlaylistTracks(response.data.items)
+
       } catch (error) {
         console.log('API error', error);
       }

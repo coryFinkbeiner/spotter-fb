@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import Track from '../components/child/Track';
 
 function Spot() {
-  const { state } = useLocation();
+  const location = useLocation();
+  const { tracks, color } = location.state;
 
-  // console.log({state})
 
   return (
     <div
@@ -66,16 +66,12 @@ function Spot() {
               gridTemplateColumns: `repeat(1, 1fr)`,
             }}
           >
-            {state?.spot.map((track, index) => {
+            {tracks.map((track, index) => {
 
               return (
                 <Track
                   key={index}
-                  data={track}
-                  // imageUrl={}
-                  // songName={}
-                  // artistName={}
-                  // duration={}
+                  track={track}
                 />
               )
             })}

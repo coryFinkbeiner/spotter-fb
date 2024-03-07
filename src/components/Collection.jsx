@@ -14,7 +14,6 @@ function Collection({ collection }) {
   const [line1,  setLine1] = useState('');
   const [line2, setLine2] = useState('');
 
-
   useEffect(() => {
     if (collection.type === 'album') {
       // setLine1(collection.)
@@ -34,9 +33,14 @@ function Collection({ collection }) {
         track.uri = item.track.uri;
 
         collection.tracks.push(track);
+
       }
     }
-  }, [collection])
+
+  }, [accessToken])
+
+
+
 
   return (
     <div
@@ -76,7 +80,7 @@ function Collection({ collection }) {
           }}
           onClick={() => setSpots(prevSpots => ({
             ...spots,
-            red: [spots.red, collection.tracks]
+            red: [...spots.red, ...collection.tracks]
           }))}
         ></div>
         <div
@@ -85,7 +89,7 @@ function Collection({ collection }) {
           }}
           onClick={() => setSpots(prevSpots => ({
             ...spots,
-            yellow: [spots.yellow, collection.tracks]
+            yellow: [...spots.yellow, ...collection.tracks]
           }))}
         ></div>
         <div
@@ -94,7 +98,7 @@ function Collection({ collection }) {
           }}
           onClick={() => setSpots(prevSpots => ({
             ...spots,
-            blue: [spots.blue, collection.tracks]
+            blue: [...spots.blue, ...collection.tracks]
           }))}
         ></div>
       </div>

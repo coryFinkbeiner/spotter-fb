@@ -5,9 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function Bank() {
   const {
-    redSpot, setRedSpot,
-    yellowSpot, setYellowSpot,
-    blueSpot, setBlueSpot,
+    spots
   } = useData();
   return (
     <div
@@ -23,14 +21,14 @@ export default function Bank() {
       <NavLink
         to={'/spot'}
         state={{
-          spot: redSpot,
+          tracks: spots.red,
           color: 'red',
         }}
         style={{ textDecoration: 'none', color: 'white', backgroundColor: 'red' }}>
         R
       </NavLink>
       <NavLink to={'/spot'} state={{
-          spot: yellowSpot,
+          tracks: spots.yellow,
           color: 'yellow',
         }}
         style={{ textDecoration: 'none', color: 'white', backgroundColor: 'yellow' }}>
@@ -38,7 +36,7 @@ export default function Bank() {
       </NavLink>
       <NavLink to={'/spot'}
         state={{
-          spot: blueSpot,
+          tracks: spots.blue,
           color: 'blue',
         }}
         style={{ textDecoration: 'none', color: 'white', backgroundColor: 'blue' }}>

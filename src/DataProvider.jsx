@@ -21,22 +21,44 @@ const DataProvider = ({ code, children }) => {
     const newAlbums = [];
     const newPlaylists = [];
 
+
+
+    const fetchPlaylistTracks = async (playlistId) => {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        return response.data.items;
+      } catch (error) {
+        console.log('API error', error);
+        return [];
+      }
+    };
+
+
+
     for (const itemA of albums.items) {
-      const album = {};
-      album.image = itemA.album.images[0].url;
-      album.id = itemA.album.id;
-      album.artistName = itemA.album.artists[0].name;
-      album.name = itemA.album.name;
-      album.tracks = [];
-      album.type = 'album';
+      const album = {
+        image: itemA.album.images[0].url,
+        id: itemA.album.id,
+        artistName: itemA.album.artists[0].name,
+        name: itemA.album.name,
+        type: 'album',
+        tracks: [],
+      };
 
       for (const itemT of itemA.album.tracks.items) {
-        const track = {};
-        track.name = itemT.name;
-        track.albumName = itemA.album.name;
-        track.albumImage = itemA.album.images[0].url;
-        track.artistName = itemT.artists[0].name;
-        track.uri = itemT.uri;
+        const track = {
+          name: itemT.name,
+          albumName: itemA.album.name,
+          albumImage: itemA.album.images[0].url,
+          artistName: itemT.artists[0].name,
+          uri: itemT.uri,
+        };
         album.tracks.push(track);
       }
 
@@ -44,19 +66,27 @@ const DataProvider = ({ code, children }) => {
     }
 
     for (const itemP of playlists.items) {
-      const playlist = {};
-      playlist.image = itemP.images[0] ? itemP.images[0].url : 'https://i.scdn.co/image/ab67616d0000b2732529c50c11cb07f6f9e3ab29';
-      playlist.id = itemP.id;
-      playlist.owner = itemP.owner.display_name;
-      // playlist.tracks_href = itemP.tracks.href;
-      playlist.type = 'playlist';
+      const playlist = {
+        image: itemP.images[0] ? itemP.images[0].url : 'https://i.scdn.co/image/ab67616d0000b2732529c50c11cb07f6f9e3ab29',
+        id: itemP.id,
+        owner: itemP.owner.display_name,
+        type: 'playlist',
+        // tracks: [],
+      };
+
+      // const X = fetchPlaylistTracks(itemP.id)
+      // console.log({X})
+
       newPlaylists.push(playlist)
+
     }
 
     setMyPlaylists(newPlaylists)
     setMyAlbums(newAlbums)
 
   }, [ accessToken, albums, playlists ])
+
+
 
   const value = {
     accessToken,
