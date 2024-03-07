@@ -6,19 +6,8 @@ import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src
 function Selection() {
   const location = useLocation();
   const { collection } = location.state;
-  const [line1,  setLine1] = useState('');
-  const [line2, setLine2] = useState('');
 
 
-  useEffect(() => {
-    if (collection.type === 'album') {
-      // setLine1(collection.)
-    }
-    if (collection.type === 'playlist') {
-      // setLine1(collection.)
-    }
-
-  }, [])
 
 
 

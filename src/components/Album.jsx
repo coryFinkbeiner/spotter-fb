@@ -4,13 +4,11 @@ import { Link } from 'react-router-dom';
 
 function Album({
   key,
-  album
+  item
 }) {
   const {
     accessToken,
-    redSpot, setRedSpot,
-    yellowSpot, setYellowSpot,
-    blueSpot, setBlueSpot,
+    spots, setSpots,
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
 
@@ -23,12 +21,12 @@ function Album({
     >
 
       <Link
-        to={'album'}
-        state={{album}}
+        to={'selection'}
+        state={{item}}
       >
         <div
           style={{
-            backgroundImage: `url(${album.image})`,
+            backgroundImage: `url(${item.album.images[0].url})`,
             backgroundSize: 'cover', // Options: 'auto', 'contain', 'cover', or specific values like '50% 50%'
             backgroundPosition: 'center',
             height: '85px',
@@ -52,27 +50,29 @@ function Album({
           style={{
             backgroundColor: 'red',
           }}
-          onClick={() => {
-            setRedSpot([...redSpot, ...album.tracks])
-          }}
+          onClick={() => setSpots(prevSpots => ({
+            ...spots,
+            red: [...spots.red, ...item.album.tracks.items]
+          }))}
         ></div>
         <div
           style={{
             backgroundColor: 'yellow',
           }}
-          onClick={() => {
-            setYellowSpot([...yellowSpot, ...album.tracks])
-          }}
+          onClick={() => setSpots(prevSpots => ({
+            ...spots,
+            yellow: [...spots.yellow, ...item.album.tracks.items]
+          }))}
         ></div>
         <div
           style={{
             backgroundColor: 'blue',
           }}
-          onClick={() => {
-            setBlueSpot([...blueSpot, ...album.tracks])
-          }}
+          onClick={() => setSpots(prevSpots => ({
+            ...spots,
+            blue: [...spots.blue, ...item.album.tracks.items]
+          }))}
         ></div>
-
       </div>
     </div>
   )
