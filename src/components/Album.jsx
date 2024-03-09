@@ -5,18 +5,17 @@ import { Link } from 'react-router-dom';
 function Album({
   key,
   image,
-  name,
+  albumName,
   artistName,
   tracks,
   id,
+  data,
 }) {
   const {
     accessToken,
     spots, setSpots,
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
-
-
 
   return (
     <div
@@ -30,6 +29,7 @@ function Album({
         to={'/selection'}
         state={{
           key,
+          data,
           image,
           name,
           artistName,
@@ -54,13 +54,13 @@ function Album({
         </div>
       </Link>
 
-      <div
+      {/* <div
         style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr 1fr',
         }}
       >
-        {/* <div
+        <div
           style={{
             backgroundColor: 'red',
           }}
@@ -86,8 +86,8 @@ function Album({
             ...spots,
             blue: [...spots.blue, ...item.album.tracks.items]
           }))}
-        ></div> */}
-      </div>
+        ></div>
+      </div> */}
     </div>
   )
 }

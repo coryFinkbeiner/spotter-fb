@@ -10,9 +10,9 @@ function Container({ children }) {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 1.97fr',
+        gridTemplateColumns: '1fr 2.3fr',
         height: '93vh',
-        width: '32rem',
+        width: '36rem',
       }}
     >
       <div

@@ -10,11 +10,16 @@ function Search() {
   const [ radio, setRadio ] = useState('album');
   const rows = radio === 'track' ? '1' : '4';
 
+
   const { results } = getSearchResults({
     accessToken: accessToken,
     query: query,
     type: radio,
   });
+
+  console.log({results})
+
+
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -101,6 +106,11 @@ function Search() {
               <Track
                 key={index}
                 track={track}
+                image={track.album.images[0].url}
+                name={track.name}
+                artistName={track.artists[0].name}
+                duration_ms={track.duration_ms}
+                albumName={track.album.name}
               />
             ))
           }
@@ -109,9 +119,9 @@ function Search() {
               <Album
                 key={index}
                 image={item.images[0].url}
-                name={'test'}
+                name={item.name}
                 tracks={null}
-                artistName={'test'}
+                artistName={item.artists[0].name}
                 id={item.id}
               />
             ))

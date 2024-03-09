@@ -11,6 +11,7 @@ function Selection() {
     artistName,
     tracks,
     id,
+    albumName
   } = location.state;
   const {
     accessToken,
@@ -71,14 +72,24 @@ function Selection() {
         >
           <div
             style={{
-              backgroundColor: 'white',
+              display: 'grid',
+              gridTemplateRows: '1.5fr 2fr 2fr',
             }}
           >
+            <div>
+              Album
+            </div>
+            <div>
+              {name}
+            </div>
+            <div>
+              {artistName}
+            </div>
+
 
           </div>
           <div
             style={{
-              backgroundColor: 'black',
               display: 'grid',
               gridTemplateRows: '1fr 1fr 1fr',
             }}
@@ -86,6 +97,8 @@ function Selection() {
             <div
               style={{
                 backgroundColor: 'red',
+                borderRadius: '50%',
+                opacity: .4,
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
@@ -95,6 +108,8 @@ function Selection() {
             <div
               style={{
                 backgroundColor: 'yellow',
+                borderRadius: '50%',
+                opacity: .4,
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
@@ -104,6 +119,8 @@ function Selection() {
             <div
               style={{
                 backgroundColor: 'blue',
+                borderRadius: '50%',
+                opacity: .4,
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
@@ -121,6 +138,7 @@ function Selection() {
       <div
         style={{
           position: 'relative',
+          margin: '4px 4px 4px 4px'
         }}
       >
         <div
@@ -141,6 +159,10 @@ function Selection() {
               key={index}
               track={track}
               image={image}
+              albumName
+              artistName
+              duration_ms={track.duration_ms}
+              name
             />
           ))}
         </div>

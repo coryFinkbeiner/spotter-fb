@@ -4,12 +4,20 @@ import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-a
 function Track({
   key,
   track,
-  image
+  image,
+  name,
+  artistName,
+  duration_ms,
+  albumName,
 }) {
   const [isHovering, setIsHovering] = useState(false);
   const {
     spots, setSpots,
   } = useData();
+
+  track.image = image;
+  track.albumName = albumName;
+
 
   return (
     <div
@@ -18,7 +26,7 @@ function Track({
         gridTemplateColumns: '1fr 1.5fr 5fr 1.2fr',
         position: 'relative',
         cursor: 'pointer',
-        // backgroundColor: 'transparent',
+        height: '55px'
       }}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
@@ -32,17 +40,16 @@ function Track({
               left: '40%',
               display: 'grid',
               gridTemplateColumns: '1fr 1fr 1fr',
-              // width: '100%',
               height: '100%',
               width: '40%',
               zIndex: 1,
-
             }}
           >
             <div
               style={{
                 backgroundColor: 'red',
-                // height: '100%'
+                borderRadius: '50%',
+                opacity: .4,
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
@@ -52,7 +59,8 @@ function Track({
             <div
               style={{
                 backgroundColor: 'yellow',
-                // height: '100%'
+                borderRadius: '50%',
+                opacity: .4,
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
@@ -62,7 +70,8 @@ function Track({
             <div
               style={{
                 backgroundColor: 'blue',
-                // height: '100%'
+                borderRadius: '50%',
+                opacity: .4,
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
@@ -75,14 +84,16 @@ function Track({
       )}
 
 
-      <div>{key}</div>
+      <div
+        style={{ color: 'white'}}
+      ></div>
       <div
         style={{
           backgroundImage: `url(${image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          // height: '80%',
-          // width: '80%',
+          height: '54px',
+          width: '50px',
         }}
       ></div>
       <div
@@ -91,8 +102,8 @@ function Track({
           gridTemplateRows: '1.2fr 1fr',
         }}
       >
-        {/* <div>{track.}</div>
-        <div>{track.artistName}</div> */}
+        <div>{name}</div>
+        <div>x</div>
       </div>
       <div>dur</div>
 
