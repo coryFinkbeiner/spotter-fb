@@ -2,8 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 function SeededArtist({ seed }) {
   return (
-    <div style={{ backgroundColor: 'lightblue', padding: '10px', textAlign: 'center' }}>
-      artist
+    <div
+      style={{
+        borderRadius: '100%',
+        height: '70px',
+        width: '70px',
+        backgroundImage: `url(${seed.images[0].url})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
     </div>
   );
 }
@@ -18,8 +26,31 @@ function SeededGenre({ seed }) {
 
 function SeededSong({ seed }) {
   return (
-    <div style={{ backgroundColor: 'lightblue', padding: '10px', textAlign: 'center' }}>
-      song
+    <div
+      style={{
+        height: '70px',
+        width: '70px',
+        backgroundImage: `url(${seed.album.images[0].url})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative',
+
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          color: 'white',
+          padding: '3px 6px',
+          borderRadius: '50%',
+          fontSize: '24px',
+          top: '30%',
+          left: '30%',
+
+        }}
+      >
+        {seed.track_number}
+      </div>
     </div>
   );
 }
@@ -43,7 +74,7 @@ function Seeds({ seeds, setSeeds }) {
 
       }}
     >
-      {seeds.map((seed, index) => (
+      {seeds.slice(0, 5).map((seed, index) => (
 
         <div
           style={{
@@ -66,14 +97,9 @@ function Seeds({ seeds, setSeeds }) {
               <div
                 style={{
                   position: 'absolute',
-                  left: '40%',
-                  display: 'grid',
-                  gridTemplateColumns: '1fr',
-                  height: '100%',
-                  width: '40%',
                   zIndex: 1,
                   backgroundColor: 'red',
-                  opacity: .2,
+                  opacity: .6,
                   fontWeight: 'bold'
                 }}
 
