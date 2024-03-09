@@ -32,17 +32,17 @@ function Recommendations({children}) {
             }}
           >
             <NavLink to="/recommendations/PickArtist" style={{ textDecoration: 'none', color: 'white' }}>
-              A
+              Pick an Artist
             </NavLink>
             <NavLink to="/recommendations/PickSong" style={{ textDecoration: 'none', color: 'white' }}>
-              <div>S</div>
+              <div>Pick a Song</div>
             </NavLink>
 
             <NavLink to="/recommendations/PickGenre" style={{ textDecoration: 'none', color: 'white' }}>
-              <div>G</div>
+              <div>Pick a Genre</div>
             </NavLink>
             <NavLink to="/recommendations" style={{ textDecoration: 'none', color: 'white' }}>
-              <div>S</div>
+              <div>Settings</div>
             </NavLink>
           </div>
         </div>
