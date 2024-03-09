@@ -18,7 +18,6 @@ function Track({
   track.image = image;
   track.albumName = albumName;
 
-
   return (
     <div
       style={{
@@ -78,11 +77,9 @@ function Track({
                 blue: [...spots.blue, track]
               }))}
             ></div>
-
           </div>
         </>
       )}
-
 
       <div
         style={{ color: 'white'}}

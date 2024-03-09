@@ -10,16 +10,11 @@ function Search() {
   const [ radio, setRadio ] = useState('album');
   const rows = radio === 'track' ? '1' : '4';
 
-
   const { results } = getSearchResults({
     accessToken: accessToken,
     query: query,
     type: radio,
   });
-
-  console.log({results})
-
-
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -126,13 +121,10 @@ function Search() {
               />
             ))
           }
-
         </div>
       </div>
     </div>
   )
-
-
 }
 
 export default Search
