@@ -2,8 +2,26 @@ import React, { useState } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import Seeds from '../components/Seeds';
 
-function Recommendations({children}) {
+const initialSettings = {
+  trackAmount: { target: 20 },
+  acousticness: { min: 0, max: 100, target: null },
+  danceability: { min: 0, max: 100, target: null },
+  duration: { min: 0, max: 100, target: null },
+  energy: { min: 0, max: 100, target: null },
+  instrumentalness: { min: 0, max: 100, target: null },
+  key: { min: 0, max: 11, target: null },
+  liveness: { min: 0, max: 100, target: null },
+  loudness: { min: 0, max: 100, target: null },
+  mode: { min: 0, max: 1, target: null },
+  popularity: { min: 0, max: 100, target: null },
+  speechiness: { min: 0, max: 100, target: null },
+  tempo: { min: 0, max: 100, target: null },
+  timeSignature: { min: 0, max: 11, target: null },
+  valence: { min: 0, max: 1, target: null }
+};
 
+function Recommendations({children}) {
+  const [ settings, setSettings ] = useState(initialSettings);
   const [ seeds, setSeeds ] = useState([]);
 
   return (
@@ -32,14 +50,14 @@ function Recommendations({children}) {
             }}
           >
             <NavLink to="/recommendations/PickArtist" style={{ textDecoration: 'none', color: 'white' }}>
-              Pick an Artist
+              Artist
             </NavLink>
             <NavLink to="/recommendations/PickSong" style={{ textDecoration: 'none', color: 'white' }}>
-              <div>Pick a Song</div>
+              <div>Song</div>
             </NavLink>
 
             <NavLink to="/recommendations/PickGenre" style={{ textDecoration: 'none', color: 'white' }}>
-              <div>Pick a Genre</div>
+              <div>Genre</div>
             </NavLink>
             <NavLink to="/recommendations" style={{ textDecoration: 'none', color: 'white' }}>
               <div>Settings</div>
@@ -47,11 +65,11 @@ function Recommendations({children}) {
           </div>
         </div>
 
-        <Seeds seeds={seeds} setSeeds={setSeeds}/>
+        <Seeds seeds={seeds} setSeeds={setSeeds} settings={settings} setSettings={setSettings}/>
 
       </div>
 
-      <Outlet context={[seeds, setSeeds]}/>
+      <Outlet context={[seeds, setSeeds, settings, setSettings]}/>
 
     </div>
   )

@@ -24,7 +24,6 @@ function Album({
         gridTemplateRows: '7fr 1fr',
       }}
     >
-
       <Link
         to={'/selection'}
         state={{
@@ -37,11 +36,10 @@ function Album({
           id,
         }}
       >
-
         <div
           style={{
             backgroundImage: `url(${image})`,
-            backgroundSize: 'cover', // Options: 'auto', 'contain', 'cover', or specific values like '50% 50%'
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             height: '85px',
             width: '85px',
@@ -53,41 +51,6 @@ function Album({
         >
         </div>
       </Link>
-
-      {/* <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: 'red',
-          }}
-          onClick={() => setSpots(prevSpots => ({
-            ...spots,
-            red: [...spots.red, ...item.album.tracks.items]
-          }))}
-        ></div>
-        <div
-          style={{
-            backgroundColor: 'yellow',
-          }}
-          onClick={() => setSpots(prevSpots => ({
-            ...spots,
-            yellow: [...spots.yellow, ...item.album.tracks.items]
-          }))}
-        ></div>
-        <div
-          style={{
-            backgroundColor: 'blue',
-          }}
-          onClick={() => setSpots(prevSpots => ({
-            ...spots,
-            blue: [...spots.blue, ...item.album.tracks.items]
-          }))}
-        ></div>
-      </div> */}
     </div>
   )
 }

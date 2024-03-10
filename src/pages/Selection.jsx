@@ -41,7 +41,6 @@ function Selection() {
     })();
   }
 
-
   return (
     <div
       style={{
@@ -49,7 +48,6 @@ function Selection() {
         gridTemplateRows: '1fr 5.4fr',
       }}
     >
-
       {/* top */}
       <div
         style={{
@@ -85,8 +83,6 @@ function Selection() {
             <div>
               {artistName}
             </div>
-
-
           </div>
           <div
             style={{
@@ -127,10 +123,7 @@ function Selection() {
                 blue: [...spots.blue, ...trackArray]
               }))}
             ></div>
-
-
           </div>
-
         </div>
       </div>
 

@@ -17,6 +17,7 @@ import Settings from './pages/sub/Settings';
 import Spot from './pages/Spot';
 import Thread from './pages/Thread';
 import Selection from './pages/Selection';
+import Results from './pages/Results'
 
 
 function App({code}) {
@@ -38,6 +39,9 @@ function App({code}) {
               <Route path='PickSong' element={<PickSong />} />
               <Route path='PickGenre' element={<PickGenre />} />
             </Route>
+
+
+            <Route path='results' element={<Results />} />
 
             <Route path='spot' element={<Spot />} />
 

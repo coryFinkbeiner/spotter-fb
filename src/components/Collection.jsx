@@ -9,38 +9,6 @@ function Collection({ collection }) {
     spots, setSpots,
   } = useData();
   const [isHovering, setIsHovering] = useState(false);
-  const { playlistTracks } = getPlaylistTracks(accessToken, collection.id)
-
-  const [line1,  setLine1] = useState('');
-  const [line2, setLine2] = useState('');
-
-  useEffect(() => {
-    if (collection.type === 'album') {
-      // setLine1(collection.)
-
-    }
-    if (collection.type === 'playlist') {
-      // setLine1(collection.)
-
-      collection.tracks = [];
-
-      for (const item of playlistTracks) {
-        const track = {};
-        track.name = item.track.name;
-        track.albumName = item.track.album.name;
-        track.artistName = item.track.artists[0].name;
-        track.albumImage = item.track.album.images[0].url;
-        track.uri = item.track.uri;
-
-        collection.tracks.push(track);
-
-      }
-    }
-
-  }, [accessToken])
-
-
-
 
   return (
     <div

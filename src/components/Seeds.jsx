@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function SeededArtist({ seed }) {
   return (
@@ -34,7 +35,6 @@ function SeededSong({ seed }) {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         position: 'relative',
-
       }}
     >
       <div
@@ -46,7 +46,6 @@ function SeededSong({ seed }) {
           fontSize: '24px',
           top: '30%',
           left: '30%',
-
         }}
       >
         {seed.track_number}
@@ -55,7 +54,7 @@ function SeededSong({ seed }) {
   );
 }
 
-function Seeds({ seeds, setSeeds }) {
+function Seeds({ seeds, setSeeds, settings, setSettings }) {
   const [isHovering, setIsHovering] = useState(false);
 
   if (seeds.length === 0) {
@@ -102,27 +101,36 @@ function Seeds({ seeds, setSeeds }) {
                   opacity: .6,
                   fontWeight: 'bold'
                 }}
-
               >
                 Delete
               </div>
             </>
           )}
         </div>
-
       ))}
 
-      {/* Static element at the bottom right */}
       <div
         style={{
-          gridRow: '2 / 3', // Span from the second row to the third row
-          gridColumn: '3 / 4', // Span from the third column to the fourth column
-          backgroundColor: 'lightgreen', // Example background color
-          padding: '10px',
-          textAlign: 'center',
+          gridRow: '2 / 3',
+          gridColumn: '3 / 4',
         }}
       >
-        Static Element
+        <Link
+          to={'/results'}
+          state={{
+            seeds,
+            settings,
+          }}
+        >
+
+          <div
+            style={{
+
+            }}
+
+          > Get Results
+          </div>
+        </Link>
       </div>
     </div>
   );
