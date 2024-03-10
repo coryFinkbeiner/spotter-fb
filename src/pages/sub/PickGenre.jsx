@@ -57,11 +57,7 @@ function PickGenre() {
               border: '1px solid black',
               cursor: 'pointer'
             }}
-
             onClick={() => setSeeds([...seeds, genre])}
-
-
-
           >{genre}</div>
         ))}
       </div>
