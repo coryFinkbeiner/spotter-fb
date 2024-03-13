@@ -6,7 +6,6 @@ function Spot() {
   const location = useLocation();
   const { tracks, color } = location.state;
 
-
   return (
     <div
       style={{
@@ -27,8 +26,7 @@ function Spot() {
         >
           <div
             style={{
-              // backgroundImage: `url(${imageUrl})`,
-              backgroundSize: 'cover', // Options: 'auto', 'contain', 'cover', or specific values like '50% 50%'
+              backgroundSize: 'cover',
               backgroundPosition: 'center',
               height: '100%',
               width: '100%',
@@ -37,9 +35,7 @@ function Spot() {
             }}
           >
           </div>
-
         </div>
-
         <div
           style={{
             backgroundColor: 'blue',
@@ -66,9 +62,7 @@ function Spot() {
               gridTemplateColumns: `repeat(1, 1fr)`,
             }}
           >
-            {tracks.map((track, index) => {
-
-              return (
+            {tracks.map((track, index) => (
                 <Track
                   key={index}
                   track={track}
@@ -78,8 +72,7 @@ function Spot() {
                   duration_ms={track.duration_ms}
                   albumName={track.albumName}
                 />
-              )
-            })}
+            ))}
           </div>
         </div>
     </div>

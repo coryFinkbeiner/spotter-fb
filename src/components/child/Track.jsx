@@ -100,7 +100,7 @@ function Track({
         }}
       >
         <div>{name}</div>
-        <div>x</div>
+        <div>{albumName}</div>
       </div>
       <div>dur</div>
 

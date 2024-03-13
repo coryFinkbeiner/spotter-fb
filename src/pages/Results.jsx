@@ -9,7 +9,7 @@ function Results() {
     seeds,
     settings
   } = location.state;
-  const { accessToken } = useData();
+  const { accessToken, spots, setSpots } = useData();
   const [ trackArray, setTrackArray ] = useState([]);
 
   const seedArtists = [];
@@ -25,39 +25,40 @@ function Results() {
   const params = new URLSearchParams({
     limit: 20,
     market: 'ES',
-    // min_acousticness: settings.acousticness.min / 100,
-    // max_acousticness: settings.acousticness.max / 100,
-    // target_acousticness: settings.acousticness.target /100,
-    // min_danceability: settings.danceability.min / 100,
-    // max_danceability: settings.danceability.max / 100,
-    // target_danceability: settings.danceability.target / 100,
+    // seed_artists: "07IjEAbgCClbsODsIrdxeo",
+    // min_acousticness: settings.acousticness.min,
+    // max_acousticness: settings.acousticness.max,
+    // target_acousticness: settings.acousticness.target,
+    // min_danceability: settings.danceability.min,
+    // max_danceability: settings.danceability.max,
+    // target_danceability: settings.danceability.target,
     // min_duration_ms: settings.duration.min,
     // max_duration_ms: settings.duration.max,
     // target_duration_ms: settings.duration.target,
-    // min_energy: settings.energy.min / 100,
-    // max_energy: settings.energy.max / 100,
-    // target_energy: settings.energy.target / 100,
-    // min_instrumentalness: settings.instrumentalness.min / 100,
-    // max_instrumentalness: settings.instrumentalness.max / 100,
-    // target_instrumentalness: settings.instrumentalness.target / 100,
+    // min_energy: settings.energy.min,
+    // max_energy: settings.energy.max,
+    // target_energy: settings.energy.target,
+    // min_instrumentalness: settings.instrumentalness.min,
+    // max_instrumentalness: settings.instrumentalness.max,
+    // target_instrumentalness: settings.instrumentalness.target,
     // min_key: settings.key.min,
     // max_key: settings.key.max,
     // target_key: settings.key.target,
-    // min_liveness: settings.liveness.min / 100,
-    // max_liveness: settings.liveness.max / 100,
-    // target_liveness: settings.liveness.target / 100,
-    // min_loudness: settings.loudness.min / 100,
-    // max_loudness: settings.loudness.max / 100,
-    // target_loudness: settings.loudness.target /100,
+    // min_liveness: settings.liveness.min,
+    // max_liveness: settings.liveness.max,
+    // target_liveness: settings.liveness.target,
+    // min_loudness: settings.loudness.min,
+    // max_loudness: settings.loudness.max,
+    // target_loudness: settings.loudness.target,
     // min_mode: settings.mode.min,
     // max_mode: settings.mode.max,
     // target_mode: settings.mode.target,
     // min_popularity: settings.popularity.min,
     // max_popularity: settings.popularity.max,
     // target_popularity: settings.popularity.target,
-    // min_speechiness: settings.speechiness.min / 100,
-    // max_speechiness: settings.speechiness.max / 100,
-    // target_speechiness: settings.speechiness.target / 100,
+    // min_speechiness: settings.speechiness.min,
+    // max_speechiness: settings.speechiness.max,
+    // target_speechiness: settings.speechiness.target,
     // min_tempo: settings.tempo.min,
     // max_tempo: settings.tempo.max,
     // target_tempo: settings.tempo.target,
@@ -87,14 +88,13 @@ function Results() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log({data})
         setTrackArray(data.tracks);
         console.log({ data });
       } catch (error) {
         console.error('Error fetching album tracks:', error);
       }
     })();
-  }, [])
+  }, [seeds, accessToken])
 
   return (
     <div
@@ -143,10 +143,10 @@ function Results() {
                 borderRadius: '50%',
                 opacity: .4,
               }}
-              // onClick={() => setSpots(prevSpots => ({
-              //   ...spots,
-              //   red: [...spots.red, ...trackArray]
-              // }))}
+              onClick={() => setSpots(prevSpots => ({
+                ...spots,
+                red: [...spots.red, ...trackArray]
+              }))}
             ></div>
             <div
               style={{
@@ -154,10 +154,10 @@ function Results() {
                 borderRadius: '50%',
                 opacity: .4,
               }}
-              // onClick={() => setSpots(prevSpots => ({
-              //   ...spots,
-              //   yellow: [...spots.yellow, ...trackArray]
-              // }))}
+              onClick={() => setSpots(prevSpots => ({
+                ...spots,
+                yellow: [...spots.yellow, ...trackArray]
+              }))}
             ></div>
             <div
               style={{
@@ -165,10 +165,10 @@ function Results() {
                 borderRadius: '50%',
                 opacity: .4,
               }}
-              // onClick={() => setSpots(prevSpots => ({
-              //   ...spots,
-              //   blue: [...spots.blue, ...trackArray]
-              // }))}
+              onClick={() => setSpots(prevSpots => ({
+                ...spots,
+                blue: [...spots.blue, ...trackArray]
+              }))}
             ></div>
           </div>
         </div>
