@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 
+
+
+
 function Thread() {
   const {
     accessToken,
@@ -77,37 +80,16 @@ function Thread() {
           >
             <div
               style={{
-                backgroundColor: 'red',
-                borderRadius: '50%',
-                opacity: .4,
               }}
-              // onClick={() => setSpots(prevSpots => ({
-              //   ...spots,
-              //   red: [...spots.red, ...trackArray]
-              // }))}
-            ></div>
+            >Threaded</div>
             <div
               style={{
-                backgroundColor: 'yellow',
-                borderRadius: '50%',
-                opacity: .4,
               }}
-              // onClick={() => setSpots(prevSpots => ({
-              //   ...spots,
-              //   yellow: [...spots.yellow, ...trackArray]
-              // }))}
-            ></div>
+            >Ordered</div>
             <div
               style={{
-                backgroundColor: 'blue',
-                borderRadius: '50%',
-                opacity: .4,
               }}
-              // onClick={() => setSpots(prevSpots => ({
-              //   ...spots,
-              //   blue: [...spots.blue, ...trackArray]
-              // }))}
-            ></div>
+            >Shuffled</div>
           </div>
         </div>
       </div>
