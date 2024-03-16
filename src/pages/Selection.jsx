@@ -18,28 +18,32 @@ function Selection() {
     spots, setSpots,
   } = useData();
 
-  const [ trackArray, setTrackArray ] = useState(tracks);
-
-  if (trackArray === null) {
-    (async () => {
-      try {
-        const response = await fetch(`https://api.spotify.com/v1/albums/${id}/tracks`, {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${accessToken}`
-          }
-        });
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setTrackArray(data.items);
-        console.log({ data });
-      } catch (error) {
-        console.error('Error fetching album tracks:', error);
-      }
-    })();
+  for (const track of tracks) {
+    track.image = image
   }
+
+  // const [ trackArray, setTrackArray ] = useState(tracks);
+
+  // if (trackArray === null) {
+  //   (async () => {
+  //     try {
+  //       const response = await fetch(`https://api.spotify.com/v1/albums/${id}/tracks`, {
+  //         method: 'GET',
+  //         headers: {
+  //           'Authorization': `Bearer ${accessToken}`
+  //         }
+  //       });
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       const data = await response.json();
+  //       setTrackArray(data.items);
+  //       console.log({ data });
+  //     } catch (error) {
+  //       console.error('Error fetching album tracks:', error);
+  //     }
+  //   })();
+  // }
 
   return (
     <div
@@ -98,7 +102,7 @@ function Selection() {
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
-                red: [...spots.red, ...trackArray]
+                red: [...spots.red, ...tracks]
               }))}
             ></div>
             <div
@@ -109,7 +113,7 @@ function Selection() {
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
-                yellow: [...spots.yellow, ...trackArray]
+                yellow: [...spots.yellow, ...tracks]
               }))}
             ></div>
             <div
@@ -120,7 +124,7 @@ function Selection() {
               }}
               onClick={() => setSpots(prevSpots => ({
                 ...spots,
-                blue: [...spots.blue, ...trackArray]
+                blue: [...spots.blue, ...tracks]
               }))}
             ></div>
           </div>
@@ -147,12 +151,12 @@ function Selection() {
             gridTemplateColumns: `repeat(1, 1fr)`,
           }}
         >
-          {trackArray?.map((track, index) => (
+          {tracks?.map((track, index) => (
             <Track
               key={index}
               track={track}
               image={image}
-              albumName
+              albumName={albumName}
               artistName
               duration_ms={track.duration_ms}
               name

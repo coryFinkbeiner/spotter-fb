@@ -1,10 +1,12 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Track from '../components/child/Track';
+import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 
 function Spot() {
   const location = useLocation();
-  const { tracks, color } = location.state;
+  const { color } = location.state;
+  const { spots, setSpots } = useData();
 
   return (
     <div
@@ -62,16 +64,16 @@ function Spot() {
               gridTemplateColumns: `repeat(1, 1fr)`,
             }}
           >
-            {tracks.map((track, index) => (
-                <Track
-                  key={index}
-                  track={track}
-                  image={track.image}
-                  name={track.name}
-                  artistName={track.artists[0].name}
-                  duration_ms={track.duration_ms}
-                  albumName={track.albumName}
-                />
+            {spots[color].map((track, index) => (
+              <Track
+                key={index}
+                track={track}
+                image={track.image}
+                name={track.name}
+                artistName={track.artists[0].name}
+                duration_ms={track.duration_ms}
+                albumName={track.albumName}
+              />
             ))}
           </div>
         </div>

@@ -15,8 +15,8 @@ function Track({
     spots, setSpots,
   } = useData();
 
-  track.image = image;
-  track.albumName = albumName;
+  // track.image = image;
+  // track.albumName = albumName;
 
   return (
     <div

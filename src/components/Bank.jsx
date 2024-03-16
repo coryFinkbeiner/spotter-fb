@@ -21,14 +21,12 @@ export default function Bank() {
       <NavLink
         to={'/spot'}
         state={{
-          tracks: spots.red,
           color: 'red',
         }}
         style={{ textDecoration: 'none', color: 'white', backgroundColor: 'red' }}>
         R
       </NavLink>
       <NavLink to={'/spot'} state={{
-          tracks: spots.yellow,
           color: 'yellow',
         }}
         style={{ textDecoration: 'none', color: 'white', backgroundColor: 'yellow' }}>
@@ -36,7 +34,6 @@ export default function Bank() {
       </NavLink>
       <NavLink to={'/spot'}
         state={{
-          tracks: spots.blue,
           color: 'blue',
         }}
         style={{ textDecoration: 'none', color: 'white', backgroundColor: 'blue' }}>

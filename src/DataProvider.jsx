@@ -16,7 +16,7 @@ const DataProvider = ({ code, children }) => {
   const value = {
     accessToken,
     albums,
-    spots, setSpots,
+    spots, setSpots
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

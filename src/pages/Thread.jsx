@@ -1,7 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
+import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/components/child/Track.jsx';
 
 
+
+function interleaveArrays(arr1, arr2, arr3) {
+
+
+  // Base case: if all arrays are empty, return an empty array
+  if (arr1.length === 0 && arr2.length === 0 && arr3.length === 0) {
+      return [];
+  }
+
+  // Recursively interleaves the arrays
+  const result = [];
+  if (arr1.length > 0) {
+      result.push(arr1.shift());
+  }
+  if (arr2.length > 0) {
+      result.push(arr2.shift());
+  }
+  if (arr3.length > 0) {
+      result.push(arr3.shift());
+  }
+
+  // Concatenate the result with the result of recursive call
+  return result.concat(interleaveArrays(arr1, arr2, arr3));
+}
 
 
 function Thread() {
@@ -15,13 +40,29 @@ function Thread() {
     tracks: [],
   });
 
+  const [ orderType, setOrderType ] = useState('');
+
+
+
+  // useEffect(() => {
+
+  //   if (orderType === '') return;
+
+  //   if (orderType === 'ordered') setNewPlaylist({ ...newPlaylist, tracks: [ ...spots.red.slice(), ...spots.yellow.slice(), ...spots.blue.slice()] })
+  //   if (orderType === 'threaded') {
+  //     const threadedPlaylist = interleaveArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
+  //     setNewPlaylist({ ...newPlaylist, tracks: threadedPlaylist });
+  //   }
+
+  // }, [ orderType ])
+
 
 
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateRows: '1fr 5.4fr',
+        gridTemplateRows: '1fr .25fr 5.4fr',
       }}
     >
       {/* top */}
@@ -63,13 +104,7 @@ function Thread() {
               />
             </div>
             <div>
-              <button
-                onClick={() => {
-                  // Handle create button click action here
-                }}
-              >
-                Create
-              </button>
+              user name
             </div>
           </div>
           <div
@@ -81,17 +116,31 @@ function Thread() {
             <div
               style={{
               }}
-            >Threaded</div>
-            <div
-              style={{
-              }}
+              onClick={() => setOrderType('ordered')}
             >Ordered</div>
             <div
               style={{
               }}
+              onClick={() => setOrderType('threaded')}
+            >Threaded</div>
+            <div
+              style={{
+              }}
+              onClick={() => setOrderType('shuffled')}
             >Shuffled</div>
           </div>
         </div>
+      </div>
+      <div
+        style={{
+          backgroundColor: 'red',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr',
+        }}
+      >
+        <div>create</div>
+        <div>queue</div>
+        <div>delete</div>
       </div>
 
       {/* render tracks */}
@@ -114,15 +163,15 @@ function Thread() {
             gridTemplateColumns: `repeat(1, 1fr)`,
           }}
         >
-          {/* {trackArray?.map((track, index) => (
+          {/* {newPlaylist.tracks.map((track, index) => (
             <Track
               key={index}
               track={track}
-              image={image}
-              albumName
-              artistName
-              duration_ms={track.duration_ms}
-              name
+              // image={image}
+              // albumName
+              // artistName
+              // duration_ms={track.duration_ms}
+              // name
             />
           ))} */}
         </div>
