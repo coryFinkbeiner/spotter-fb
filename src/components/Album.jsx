@@ -4,18 +4,23 @@ import { Link } from 'react-router-dom';
 
 function Album({
   key,
-  image,
-  albumName,
-  artistName,
-  tracks,
-  id,
-  data,
+  itemA,
 }) {
   const {
     accessToken,
     spots, setSpots,
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
+
+  const tracks = [];
+  for (const itemT of itemA.album.tracks.items) {
+    const track = {
+      image: itemA.album.images[0].url,
+      albumName: itemA.album.name,
+      ...itemT,
+    }
+    tracks.push(track)
+  }
 
   return (
     <div
@@ -28,17 +33,13 @@ function Album({
         to={'/selection'}
         state={{
           key,
-          data,
-          image,
-          name,
-          artistName,
+          itemA,
           tracks,
-          id,
         }}
       >
         <div
           style={{
-            backgroundImage: `url(${image})`,
+            backgroundImage: `url(${itemA.album.images[0].url})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             height: '85px',

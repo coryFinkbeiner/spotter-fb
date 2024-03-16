@@ -6,21 +6,15 @@ import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-a
 function Selection() {
   const location = useLocation();
   const {
-    image,
-    name,
-    artistName,
+    key,
     tracks,
-    id,
-    albumName
+    itemA,
   } = location.state;
   const {
     accessToken,
     spots, setSpots,
   } = useData();
 
-  for (const track of tracks) {
-    track.image = image
-  }
 
   // const [ trackArray, setTrackArray ] = useState(tracks);
 
@@ -61,7 +55,7 @@ function Selection() {
       >
         <div
           style={{
-            backgroundImage: `url(${image})`,
+            backgroundImage: `url(${itemA.album.images[0].url})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -82,10 +76,10 @@ function Selection() {
               Album
             </div>
             <div>
-              {name}
+              {itemA.album.name}
             </div>
             <div>
-              {artistName}
+              {itemA.album.artists[0].name}
             </div>
           </div>
           <div
@@ -155,11 +149,6 @@ function Selection() {
             <Track
               key={index}
               track={track}
-              image={image}
-              albumName={albumName}
-              artistName
-              duration_ms={track.duration_ms}
-              name
             />
           ))}
         </div>

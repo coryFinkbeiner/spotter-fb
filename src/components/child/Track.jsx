@@ -4,19 +4,16 @@ import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-a
 function Track({
   key,
   track,
-  image,
-  name,
-  artistName,
-  duration_ms,
-  albumName,
+  // image,
+  // name,
+  // artistName,
+  // duration_ms,
+  // albumName,
 }) {
   const [isHovering, setIsHovering] = useState(false);
   const {
     spots, setSpots,
   } = useData();
-
-  // track.image = image;
-  // track.albumName = albumName;
 
   return (
     <div
@@ -86,7 +83,7 @@ function Track({
       ></div>
       <div
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${track.image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '54px',
@@ -99,8 +96,8 @@ function Track({
           gridTemplateRows: '1.2fr 1fr',
         }}
       >
-        <div>{name}</div>
-        <div>{albumName}</div>
+        <div>{track.name}</div>
+        <div>{track.albumName}</div>
       </div>
       <div>dur</div>
 
