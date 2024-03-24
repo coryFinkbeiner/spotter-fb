@@ -32,7 +32,7 @@ function LibrarySide() {
 
             const album = {
               image: item.album.images[0].url,
-              ...item
+              ...item.album
             }
 
             return (
@@ -49,4 +49,3 @@ function LibrarySide() {
 }
 
 export default LibrarySide
-
