@@ -2,61 +2,47 @@ import React, { useState, useEffect } from 'react';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/components/child/Track.jsx';
 
-
-
 function interleaveArrays(arr1, arr2, arr3) {
-
-
-  // Base case: if all arrays are empty, return an empty array
-  if (arr1.length === 0 && arr2.length === 0 && arr3.length === 0) {
-      return [];
-  }
-
-  // Recursively interleaves the arrays
+  if (arr1.length === 0 && arr2.length === 0 && arr3.length === 0) return [];
   const result = [];
-  if (arr1.length > 0) {
-      result.push(arr1.shift());
-  }
-  if (arr2.length > 0) {
-      result.push(arr2.shift());
-  }
-  if (arr3.length > 0) {
-      result.push(arr3.shift());
-  }
-
-  // Concatenate the result with the result of recursive call
+  if (arr1.length > 0) result.push(arr1.shift());
+  if (arr2.length > 0) result.push(arr2.shift());
+  if (arr3.length > 0) result.push(arr3.shift());
   return result.concat(interleaveArrays(arr1, arr2, arr3));
 }
 
+function shuffleArrays(arr1, arr2, arr3) {
+  const combinedArray = [...arr1, ...arr2, ...arr3];
+  for (let i = combinedArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [combinedArray[i], combinedArray[j]] = [combinedArray[j], combinedArray[i]];
+  }
+  return combinedArray;
+}
 
 function Thread() {
   const {
     accessToken,
     spots, setSpots,
   } = useData();
-
   const [ newPlaylist, setNewPlaylist ] = useState({
     name: '',
     tracks: [],
   });
+  const [ orderType, setOrderType ] = useState('ordered');
 
-  const [ orderType, setOrderType ] = useState('');
-
-
-
-  // useEffect(() => {
-
-  //   if (orderType === '') return;
-
-  //   if (orderType === 'ordered') setNewPlaylist({ ...newPlaylist, tracks: [ ...spots.red.slice(), ...spots.yellow.slice(), ...spots.blue.slice()] })
-  //   if (orderType === 'threaded') {
-  //     const threadedPlaylist = interleaveArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
-  //     setNewPlaylist({ ...newPlaylist, tracks: threadedPlaylist });
-  //   }
-
-  // }, [ orderType ])
-
-
+  useEffect(() => {
+    if (orderType === '') return;
+    if (orderType === 'ordered') setNewPlaylist({ ...newPlaylist, tracks: [ ...spots.red.slice(), ...spots.yellow.slice(), ...spots.blue.slice()] })
+    if (orderType === 'threaded') {
+      const threadedPlaylist = interleaveArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
+      setNewPlaylist({ ...newPlaylist, tracks: threadedPlaylist });
+    }
+    if (orderType === 'shuffled') {
+      const shuffledPlaylist = shuffleArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
+      setNewPlaylist({ ...newPlaylist, tracks: shuffledPlaylist });
+    }
+  }, [ orderType ])
 
   return (
     <div
@@ -138,7 +124,8 @@ function Thread() {
           gridTemplateColumns: '1fr 1fr 1fr',
         }}
       >
-        <div>create</div>
+        <div
+        >create</div>
         <div>queue</div>
         <div>delete</div>
       </div>
@@ -163,17 +150,12 @@ function Thread() {
             gridTemplateColumns: `repeat(1, 1fr)`,
           }}
         >
-          {/* {newPlaylist.tracks.map((track, index) => (
+          {newPlaylist.tracks.map((track, index) => (
             <Track
               key={index}
               track={track}
-              // image={image}
-              // albumName
-              // artistName
-              // duration_ms={track.duration_ms}
-              // name
             />
-          ))} */}
+          ))}
         </div>
       </div>
     </div>

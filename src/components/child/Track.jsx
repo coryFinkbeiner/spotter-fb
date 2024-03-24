@@ -4,11 +4,6 @@ import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-a
 function Track({
   key,
   track,
-  // image,
-  // name,
-  // artistName,
-  // duration_ms,
-  // albumName,
 }) {
   const [isHovering, setIsHovering] = useState(false);
   const {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Album({
   key,
-  itemA,
+  album,
 }) {
   const {
     accessToken,
@@ -12,15 +12,16 @@ function Album({
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
 
-  const tracks = [];
-  for (const itemT of itemA.album.tracks.items) {
-    const track = {
-      image: itemA.album.images[0].url,
-      albumName: itemA.album.name,
-      ...itemT,
-    }
-    tracks.push(track)
-  }
+  // var tracks = [];
+
+  // for (const itemT of itemA.album.tracks.items) {
+  //   const track = {
+  //     image: itemA.album.images[0].url,
+  //     albumName: itemA.album.name,
+  //     ...itemT,
+  //   }
+  //   tracks.push(track)
+  // }
 
   return (
     <div
@@ -33,13 +34,13 @@ function Album({
         to={'/selection'}
         state={{
           key,
-          itemA,
-          tracks,
+          album,
+          // tracks,
         }}
       >
         <div
           style={{
-            backgroundImage: `url(${itemA.album.images[0].url})`,
+            backgroundImage: `url(${album.image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             height: '85px',

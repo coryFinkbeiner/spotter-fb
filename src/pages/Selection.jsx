@@ -7,8 +7,9 @@ function Selection() {
   const location = useLocation();
   const {
     key,
-    tracks,
-    itemA,
+    // tracks,
+    // itemA,
+    album,
   } = location.state;
   const {
     accessToken,
@@ -55,7 +56,7 @@ function Selection() {
       >
         <div
           style={{
-            backgroundImage: `url(${itemA.album.images[0].url})`,
+            backgroundImage: `url(${album.image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -76,10 +77,10 @@ function Selection() {
               Album
             </div>
             <div>
-              {itemA.album.name}
+              {album.name}
             </div>
             <div>
-              {itemA.album.artists[0].name}
+              {album.artists[0].name}
             </div>
           </div>
           <div
@@ -145,12 +146,12 @@ function Selection() {
             gridTemplateColumns: `repeat(1, 1fr)`,
           }}
         >
-          {tracks?.map((track, index) => (
+          {/* {tracks?.map((track, index) => (
             <Track
               key={index}
               track={track}
             />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

@@ -28,16 +28,20 @@ function LibrarySide() {
             gridTemplateColumns: 'repeat(2, 1fr)',
           }}
         >
-          {albums?.items.map((item, index) => (
-            <Album
-              key={index}
-              itemA={item}
-              // image={item.album.images[0].url}
-              // albumName={item.album.name}
-              // tracks={item.album.tracks.items}
-              // artistName={item.album.artists[0].name}
-            />
-          ))}
+          {albums?.items.map((item, index) => {
+
+            const album = {
+              image: item.album.images[0].url,
+              ...item
+            }
+
+            return (
+              <Album
+                key={index}
+                album={album}
+              />
+            )
+          })}
         </div>
       </div>
     </>

@@ -23,8 +23,8 @@ function Search() {
   return (
     <div
       style={{
-      display: 'grid',
-      gridTemplateRows: '1fr 6fr',
+        display: 'grid',
+        gridTemplateRows: '1fr 6fr',
       }}
     >
       <div
@@ -32,7 +32,6 @@ function Search() {
           backgroundColor: 'purple',
           display: 'grid',
           gridTemplateRows: '1.3fr 1fr 1fr',
-
         }}
       >
         <div
@@ -96,7 +95,7 @@ function Search() {
             gridTemplateColumns: `repeat(${rows}, 1fr)`,
           }}
         >
-          {radio === 'track' &&
+          {/* {radio === 'track' &&
             results?.tracks?.items.map((track, index) => (
               <Track
                 key={index}
@@ -108,18 +107,28 @@ function Search() {
                 albumName={track.album.name}
               />
             ))
-          }
+          } */}
           {radio === 'album' &&
-            results?.albums?.items.map((item, index) => (
-              <Album
-                key={index}
-                image={item.images[0].url}
-                name={item.name}
-                tracks={null}
-                artistName={item.artists[0].name}
-                id={item.id}
-              />
-            ))
+            results?.albums?.items.map((item, index) => {
+
+              const album = {
+                image: item.images[0].url,
+                ...item
+
+              }
+
+              return (
+                <Album
+                  key={index}
+                  album={album}
+                  // image={item.images[0].url}
+                  // name={item.name}
+                  // tracks={null}
+                  // artistName={item.artists[0].name}
+                  // id={item.id}
+                />
+              )
+            })
           }
         </div>
       </div>
