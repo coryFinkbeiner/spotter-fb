@@ -95,37 +95,27 @@ function Search() {
             gridTemplateColumns: `repeat(${rows}, 1fr)`,
           }}
         >
-          {/* {radio === 'track' &&
-            results?.tracks?.items.map((track, index) => (
-              <Track
-                key={index}
-                track={track}
-                image={track.album.images[0].url}
-                name={track.name}
-                artistName={track.artists[0].name}
-                duration_ms={track.duration_ms}
-                albumName={track.album.name}
-              />
-            ))
-          } */}
+          {radio === 'track' &&
+            results?.tracks?.items.map((track, index) => {
+              track.image = track.album.images[0].url;
+              return (
+                <Track
+                  key={index}
+                  track={track}
+                />
+              )
+            }
+          )}
           {radio === 'album' &&
             results?.albums?.items.map((item, index) => {
-
               const album = {
                 image: item.images[0].url,
                 ...item
-
               }
-
               return (
                 <Album
                   key={index}
                   album={album}
-                  // image={item.images[0].url}
-                  // name={item.name}
-                  // tracks={null}
-                  // artistName={item.artists[0].name}
-                  // id={item.id}
                 />
               )
             })

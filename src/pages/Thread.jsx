@@ -124,8 +124,7 @@ function Thread() {
           gridTemplateColumns: '1fr 1fr 1fr',
         }}
       >
-        <div
-        >create</div>
+        <div>create</div>
         <div>queue</div>
         <div>delete</div>
       </div>

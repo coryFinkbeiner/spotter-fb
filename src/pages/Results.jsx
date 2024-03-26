@@ -173,7 +173,6 @@ function Results() {
           </div>
         </div>
       </div>
-
       {/* render tracks */}
       <div
         style={{
@@ -194,17 +193,15 @@ function Results() {
             gridTemplateColumns: `repeat(1, 1fr)`,
           }}
         >
-          {trackArray?.map((track, index) => (
-            <Track
-              key={index}
-              track={track}
-              image={track.album.images[0].url}
-              albumName={track.album.name}
-              artistName={track.artists[0].name}
-              duration_ms={track.duration_ms}
-              name={track.name}
-            />
-          ))}
+          {trackArray?.map((track, index) => {
+            track.image = track.album.images[0].url
+            return (
+              <Track
+                key={index}
+                track={track}
+              />
+            )
+          })}
         </div>
       </div>
     </div>

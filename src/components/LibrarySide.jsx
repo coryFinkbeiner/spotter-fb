@@ -32,7 +32,8 @@ function LibrarySide() {
 
             const album = {
               image: item.album.images[0].url,
-              ...item.album
+              ...item.album,
+              tracks: item.album.tracks.items
             }
 
             return (

@@ -74,7 +74,6 @@ function Seeds({ seeds, setSeeds, settings, setSettings }) {
       }}
     >
       {seeds.slice(0, 5).map((seed, index) => (
-
         <div
           style={{
             position: 'relative',
@@ -86,7 +85,6 @@ function Seeds({ seeds, setSeeds, settings, setSettings }) {
           }}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
-
         >
           {typeof seed === 'string' && <SeededGenre key={index} seed={seed} />}
           {seed.type === 'track' && <SeededSong key={index} seed={seed} />}
@@ -99,7 +97,7 @@ function Seeds({ seeds, setSeeds, settings, setSettings }) {
                   zIndex: 1,
                   backgroundColor: 'red',
                   opacity: .6,
-                  fontWeight: 'bold'
+                  fontWeight: 'bold',
                 }}
               >
                 Delete
@@ -122,14 +120,7 @@ function Seeds({ seeds, setSeeds, settings, setSettings }) {
             settings,
           }}
         >
-
-          <div
-            style={{
-
-            }}
-
-          > Get Results
-          </div>
+          <div> Get Results </div>
         </Link>
       </div>
     </div>

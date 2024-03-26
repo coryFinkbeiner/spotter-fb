@@ -22,7 +22,6 @@ function Track({
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-
       {isHovering && (
         <>
           <div
@@ -92,7 +91,7 @@ function Track({
         }}
       >
         <div>{track.name}</div>
-        <div>{track.albumName}</div>
+        {/* <div>{track.albumName}</div> */}
       </div>
       <div>dur</div>
 

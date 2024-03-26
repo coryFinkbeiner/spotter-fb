@@ -68,11 +68,6 @@ function Spot() {
               <Track
                 key={index}
                 track={track}
-                image={track.image}
-                name={track.name}
-                artistName={track.artists[0].name}
-                duration_ms={track.duration_ms}
-                albumName={track.albumName}
               />
             ))}
           </div>
