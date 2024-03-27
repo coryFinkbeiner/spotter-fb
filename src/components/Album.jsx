@@ -28,7 +28,6 @@ function Album({
         state={{
           key,
           album,
-          // tracks,
         }}
       >
         <div

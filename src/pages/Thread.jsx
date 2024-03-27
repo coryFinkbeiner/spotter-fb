@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/components/child/Track.jsx';
 
+
 function interleaveArrays(arr1, arr2, arr3) {
   if (arr1.length === 0 && arr2.length === 0 && arr3.length === 0) return [];
   const result = [];
@@ -20,6 +21,72 @@ function shuffleArrays(arr1, arr2, arr3) {
   return combinedArray;
 }
 
+
+
+
+
+
+
+const CreatePlaylistModal = ({ closeModal, playlistName }) => {
+  const handleCreatePlaylist = () => {
+    // Add logic to create playlist
+    closeModal(); // Close the modal after creating playlist
+  };
+
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        zIndex: 1,
+        left: 0,
+        top: 0,
+        width: '100%',
+        height: '100%',
+        overflow: 'auto',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: '#fefefe',
+          padding: '20px',
+          border: '1px solid #888',
+          borderRadius: '5px',
+          textAlign: 'center',
+        }}
+      >
+        <span
+          style={{
+            color: '#aaa',
+            float: 'right',
+            fontSize: '28px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+          }}
+          onClick={closeModal}
+        >
+          &times;
+        </span>
+        <h2>Create Playlist</h2>
+        <p>Should we post "{playlistName}" to your Spotify?</p>
+        <button onClick={handleCreatePlaylist}>Yes</button>
+        <button onClick={closeModal}>No</button>
+      </div>
+    </div>
+  );
+};
+
+
+
+
+
+
+
+
+
 function Thread() {
   const {
     accessToken,
@@ -30,6 +97,20 @@ function Thread() {
     tracks: [],
   });
   const [ orderType, setOrderType ] = useState('ordered');
+
+
+
+
+  const [showModal, setShowModal] = useState(false);
+
+
+  // Function to toggle modal visibility
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
+
+
 
   useEffect(() => {
     if (orderType === '') return;
@@ -124,10 +205,20 @@ function Thread() {
           gridTemplateColumns: '1fr 1fr 1fr',
         }}
       >
-        <div>create</div>
+        <div onClick={toggleModal}>create</div>
         <div>queue</div>
         <div>delete</div>
       </div>
+
+
+
+
+      {/* Modal */}
+      {showModal && <CreatePlaylistModal closeModal={toggleModal} />}
+
+
+
+
 
       {/* render tracks */}
       <div
