@@ -30,16 +30,29 @@ function LibrarySide() {
         >
           {albums?.items.map((item, index) => {
 
-            const album = {
+            let albumObject = {
               image: item.album.images[0].url,
               ...item.album,
               tracks: item.album.tracks.items
             }
 
+            // var tracks = [];
+
+            // for (const itemT of item.album.tracks.items) {
+            //   const track = {
+            //     image: item.album.images[0].url,
+            //     albumName: itemA.album.name,
+            //     ...itemT,
+            //   }
+            //   tracks.push(track)
+            // }
+
+
+
             return (
               <Album
                 key={index}
-                album={album}
+                album={albumObject}
               />
             )
           })}

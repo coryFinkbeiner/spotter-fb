@@ -12,16 +12,9 @@ function Album({
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
 
-  // var tracks = [];
-
-  // for (const itemT of itemA.album.tracks.items) {
-  //   const track = {
-  //     image: itemA.album.images[0].url,
-  //     albumName: itemA.album.name,
-  //     ...itemT,
-  //   }
-  //   tracks.push(track)
-  // }
+  for (const track of album.tracks) {
+    track.image = album.image
+  }
 
   return (
     <div
