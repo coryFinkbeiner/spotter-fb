@@ -53,7 +53,34 @@ function Thread() {
 
             },
           });
-          console.log(response.data)
+          // console.log(response.data)
+
+          const myUris = newPlaylist.tracks.map(track => track.uri);
+
+          (async () => {
+            try {
+              const response2 = await axios({
+                method: 'POST',
+                url: `https://api.spotify.com/v1/playlists/${response.data.id}/tracks`,
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                },
+                data: {
+                  uris: myUris
+
+                },
+              });
+              console.log(response2.data)
+
+
+
+
+            } catch (error) {
+              console.log('API error', error);
+            }
+          })();
+
+
         } catch (error) {
           console.log('API error', error);
         }
