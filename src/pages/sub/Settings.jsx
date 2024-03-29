@@ -103,7 +103,7 @@ function Settings() {
           />
         </div>
 
-        {Object.keys(settings).map((setting, index) => (
+        {Object.keys(settings).slice(1).map((setting, index) => (
           <SliderElement key={index} attribute={setting}/>
         ))}
 

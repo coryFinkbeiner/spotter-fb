@@ -4,20 +4,20 @@ import Seeds from '../components/Seeds';
 
 const initialSettings = {
   trackAmount: { target: 20 },
-  acousticness: { min: 0, max: 1, target: undefined },
-  danceability: { min: 0, max: 1, target: undefined },
+  acousticness: { min: 0, max: 100, target: undefined },
+  danceability: { min: 0, max: 100, target: undefined },
   duration: { min: undefined, max: undefined, target: undefined },
-  energy: { min: 0, max: 1, target: undefined  },
-  instrumentalness: { min: 0, max: 1, target: undefined },
+  energy: { min: 0, max: 100, target: undefined  },
+  instrumentalness: { min: 0, max: 100, target: undefined },
   key: { min: 0, max: 11, target: undefined  },
-  liveness: { min: 0, max: 1, target: undefined },
-  loudness: { min: 0, max: 1, target: undefined },
-  mode: { min: 0, max: 1, target: undefined },
-  popularity: { min: 0, max: 1, target: undefined },
-  speechiness: { min: 0, max: 1, target: undefined },
-  tempo: { min: 0, max: 1, target: undefined  },
+  liveness: { min: 0, max: 100, target: undefined },
+  loudness: { min: 0, max: 100, target: undefined },
+  mode: { min: 0, max: 100, target: undefined },
+  popularity: { min: 0, max: 100, target: undefined },
+  speechiness: { min: 0, max: 100, target: undefined },
+  tempo: { min: undefined, max: undefined, target: undefined  },
   timeSignature: { min: 0, max: 11, target: undefined },
-  valence: { min: 0, max: 1, target: undefined }
+  valence: { min: 0, max: 100, target: undefined }
 };
 
 function Recommendations({children}) {
