@@ -17,12 +17,10 @@ function Selection() {
   const [ trackArray, setTrackArray ] = useState([]);
 
   useEffect(() => {
-
     if ('tracks' in album) {
       setTrackArray(album.tracks)
       return
     }
-
     (async () => {
       try {
         const response = await fetch(`https://api.spotify.com/v1/albums/${album.id}/tracks`, {
@@ -42,7 +40,6 @@ function Selection() {
       }
     })();
   }, [accessToken, album])
-
 
   return (
     <div

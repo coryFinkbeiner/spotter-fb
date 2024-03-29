@@ -72,7 +72,6 @@ function Search() {
           <div
             onClick={() => setRadio('artist')}
           >Artists</div>
-
         </div>
         <div> year range </div>
       </div>

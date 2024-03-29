@@ -3,7 +3,6 @@ import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-a
 import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/components/child/Track.jsx';
 import axios from 'axios'
 
-
 function interleaveArrays(arr1, arr2, arr3) {
   if (arr1.length === 0 && arr2.length === 0 && arr3.length === 0) return [];
   const result = [];
@@ -35,7 +34,6 @@ function Thread() {
   const [ orderType, setOrderType ] = useState('ordered');
   const [showModal, setShowModal] = useState(false);
 
-
   const CreatePlaylistModal = ({ closeModal }) => {
     const handleCreatePlaylist = () => {
 
@@ -49,11 +47,9 @@ function Thread() {
             },
             data: {
               name: newPlaylist.name,
-              // description: '',
 
             },
           });
-          // console.log(response.data)
 
           const myUris = newPlaylist.tracks.map(track => track.uri);
 
@@ -67,25 +63,18 @@ function Thread() {
                 },
                 data: {
                   uris: myUris
-
                 },
               });
-              console.log(response2.data)
-
-
-
-
             } catch (error) {
               console.log('API error', error);
             }
           })();
 
-
         } catch (error) {
           console.log('API error', error);
         }
       })();
-      closeModal(); // Close the modal after creating playlist
+      closeModal();
     };
 
     return (
