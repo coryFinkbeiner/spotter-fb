@@ -17,7 +17,7 @@ const initialSettings = {
   speechiness: { min: 0, max: 1, target: undefined },
   tempo: { min: 0, max: 1, target: undefined  },
   timeSignature: { min: 0, max: 11, target: undefined },
-  valence: { min: 0, max: 1, target: undefined  }
+  valence: { min: 0, max: 1, target: undefined }
 };
 
 function Recommendations({children}) {
