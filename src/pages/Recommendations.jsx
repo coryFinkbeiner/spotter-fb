@@ -69,7 +69,7 @@ function Recommendations({children}) {
 
       </div>
 
-      <Outlet context={[seeds, setSeeds, settings, setSettings]}/>
+      <Outlet context={[seeds, setSeeds, settings, setSettings, initialSettings]}/>
 
     </div>
   )

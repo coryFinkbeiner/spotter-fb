@@ -12,8 +12,10 @@ function Album({
   } = useData();
   const [ isHovering, setIsHovering ] = useState(false);
 
-  for (const track of album.tracks) {
-    track.image = album.image
+  if (album.tracks) {
+    for (const track of album.tracks) {
+      track.image = album.image
+    }
   }
 
   return (

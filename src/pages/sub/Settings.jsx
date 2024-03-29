@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 
 function Settings() {
 
-  const [ seeds, setSeeds, settings, setSettings ] = useOutletContext();
+  const [ seeds, setSeeds, settings, setSettings, initialSettings ] = useOutletContext();
 
   const handleChange = (attribute, type, value) => {
     setSettings(prevSettings => ({
@@ -30,28 +30,30 @@ function Settings() {
       style={{
         width: '40px'
       }}
-        type="number"
-        min={settings[attribute].min}
-        max={settings[attribute].max}
-        value={settings[attribute].min}
+        // type="string"
+        // min={settings[attribute].min}
+        // max={settings[attribute].max}
+        // placeholder={initialSettings[attribute].min}
+        // value={settings[attribute].min}
         onChange={(e) => handleChange(attribute, 'min', e.target.value)}
       />
       <input
         style={{
           width: '40px'
         }}
-        type="number"
-        min={settings[attribute].min}
-        max={settings[attribute].max}
-        value={settings[attribute].max}
+        // type="string"
+        // min={settings[attribute].min}
+        // max={settings[attribute].max}
+        // placeholder={initialSettings[attribute].max}
+        // value={settings[attribute].max}
         onChange={(e) => handleChange(attribute, 'max', e.target.value)}
       />
       <input
         style={{
           width: '40px'
         }}
-        type="number"
-        value={settings[attribute].target}
+        // type="string"
+        // value={settings[attribute].target}
         onChange={(e) => handleChange(attribute, 'target', e.target.value)}
       />
     </div>
