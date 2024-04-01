@@ -36,7 +36,6 @@ function Thread() {
 
   const CreatePlaylistModal = ({ closeModal }) => {
     const handleCreatePlaylist = () => {
-
       (async () => {
         try {
           const response = await axios({
@@ -50,9 +49,7 @@ function Thread() {
 
             },
           });
-
           const myUris = newPlaylist.tracks.map(track => track.uri);
-
           (async () => {
             try {
               const response2 = await axios({
