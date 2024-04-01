@@ -8,6 +8,7 @@ function Search() {
   const { accessToken } = useData();
   const [ query, setQuery ] = useState('');
   const [ radio, setRadio ] = useState('album');
+  const [yearRange, setYearRange] = useState({ low: '', high: '' });
   const rows = radio === 'track' ? '1' : '4';
 
   const { results } = getSearchResults({
@@ -18,6 +19,14 @@ function Search() {
 
   const handleChange = (event) => {
     setQuery(event.target.value);
+  };
+
+  const handleYearRangeChange = (event) => {
+    const { name, value } = event.target;
+    setYearRange(prevRange => ({
+      ...prevRange,
+      [name]: value,
+    }));
   };
 
   return (
@@ -31,18 +40,15 @@ function Search() {
         style={{
           backgroundColor: 'purple',
           display: 'grid',
-          gridTemplateRows: '1.3fr 1fr 1fr',
+          gridTemplateRows: '1fr 1.75fr',
         }}
       >
         <div
           style={{
             backgroundColor: 'black',
-            display: 'grid',
-            gridTemplateColumns: '1fr 6fr 1fr',
             borderRadius: '30px',
           }}
         >
-          <div>S</div>
           <input
             type="text"
             value={query}
@@ -55,25 +61,56 @@ function Search() {
               outline: 'none',
             }}
           />
-          <div>X</div>
         </div>
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr 1fr 1fr',
+            gridTemplateColumns: '1fr 1.5fr',
           }}
         >
           <div
-            onClick={() => setRadio('album')}
-          >Albums</div>
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+            }}
+          >
+            <div
+              onClick={() => setRadio('album')}
+            >Alums</div>
+            <div
+              onClick={() => setRadio('track')}
+            >Songs</div>
+          </div>
           <div
-            onClick={() => setRadio('track')}
-          >Songs</div>
-          <div
-            onClick={() => setRadio('artist')}
-          >Artists</div>
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '3fr 1fr 3fr',
+              backgroundColor: 'white',
+              color: 'black',
+            }}
+          >
+            <div>
+              <input
+                type="text"
+                placeholder="0 A.D."
+                name="low"
+                value={yearRange.low}
+                onChange={handleYearRangeChange}
+              />
+            </div>
+            <div>to</div>
+            <div>
+              <input
+                type="text"
+                placeholder="2024"
+                name="high"
+                value={yearRange.high}
+                onChange={handleYearRangeChange}
+              />
+            </div>
+          </div>
+
         </div>
-        <div> year range </div>
       </div>
       <div
         style={{

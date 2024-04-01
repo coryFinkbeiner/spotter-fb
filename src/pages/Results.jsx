@@ -3,7 +3,6 @@ import { useLocation, Link } from 'react-router-dom';
 import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/components/child/Track.jsx';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
 
-
 function Results() {
   const location = useLocation();
   const {
@@ -74,7 +73,6 @@ function Results() {
     if (seedArtists.length > 0) params.append('seed_artists', [seedArtists]);
     if (seedSongs.length > 0) params.append('seed_tracks', [seedSongs]);
     if (seedArtists.length > 0) params.append('seed_genres', [seedGenres]);
-
 
   useEffect(() => {
     (async () => {
