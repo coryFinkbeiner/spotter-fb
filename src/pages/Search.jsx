@@ -33,22 +33,31 @@ function Search() {
     <div
       style={{
         display: 'grid',
-        gridTemplateRows: '1fr 6fr',
+        gridTemplateRows: '1fr 8fr',
       }}
     >
       <div
         style={{
           backgroundColor: 'purple',
           display: 'grid',
-          gridTemplateRows: '1fr 1.75fr',
+          gridTemplateRows: '1fr 1fr',
         }}
       >
         <div
           style={{
             backgroundColor: 'black',
             borderRadius: '30px',
+            display: 'grid',
+            gridTemplateColumns: '1fr 6fr 1fr',
           }}
         >
+          <div
+            style={{
+              cursor: 'pointer'
+            }}
+          >
+            S
+          </div>
           <input
             type="text"
             value={query}
@@ -61,6 +70,13 @@ function Search() {
               outline: 'none',
             }}
           />
+          <div
+            style={{
+              cursor: 'pointer'
+            }}
+          >
+            X
+          </div>
         </div>
         <div
           style={{
@@ -76,7 +92,7 @@ function Search() {
           >
             <div
               onClick={() => setRadio('album')}
-            >Alums</div>
+            >Albums</div>
             <div
               onClick={() => setRadio('track')}
             >Songs</div>
@@ -96,6 +112,10 @@ function Search() {
                 name="low"
                 value={yearRange.low}
                 onChange={handleYearRangeChange}
+                style={{
+                  height: '36px',
+                  width: '76px'
+                }}
               />
             </div>
             <div>to</div>
@@ -106,6 +126,10 @@ function Search() {
                 name="high"
                 value={yearRange.high}
                 onChange={handleYearRangeChange}
+                style={{
+                  height: '36px',
+                  width: '76px'
+                }}
               />
             </div>
           </div>
