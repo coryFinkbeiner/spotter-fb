@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import Track from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/components/child/Track.jsx';
 import { useData } from '/Users/coryfinkbeiner/steeperkeeper/my-firebase-react-app/src/DataProvider.jsx';
+
 
 function Results() {
   const location = useLocation();
@@ -100,79 +101,69 @@ function Results() {
     <div
       style={{
         display: 'grid',
-        gridTemplateRows: '1fr 5.4fr',
+        gridTemplateRows: '1fr 8.5fr',
       }}
     >
+
       {/* top */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1.85fr',
+          gridTemplateColumns: '1fr 1fr 1fr 1fr',
         }}
       >
+
         <div
           style={{
-            // backgroundImage: `url(${image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundColor: 'white',
+            color: 'black'
           }}
+        >
+          <Link to="/recommendations" >
+            <div>BACK</div>
+          </Link>
+        </div>
+
+
+        <div
+          style={{
+            backgroundColor: 'red',
+            borderRadius: '50%',
+            opacity: .4,
+          }}
+          onClick={() => setSpots(prevSpots => ({
+            ...spots,
+            red: [...spots.red, ...trackArray]
+          }))}
         ></div>
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: '3fr 1fr',
+            backgroundColor: 'yellow',
+            borderRadius: '50%',
+            opacity: .4,
           }}
-        >
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateRows: '1.5fr 2fr 2fr',
-            }}
-          >
+          onClick={() => setSpots(prevSpots => ({
+            ...spots,
+            yellow: [...spots.yellow, ...trackArray]
+          }))}
+        ></div>
+        <div
+          style={{
+            backgroundColor: 'blue',
+            borderRadius: '50%',
+            opacity: .4,
+          }}
+          onClick={() => setSpots(prevSpots => ({
+            ...spots,
+            blue: [...spots.blue, ...trackArray]
+          }))}
+        ></div>
 
-          </div>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateRows: '1fr 1fr 1fr',
-            }}
-          >
-            <div
-              style={{
-                backgroundColor: 'red',
-                borderRadius: '50%',
-                opacity: .4,
-              }}
-              onClick={() => setSpots(prevSpots => ({
-                ...spots,
-                red: [...spots.red, ...trackArray]
-              }))}
-            ></div>
-            <div
-              style={{
-                backgroundColor: 'yellow',
-                borderRadius: '50%',
-                opacity: .4,
-              }}
-              onClick={() => setSpots(prevSpots => ({
-                ...spots,
-                yellow: [...spots.yellow, ...trackArray]
-              }))}
-            ></div>
-            <div
-              style={{
-                backgroundColor: 'blue',
-                borderRadius: '50%',
-                opacity: .4,
-              }}
-              onClick={() => setSpots(prevSpots => ({
-                ...spots,
-                blue: [...spots.blue, ...trackArray]
-              }))}
-            ></div>
-          </div>
-        </div>
       </div>
+
+
+
+
       {/* render tracks */}
       <div
         style={{

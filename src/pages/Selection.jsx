@@ -81,7 +81,7 @@ function Selection() {
               {album.name}
             </div>
             <div>
-              {/* {album.artists[0].name} */}
+              {album.artists[0].name}
             </div>
           </div>
           <div
