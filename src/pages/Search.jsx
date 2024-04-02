@@ -3,6 +3,7 @@ import { useData } from '../DataProvider';
 import getSearchResults from '../data/getSearchResults';
 import Track from '../components/child/Track';
 import Album from '../components/Album';
+import axios from 'axios';
 
 function Search() {
   const { accessToken } = useData();
@@ -11,11 +12,13 @@ function Search() {
   const [yearRange, setYearRange] = useState({ low: '', high: '' });
   const rows = radio === 'track' ? '1' : '4';
 
-  const { results } = getSearchResults({
-    accessToken: accessToken,
-    query: query,
-    type: radio,
-  });
+
+  const [ results, setResults ] = useState([]);
+  // const { results } = getSearchResults({
+  //   accessToken: accessToken,
+  //   query: query,
+  //   type: radio,
+  // });
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -54,6 +57,27 @@ function Search() {
           <div
             style={{
               cursor: 'pointer'
+            }}
+            onClick={() => {
+              (async () => {
+                try {
+                  const response = await axios({
+                    method: 'GET',
+                    url: 'https://api.spotify.com/v1/search',
+                    headers: {
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+                    params: {
+                      limit: 50,
+                      query,
+                      type: radio,
+                    },
+                  });
+                  setResults(response.data)
+                } catch (error) {
+                  // console.log('API error', error);
+                }
+              })();
             }}
           >
             S
