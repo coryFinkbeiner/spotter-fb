@@ -112,7 +112,7 @@ function PickSong() {
               ></div>
               <div
                 style={{
-                  backgroundImage: `url(${item.album.images[0].url})`,
+                  backgroundImage: `url(${item.album.images[0]?.url})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   height: '54px',
