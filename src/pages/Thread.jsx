@@ -46,7 +46,6 @@ function Thread() {
             },
             data: {
               name: newPlaylist.name,
-
             },
           });
           const myUris = newPlaylist.tracks.map(track => track.uri);
@@ -132,17 +131,13 @@ function Thread() {
       const threadedPlaylist = interleaveArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
       setNewPlaylist({ ...newPlaylist, tracks: threadedPlaylist });
     }
-    // if (orderType === 'shuffled') {
-    //   const shuffledPlaylist = shuffleArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
-    //   setNewPlaylist({ ...newPlaylist, tracks: shuffledPlaylist });
-    // }
   }, [ orderType ])
 
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateRows: '1fr .25fr 5.4fr',
+        gridTemplateRows: '1fr 5.4fr',
       }}
     >
       {/* top */}
@@ -169,12 +164,9 @@ function Thread() {
           <div
             style={{
               display: 'grid',
-              gridTemplateRows: '1.5fr 2fr 2fr',
+              gridTemplateRows: '1fr 1fr',
             }}
           >
-            <div>
-              New Playlist
-            </div>
             <div>
               <input
                 type="text"
@@ -183,8 +175,27 @@ function Thread() {
                 onChange={(e) => setNewPlaylist({ ...newPlaylist, name: e.target.value })}
               />
             </div>
-            <div>
-              user name
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '2fr 1fr',
+              }}
+            >
+              <div
+                onClick={toggleModal}
+                style={{
+                  backgroundColor: 'green'
+                }}
+              >
+                post
+              </div>
+              <div
+                style={{
+                  backgroundColor: 'red'
+                }}
+              >
+                clear
+              </div>
             </div>
           </div>
           <div
@@ -214,17 +225,6 @@ function Thread() {
             >Shuffled</div>
           </div>
         </div>
-      </div>
-      <div
-        style={{
-          backgroundColor: 'red',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-        }}
-      >
-        <div onClick={toggleModal}>create</div>
-        <div>queue</div>
-        <div>delete</div>
       </div>
 
       {/* Modal */}
