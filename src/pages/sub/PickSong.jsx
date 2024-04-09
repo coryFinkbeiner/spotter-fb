@@ -19,7 +19,6 @@ function PickSong() {
     setQuery(event.target.value);
   };
 
-
   return (
     <div
       style={{
@@ -105,7 +104,6 @@ function PickSong() {
                   </div>
                 </>
               )}
-
 
               <div
                 style={{ color: 'white'}}

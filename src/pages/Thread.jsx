@@ -132,10 +132,10 @@ function Thread() {
       const threadedPlaylist = interleaveArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
       setNewPlaylist({ ...newPlaylist, tracks: threadedPlaylist });
     }
-    if (orderType === 'shuffled') {
-      const shuffledPlaylist = shuffleArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
-      setNewPlaylist({ ...newPlaylist, tracks: shuffledPlaylist });
-    }
+    // if (orderType === 'shuffled') {
+    //   const shuffledPlaylist = shuffleArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
+    //   setNewPlaylist({ ...newPlaylist, tracks: shuffledPlaylist });
+    // }
   }, [ orderType ])
 
   return (
@@ -206,7 +206,11 @@ function Thread() {
             <div
               style={{
               }}
-              onClick={() => setOrderType('shuffled')}
+              onClick={() => {
+                setOrderType('shuffled')
+                const shuffledPlaylist = shuffleArrays(spots.red.slice(), spots.yellow.slice(), spots.blue.slice());
+                setNewPlaylist({ ...newPlaylist, tracks: shuffledPlaylist });
+              }}
             >Shuffled</div>
           </div>
         </div>
