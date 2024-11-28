@@ -2,4 +2,4 @@
 
 This is a test to see if the image displays correctly.
 
-[Image of Search](./images/Search.jpg)
+![Image of Search](./images/Search.jpg)
