@@ -19,7 +19,6 @@ function PickArtist() {
     setQuery(event.target.value);
   };
 
-
   return (
     <div
       style={{
@@ -104,7 +103,6 @@ function PickArtist() {
                   </div>
                 </>
               )}
-
               <div
                 style={{
                   backgroundColor: 'yellow',
@@ -119,7 +117,7 @@ function PickArtist() {
                     borderRadius: '100%',
                     height: '160px',
                     width: '160px',
-                    backgroundImage: `url(${item.images[0].url})`,
+                    backgroundImage: `url(${item.images[0]?.url})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                   }}
@@ -128,9 +126,7 @@ function PickArtist() {
               </div>
               <div>
                   {item.name}</div>
-
               </div>
-
           ))}
         </div>
       </div>
