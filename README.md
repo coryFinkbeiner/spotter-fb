@@ -4,13 +4,13 @@ This project is a music app concept featuring functionalities like user-curated 
 
 **Features:**
 
-  * **Sidebar:**
-      * Populated by your favorite albums for quick access.
-      ![GetRecs](images/GetRecs.jpg)
   * **Search:**
       * Find specific songs or albums with ease.
       * Filter results by year range using intuitive inputs.
       ![Search](images/Search.jpg)
+  * **Custom Playlist Generator:**
+      * Create personalized playlists utilizing Spotify's seed and settings method.
+      ![GetRecs](images/GetRecs.jpg)
   * **Custom Playlists:**
       * Create personalized playlists with the freedom of sub-queues
       * Enjoy true shuffle functionality that avoids repeated songs within a short timeframe.
@@ -19,9 +19,14 @@ This project is a music app concept featuring functionalities like user-curated 
   * **Firebase Functions:**
       * Leverage Firebase functions to handle Spotify token reauthorization seamlessly, ensuring uninterrupted listening.
 
-**Note:**
+**Running the App:**
 
-  * This is a concept and may not be fully functional yet.
+1. **Client:**
+   * Navigate to the `client` directory.
+   * Run `npm run dev` to start the development server.
+2. **Firebase Functions:**
+   * Navigate to the `functions` directory.
+   * Run `firebase emulators:start --only functions` to start the Firebase emulators.
 
 **Future Development:**
 
