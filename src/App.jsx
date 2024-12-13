@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
+  Navigate
 } from "react-router-dom";
 import React from 'react';
 import './App.css';
@@ -48,6 +49,8 @@ function App({code}) {
             </Route>
 
             <Route path='Results' element={<Results />} />
+
+            <Route index element={<Navigate to="/Home" />} />
 
           </Route>
 

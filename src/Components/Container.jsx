@@ -6,11 +6,26 @@ function Container() {
   return (
     <div
       style={{
-        backgroundColor: 'red',
-        height: '50vh',
-        width: '50vw',
+        height: '93vh',
+        width: '65vw',
+        display: 'grid',
+        gridTemplateRows: '1fr 8.8fr',
+        minWidth: '57rem',
+        maxWidth: '57rem',
+        minHeight: '93vh',
+        maxHeight: '93vh',
       }}
-    >Container</div>
+    >
+      <Topbar />
+      <div
+        style={{
+          // backgroundColor: 'blue',
+        }}
+      >
+        <Outlet />
+      </div>
+
+    </div>
   )
 }
 

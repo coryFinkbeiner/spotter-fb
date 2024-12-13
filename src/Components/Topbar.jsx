@@ -2,7 +2,83 @@ import React from 'react'
 
 function Topbar() {
   return (
-    <div>Topbar</div>
+    <div
+      style={{
+        height: '100%',
+        display: 'grid',
+        gridTemplateColumns: '1.8fr 1fr',
+        maxHeight: '100%',
+        minHeight: '100%'
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: 'orange',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr'
+        }}
+      >
+
+        <div
+          style={{
+            backgroundColor: 'black',
+          }}
+        >
+        </div>
+        <div
+        style={{
+          backgroundColor: 'white',
+        }}
+        >
+        </div>
+        <div
+        style={{
+          backgroundColor: 'black',
+        }}
+        >
+        </div>
+        <div
+        style={{
+          backgroundColor: 'white',
+        }}
+        >
+        </div>
+        <div
+        style={{
+          backgroundColor: 'black',
+        }}
+        >
+        </div>
+
+
+      </div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr 1fr'
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: 'red',
+          }}
+        >
+        </div>
+        <div
+          style={{
+            backgroundColor: 'darkyellow'
+          }}
+        >
+        </div>
+        <div
+          style={{
+            backgroundColor: 'purple'
+          }}
+        >
+        </div>
+
+      </div>
+    </div>
   )
 }
 
