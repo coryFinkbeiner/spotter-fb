@@ -6,19 +6,23 @@ import {
 } from "react-router-dom";
 import React from 'react';
 import './App.css';
-import Container from './layout/Container';
-import Home from './pages/Home';
-import Search from './pages/Search';
-import Recommendations from './pages/Recommendations';
-import PickArtist from './pages/sub/PickArtist';
-import PickSong from './pages/sub/PickSong';
-import PickGenre from './pages/sub/PickGenre';
-import Settings from './pages/sub/Settings';
-import Spot from './pages/Spot';
-import Thread from './pages/Thread';
-import Selection from './pages/Selection';
-import Results from './pages/Results'
 
+
+import Container from './Components/Container';
+import Nav from './Components/Nav';
+import Topbar from './Components/Topbar';
+
+import Home from './Pages/Home';
+import Library from './Pages/Library';
+import Results from './Pages/Results';
+import Search from './Pages/Search';
+import Settings from './Pages/Settings';
+
+import Artists from './SubPages/Artists';
+import Genres from './SubPages/Genres';
+import MyAlbums from './SubPages/MyAlbums';
+import MyPlaylists from './SubPages/MyPlaylists';
+import Songs from './SubPages/Songs';
 
 function App({code}) {
   return (
@@ -26,31 +30,26 @@ function App({code}) {
       router={
         createBrowserRouter(createRoutesFromElements(
 
-
           <Route path="/" element={<Container />}>
 
-            <Route index element={<Home />} />
-
-            <Route path='search' element={<Search />} />
-
-            <Route path='recommendations' element={<Recommendations />}>
+            <Route path='Home' element={<Home />}>
               <Route index element={<Settings />} />
-              <Route path='PickArtist' element={<PickArtist />} />
-              <Route path='PickSong' element={<PickSong />} />
-              <Route path='PickGenre' element={<PickGenre />} />
+
+              <Route path='Library' element={<Library />}>
+                <Route path='MyAlbums' element={<MyAlbums />} />
+                <Route path='MyPlaylists' element={<MyPlaylists />} />
+              </Route>
+
+              <Route path='Search' element={<Search />}>
+                <Route path='Artists' element={<Artists />} />
+                <Route path='Songs' element={<Songs />} />
+                <Route path='Genres' element={<Genres />} />
+              </Route>
             </Route>
 
-
-            <Route path='results' element={<Results />} />
-
-            <Route path='spot' element={<Spot />} />
-
-            <Route path='thread' element={<Thread />} />
-
-            <Route path='selection' element={<Selection />} />
+            <Route path='Results' element={<Results />} />
 
           </Route>
-
 
         ))
       }
