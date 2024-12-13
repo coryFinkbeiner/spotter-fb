@@ -10,8 +10,6 @@ import './App.css';
 
 
 import Container from './Components/Container';
-import Nav from './Components/Nav';
-import Topbar from './Components/Topbar';
 
 import Home from './Pages/Home';
 import Library from './Pages/Library';

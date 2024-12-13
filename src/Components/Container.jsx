@@ -12,14 +12,15 @@ function Container() {
         gridTemplateRows: '1fr 8.8fr',
         minWidth: '57rem',
         maxWidth: '57rem',
-        minHeight: '93vh',
-        maxHeight: '93vh',
+        // minHeight: '93vh',
+        // maxHeight: '93vh',
       }}
     >
       <Topbar />
       <div
         style={{
           // backgroundColor: 'blue',
+
         }}
       >
         <Outlet />

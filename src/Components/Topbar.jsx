@@ -7,8 +7,6 @@ function Topbar() {
         height: '100%',
         display: 'grid',
         gridTemplateColumns: '1.8fr 1fr',
-        maxHeight: '100%',
-        minHeight: '100%'
       }}
     >
       <div
