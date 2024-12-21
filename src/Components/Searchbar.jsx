@@ -1,8 +1,22 @@
-
 import React, { useState } from 'react';
+import { useData } from '../DataProvider';
+
+
+
 
 function Searchbar() {
+  const { accessToken } = useData();
   const [ query, setQuery ] = useState('');
+
+  console.log({accessToken})
+
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+
+
+    }
+  };
 
 
   return (
@@ -54,12 +68,13 @@ function Searchbar() {
             type="text"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            // tabIndex="0"
+            onKeyDown={handleKeyDown}
             style={{
               border: 'none',
               color: 'black',
               height: '70%',
-              width: '90%'
+              width: '90%',
+
             }}
           />
       </div>
