@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-
 function Searchbar() {
   const [ query, setQuery ] = useState('');
   const [ radio, setRadio ] = useState('artist');
-  const [searchParams, setSearchParams] = useSearchParams();
-
-
+  const [ searchParams, setSearchParams ] = useSearchParams();
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       setSearchParams({ q: query, type: radio });
     }
   };
-
 
   return (
     <div
@@ -58,12 +54,9 @@ function Searchbar() {
         >
           Genres
         </div>
-
       </div>
       <div
         style={{
-          // backgroundColor: 'blue',
-
         }}
       >
         <input
@@ -76,12 +69,9 @@ function Searchbar() {
               color: 'black',
               height: '70%',
               width: '90%',
-
             }}
           />
       </div>
-
-
     </div>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useData } from '../DataProvider';
 import { useSearchParams } from 'react-router-dom';
+import Artist from '../Components/Artist';
 
 
 function Search() {
@@ -32,20 +33,20 @@ function Search() {
     }
   };
 
-useEffect(() => {
+  useEffect(() => {
 
-  if (type === 'track' || type === 'artist') getSearchResults()
+    if (type === 'track' || type === 'artist') getSearchResults()
 
-  if (type === 'track') setRows('1')
+    if (type === 'track') setRows('1')
 
-  if (type === 'artist') setRows('4')
+    if (type === 'artist') setRows('4')
 
-  if (type === 'genre') {
+    if (type === 'genre') {
 
-  }
+    }
 
 
-}, [ query, type ])
+  }, [ query, type ])
 
 
 
@@ -61,7 +62,6 @@ useEffect(() => {
         style={{
           position: 'absolute',
           backgroundColor: 'grey',
-
           display: 'grid',
           top: 0,
           right: 0,
@@ -79,6 +79,12 @@ useEffect(() => {
           }
         )}
 
+
+        {type === 'artist' &&
+          results?.artists?.items.map((artist, index) => {
+            return <Artist artist={artist} key={index} />
+          }
+        )}
 
 
       </div>
