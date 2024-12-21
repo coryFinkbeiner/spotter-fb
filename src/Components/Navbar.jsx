@@ -11,7 +11,6 @@ function Navbar() {
         gridTemplateColumns: '1fr 1fr 1fr',
       }}
     >
-
       <NavLink
         to={'/Home/Search'}
         style={{
@@ -36,8 +35,6 @@ function Navbar() {
         }}
       >
       </NavLink>
-
-
     </div>
   )
 }

@@ -11,8 +11,6 @@ function Home() {
         height: '100%',
         display: 'grid',
         gridTemplateRows: '1fr 8.8fr',
-
-
       }}
     >
       <div
