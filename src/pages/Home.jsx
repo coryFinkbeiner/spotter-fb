@@ -1,40 +1,53 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
+import Outletbar from '../Components/Outletbar'
 
 function Home() {
   return (
     <div
-    style={{
-      backgroundColor: 'blue',
-      height: '100%',
-      position: 'relative',
+      style={{
+        backgroundColor: 'blue',
+        height: '100%',
+        display: 'grid',
+        gridTemplateRows: '1fr 8.8fr',
 
-      // display: 'flex',
-      // flexDirection: 'column',
-    }}
+
+      }}
     >
       <div
         style={{
           backgroundColor: 'white',
-          position: 'absolute',
-          top: '1rem',
-          right: '1rem',
-          height: '5.3rem',
-          width: '13.8rem',
-
+          display: 'grid',
+          gridTemplateColumns: '2.4fr 1fr',
         }}
       >
-        <Navbar />
+        <div
+          style={{
+            backgroundColor: 'purple',
+            display: 'grid',
+            gridTemplateColumns: '3fr 1fr',
+          }}
+        >
+          <Outletbar />
+
+        </div>
+        <div
+          style={{
+            backgroundColor: 'black',
+          }}>
+            <Navbar />
+        </div>
+
       </div>
 
       <div
         style={{
-          backgroundColor: 'brown',
+          backgroundColor: 'orange',
           height: '100%',
         }}
       >
-        {/* <Outlet /> */}
+        <Outlet />
       </div>
 
     </div>
@@ -42,3 +55,10 @@ function Home() {
 }
 
 export default Home
+
+
+
+
+
+
+

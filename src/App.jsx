@@ -8,7 +8,6 @@ import {
 import React from 'react';
 import './App.css';
 
-
 import Container from './Components/Container';
 
 import Home from './Pages/Home';
@@ -32,7 +31,8 @@ function App({code}) {
           <Route path="/" element={<Container />}>
 
             <Route path='Home' element={<Home />}>
-              <Route index element={<Settings />} />
+
+              <Route path={'Settings'} element={<Settings />} />
 
               <Route path='Library' element={<Library />}>
                 <Route path='MyAlbums' element={<MyAlbums />} />
@@ -44,6 +44,9 @@ function App({code}) {
                 <Route path='Songs' element={<Songs />} />
                 <Route path='Genres' element={<Genres />} />
               </Route>
+
+              <Route index element={<Navigate to="/Home/Settings" />} />
+
             </Route>
 
             <Route path='Results' element={<Results />} />

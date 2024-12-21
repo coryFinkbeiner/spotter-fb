@@ -2,7 +2,12 @@ import React from 'react'
 
 function Settings() {
   return (
-    <div>Settings</div>
+    <div
+      style={{
+        backgroundColor: 'green',
+        heigh: '100%',
+      }}
+    >Settings</div>
   )
 }
 

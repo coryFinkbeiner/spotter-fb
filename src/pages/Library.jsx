@@ -2,7 +2,12 @@ import React from 'react'
 
 function Library() {
   return (
-    <div>Library</div>
+    <div
+    style={{
+      backgroundColor: 'purple',
+      heigh: '100%',
+    }}
+    >Library</div>
   )
 }
 

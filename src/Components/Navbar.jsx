@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from "react-router-dom"
 
 function Navbar() {
   return (
@@ -10,24 +11,32 @@ function Navbar() {
         gridTemplateColumns: '1fr 1fr 1fr',
       }}
     >
-      <div
+
+      <NavLink
+        to={'/Home/Search'}
         style={{
           backgroundColor: 'yellow',
+          textDecoration: 'none',
         }}
       >
-      </div>
-      <div
+      </NavLink>
+      <NavLink
+        to={'/Home/Library'}
         style={{
           backgroundColor: 'white',
+          textDecoration: 'none',
         }}
       >
-      </div>
-      <div
+      </NavLink>
+      <NavLink
+        to={'/Home/Settings'}
         style={{
-          backgroundColor: 'black',
+          backgroundColor: 'yellow',
+          textDecoration: 'none',
         }}
       >
-      </div>
+      </NavLink>
+
 
     </div>
   )
