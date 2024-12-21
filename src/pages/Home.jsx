@@ -23,8 +23,6 @@ function Home() {
         <div
           style={{
             backgroundColor: 'purple',
-            display: 'grid',
-            gridTemplateColumns: '3fr 1fr',
           }}
         >
           <Outletbar />
@@ -32,7 +30,6 @@ function Home() {
         </div>
         <div
           style={{
-            backgroundColor: 'black',
           }}>
             <Navbar />
         </div>
