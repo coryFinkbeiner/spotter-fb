@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useData } from '../DataProvider';
 import { useSearchParams } from 'react-router-dom';
@@ -25,7 +25,7 @@ function Search() {
         params: {
           limit: 50,
           q: query,
-          type: radio,
+          type: type,
         },
       });
       setResults(response.data);
@@ -33,6 +33,20 @@ function Search() {
       console.error('API error', error);
     }
   };
+
+useEffect(() => {
+
+  if (type === 'track' || type === 'artist') getSearchResults()
+
+  if (type === 'genre') {
+
+  }
+
+
+}, [ query, type ])
+
+
+
 
 
   return (
