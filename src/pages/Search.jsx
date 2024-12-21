@@ -8,11 +8,9 @@ function Search() {
   const [searchParams] = useSearchParams();
   const { accessToken } = useData();
   const [ results, setResults ] = useState([]);
+  const [ rows, setRows ] = useState('');
   const query = searchParams.get('q');
   const type = searchParams.get('type');
-
-  console.log({query, type})
-
 
   const getSearchResults = async () => {
     try {
@@ -38,6 +36,10 @@ useEffect(() => {
 
   if (type === 'track' || type === 'artist') getSearchResults()
 
+  if (type === 'track') setRows('1')
+
+  if (type === 'artist') setRows('4')
+
   if (type === 'genre') {
 
   }
@@ -47,15 +49,40 @@ useEffect(() => {
 
 
 
-
-
   return (
     <div
       style={{
-        backgroundColor: 'grey',
-        heigh: '100%',
+        position: 'relative',
+        backgroundColor: 'lightRed',
+        height: '100%',
       }}
-    >Search</div>
+    >
+      <div
+        style={{
+          position: 'absolute',
+          backgroundColor: 'grey',
+
+          display: 'grid',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          overflowY: 'scroll',
+          gridTemplateColumns: `repeat(${rows}, 1fr)`,
+        }}
+      >
+
+
+        {type === 'track' &&
+          results?.tracks?.items.map((track, index) => {
+            return <div>track</div>
+          }
+        )}
+
+
+
+      </div>
+    </div>
   )
 }
 
