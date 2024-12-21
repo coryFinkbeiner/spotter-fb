@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
-import { useData } from '../DataProvider';
-
-
+import { useSearchParams } from 'react-router-dom';
 
 
 function Searchbar() {
-  const { accessToken } = useData();
   const [ query, setQuery ] = useState('');
+  const [ radio, setRadio ] = useState('artist');
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  console.log({accessToken})
 
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-
-
+      setSearchParams({ q: query, type: radio });
     }
   };
 
@@ -36,21 +33,26 @@ function Searchbar() {
         }}
       >
         <div
-        style={{
-          backgroundColor: 'pink',
-        }}
+          style={{
+            backgroundColor: 'pink',
+          }}
+          onClick={() => setRadio('artist')}
         >
           Artists
         </div>
         <div
+          onClick={() => setRadio('track')}
           style={{
+
             backgroundColor: 'purple',
           }}
         >
           Songs
         </div>
         <div
+          onClick={() => setRadio('genre')}
           style={{
+
             backgroundColor: 'pink',
           }}
         >
