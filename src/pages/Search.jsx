@@ -71,6 +71,7 @@ function Search() {
           overflowY: 'scroll',
           gridTemplateColumns: `repeat(${rows}, 1fr)`,
           gap: '1rem',
+          padding: '1rem',
         }}
       >
 
