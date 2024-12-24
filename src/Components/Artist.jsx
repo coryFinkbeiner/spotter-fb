@@ -25,7 +25,7 @@ function Artist({ artist, key }) {
             borderRadius: '100%',
             height: '160px',
             width: '160px',
-            backgroundImage: `url(${artist.images[0]?.url})`,
+            // backgroundImage: `url(${artist.images[0].url})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

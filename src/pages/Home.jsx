@@ -40,6 +40,7 @@ function Home() {
         style={{
           backgroundColor: 'orange',
           height: '100%',
+          padding: '1rem'
         }}
       >
         <Outlet />

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useData } from '../DataProvider';
 import { useSearchParams } from 'react-router-dom';
 import Artist from '../Components/Artist';
+import Track from '../Components/Track';
 
 
 function Search() {
@@ -69,20 +70,29 @@ function Search() {
           left: 0,
           overflowY: 'scroll',
           gridTemplateColumns: `repeat(${rows}, 1fr)`,
+          gap: '1rem',
         }}
       >
 
 
+        {/* {type === 'track' &&
+          results?.tracks?.items.map((track, index) => {
+            return <Track track key={index} />
+          }
+        )} */}
+
+
         {type === 'track' &&
           results?.tracks?.items.map((track, index) => {
-            return <div>track</div>
+            return <Track track key={index} />
           }
         )}
 
 
+
         {type === 'artist' &&
           results?.artists?.items.map((artist, index) => {
-            return <Artist artist={artist} key={index} />
+            return <Artist artist key={index} />
           }
         )}
 
