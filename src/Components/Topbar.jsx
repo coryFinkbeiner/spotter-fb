@@ -1,4 +1,5 @@
 import React from 'react'
+import Seeds from './Seeds'
 
 function Topbar() {
   return (
@@ -11,45 +12,16 @@ function Topbar() {
     >
       <div
         style={{
-          backgroundColor: 'orange',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr'
-        }}
-      >
-
-        <div
-          style={{
-            backgroundColor: 'black',
-          }}
-        >
-        </div>
-        <div
-        style={{
-          backgroundColor: 'white',
-        }}
-        >
-        </div>
-        <div
-        style={{
-          backgroundColor: 'black',
-        }}
-        >
-        </div>
-        <div
-        style={{
-          backgroundColor: 'white',
-        }}
-        >
-        </div>
-        <div
-        style={{
-          backgroundColor: 'black',
-        }}
-        >
-        </div>
-
+          backgroundColor: 'pink',
+          padding: '.5rem'
+        }}>
+          <Seeds />
 
       </div>
+
+
+
+
       <div
         style={{
           display: 'grid',
@@ -75,7 +47,7 @@ function Topbar() {
         >
         </div>
 
-      </div>
+        </div>
     </div>
   )
 }

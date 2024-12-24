@@ -29,7 +29,6 @@ function Search() {
         },
       });
       setResults(response.data);
-      console.log(response.data)
     } catch (error) {
       console.error('API error', error);
     }
@@ -86,7 +85,6 @@ function Search() {
 
         {type === 'track' &&
           results?.tracks?.items.map((track, index) => {
-            console.log({index})
             return <Track track={track} index={index} key={index} />
           }
         )}

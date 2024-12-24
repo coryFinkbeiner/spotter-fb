@@ -1,15 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 const DataContext = createContext();
 import useSpotifyAuth from './hooks/useSpotifyAuth';
-// import getLibrary from './data/getLibrary';
 import axios from 'axios';
 
 const DataProvider = ({ code, children }) => {
   const accessToken = useSpotifyAuth(code);
   const [ seeds, setSeeds ] = useState([])
-
-
-
 
   const value = {
     accessToken,
