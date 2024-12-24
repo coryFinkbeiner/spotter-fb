@@ -1,6 +1,9 @@
 import React from 'react'
+import { useData } from '../DataProvider'
 
 function Artist({ artist, key }) {
+  const { seeds, setSeeds } = useData()
+
   return (
     <div
       style={{
@@ -25,9 +28,13 @@ function Artist({ artist, key }) {
             borderRadius: '100%',
             height: '160px',
             width: '160px',
-            // backgroundImage: `url(${artist.images[0].url})`,
+            backgroundImage: `url(${artist.images[0]?.url})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+          }}
+          onClick={() =>{
+            if (seeds.length >= 5) return
+            setSeeds(prevSeeds => [...prevSeeds, artist])
           }}
         >
         </div>

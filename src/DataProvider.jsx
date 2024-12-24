@@ -6,9 +6,14 @@ import axios from 'axios';
 
 const DataProvider = ({ code, children }) => {
   const accessToken = useSpotifyAuth(code);
+  const [ seeds, setSeeds ] = useState([])
+
+
+
 
   const value = {
     accessToken,
+    seeds, setSeeds,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

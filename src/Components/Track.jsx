@@ -1,6 +1,10 @@
 import React from 'react'
+import { useData } from '../DataProvider'
 
-function Track() {
+
+function Track({track, index}) {
+  const { seeds, setSeeds } = useData()
+
   return (
     <div
       style={{
@@ -15,7 +19,7 @@ function Track() {
           height: '4.4rem',
           width: '100%',
           display: 'grid',
-          gridTemplateColumns: '1fr 1.3fr 4.4fr 4.4fr'
+          gridTemplateColumns: '1fr 1.3fr 4.4fr 4.4fr',
         }}
       >
         <div
@@ -23,8 +27,9 @@ function Track() {
             backgroundColor: 'black',
 
           }}
+          onClick={() => setSeeds(prevSeeds => [...prevSeeds, track])}
         >
-          1
+          {index+1}
 
         </div>
         <div
@@ -33,7 +38,18 @@ function Track() {
 
           }}
         >
-          A
+          <div
+            style={{
+              backgroundImage: `url(${track.album.images[0].url})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              height: '80%',
+              width: '80%',
+              // position: 'relative',
+              cursor: 'pointer',
+            }}
+          >
+          </div>
 
         </div>
         <div
@@ -42,7 +58,7 @@ function Track() {
 
           }}
         >
-          song
+          {track.name}
 
         </div>
         <div
@@ -52,7 +68,7 @@ function Track() {
           }}
         >
 
-          artist
+          {track.artists[0].name}
         </div>
 
       </div>

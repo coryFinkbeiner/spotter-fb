@@ -86,15 +86,15 @@ function Search() {
 
         {type === 'track' &&
           results?.tracks?.items.map((track, index) => {
-            return <Track track key={index} />
+            console.log({index})
+            return <Track track={track} index={index} key={index} />
           }
         )}
 
 
-
         {type === 'artist' &&
           results?.artists?.items.map((artist, index) => {
-            return <Artist artist key={index} />
+            return <Artist artist={artist} key={index} />
           }
         )}
 
