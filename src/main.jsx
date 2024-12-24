@@ -12,7 +12,7 @@ const code = new URLSearchParams(window.location.search).get('code');
 root.render(
   <React.StrictMode>
     {code ? (
-      <DataProvider code={code}>
+      <DataProvider code={code} >
         <App />
       </DataProvider>
     ) : (

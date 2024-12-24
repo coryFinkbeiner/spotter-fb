@@ -15,9 +15,9 @@ const { onRequest } = require("firebase-functions/v2/https");
 
 const cors = require('cors')({ origin: true });
 
-exports.helloWorld = onRequest((req, res) => {
-  res.json({ message: "Hello, World!" });
-});
+// exports.helloWorld = onRequest((req, res) => {
+//   res.json({ message: "Hello, World!" });
+// });
 
 exports.refreshToken = onRequest(async (req, res) => {
   try {
@@ -31,7 +31,7 @@ exports.refreshToken = onRequest(async (req, res) => {
     console.error('Error refreshing token:', error);
     res.sendStatus(400);
   }
-});
+});itgith
 
 exports.login = onRequest(async (req, res) => {
   try {
