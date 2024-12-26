@@ -7,6 +7,7 @@ import { DataProvider } from './DataProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const code = new URLSearchParams(window.location.search).get('code');
+// console.log({code})
 
 
 root.render(

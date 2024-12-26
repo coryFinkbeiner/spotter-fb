@@ -22,7 +22,7 @@ import MyAlbums from './SubPages/MyAlbums';
 import MyPlaylists from './SubPages/MyPlaylists';
 import Songs from './SubPages/Songs';
 
-function App({code}) {
+function App() {
   return (
     <RouterProvider
       router={

@@ -8,12 +8,11 @@ const useSpotifyAuth = code => {
   const [expiresIn, setExpiresIn] = useState();
 
   useEffect(() => {
+    // if (!code) return
     axios
-      .post("http://127.0.0.1:5001/spotify1-25293/us-central1/login", {
-        code,
-      })
+      .post("http://127.0.0.1:5001/spotify1-25293/us-central1/login", { code })
       .then((res) => {
-        // console.log('login successful')
+        console.log('login successful')
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
         setExpiresIn(res.data.expiresIn);
@@ -26,19 +25,18 @@ const useSpotifyAuth = code => {
   }, [code]);
 
   useEffect(() => {
+
     if (!refreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-        .post('http://127.0.0.1:5001/spotify1-25293/us-central1/refreshToken', {
-          refreshToken,
-        })
+        .post('http://127.0.0.1:5001/spotify1-25293/us-central1/refreshToken', { refreshToken })
         .then((res) => {
           setAccessToken(res.data.accessToken);
           setExpiresIn(res.data.expiresIn);
         })
         .catch((err) => {
           // console.log('refresh error', err)
-          window.location = "/";
+          // window.location = "/";
         });
     }, (expiresIn - 60) * 1000);
 
