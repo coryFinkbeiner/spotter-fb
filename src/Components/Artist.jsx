@@ -19,8 +19,8 @@ function Artist({ artist, key }) {
           backgroundColor: 'darkgrey',
           height: '180px',
           display: 'flex',
-          justifyContent: 'center', // Center horizontally
-          alignItems: 'center', // Center vertically
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <div

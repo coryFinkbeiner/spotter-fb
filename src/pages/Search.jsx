@@ -47,9 +47,7 @@ function Search() {
 
     }
 
-
   }, [ query, type ])
-
 
 
   return (
