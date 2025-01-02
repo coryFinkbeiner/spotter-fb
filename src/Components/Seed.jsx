@@ -20,7 +20,32 @@ function Seed({ seed, index, imageUrl, name, type }) {
   )
 
   const TrackSeed = () => (
-    <div>trackdsfd</div>
+    <div
+      style={{
+        backgroundImage: `url(${imageUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '80%',
+        width: '80%',
+        position: 'relative', // Important for positioning the index
+        cursor: 'pointer',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          color: 'white',
+          fontSize: '1.2rem',
+          fontWeight: 'bold',
+          textShadow: '2px 2px 4px #000000',
+        }}
+      >
+        {index}
+      </div>
+    </div>
   )
 
   return (
