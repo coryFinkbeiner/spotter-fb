@@ -25,22 +25,19 @@ function Track({track, index}) {
         <div
           style={{
             backgroundColor: 'black',
-
           }}
           onClick={() => setSeeds(prevSeeds => [...prevSeeds, track])}
         >
           {index+1}
-
         </div>
         <div
           style={{
             backgroundColor: 'blue',
-
           }}
         >
           <div
             style={{
-              backgroundImage: `url(${track.album.images[0].url})`,
+              backgroundImage: `url(${track.album.images[0]?.url})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               height: '80%',

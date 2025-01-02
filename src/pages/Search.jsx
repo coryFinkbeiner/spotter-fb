@@ -15,6 +15,7 @@ function Search() {
   const type = searchParams.get('type');
 
   const getSearchResults = async () => {
+    console.log({accessToken})
     try {
       const response = await axios({
         method: 'GET',

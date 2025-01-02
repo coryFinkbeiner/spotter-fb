@@ -1,13 +1,14 @@
+
 import React from 'react'
 
-function Seed({ seed, index, key}) {
+function Seed({ seed, index, imageUrl, name, type }) {
   return (
     <div
       style={{
         backgroundColor: 'black',
       }}
     >
-      {index}
+      {type}
     </div>
   )
 }
