@@ -36,3 +36,10 @@ body {
     background-color: #f9f9f9;
   }
 } */
+
+
+.truncate {
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

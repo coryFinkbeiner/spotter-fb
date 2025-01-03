@@ -27,7 +27,7 @@ function Seed({ seed, index, imageUrl, name, type }) {
         backgroundPosition: 'center',
         height: '80%',
         width: '80%',
-        position: 'relative', // Important for positioning the index
+        position: 'relative',
         cursor: 'pointer',
       }}
     >

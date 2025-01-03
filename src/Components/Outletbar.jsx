@@ -2,9 +2,15 @@ import React from 'react'
 import { useLocation } from 'react-router-dom';
 import Searchbar from './Searchbar'
 import Settingsbar from './Settingsbar'
+import Librarybar from './Librarybar'
 
 function Outletbar() {
   const location = useLocation();
+
+  if (location.pathname.startsWith('/Home/Library')) {
+    return <Librarybar />;
+  }
+
 
   // Render different content based on the current route
   switch(location.pathname) {
@@ -12,8 +18,6 @@ function Outletbar() {
       return <Settingsbar />
     case '/Home/Search':
       return <Searchbar />
-    case '/Home/Library':
-      return <div>Library Header</div>;
     default:
       return <div>Default Header</div>;
   }

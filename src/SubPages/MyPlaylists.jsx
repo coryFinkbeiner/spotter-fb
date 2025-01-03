@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 function MyPlaylists() {
   return (
-    <div>MyPlaylists</div>
+    <>
+      {/* {myPlaylists?.map((playlist, index) => {
+        return <div>playlist</div>
+
+      })} */}
+    </>
   )
 }
 

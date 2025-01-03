@@ -9,13 +9,11 @@ import React from 'react';
 import './App.css';
 
 import Container from './Components/Container';
-
 import Home from './Pages/Home';
 import Library from './Pages/Library';
 import Results from './Pages/Results';
 import Search from './Pages/Search';
 import Settings from './Pages/Settings';
-
 import Artists from './SubPages/Artists';
 import Genres from './SubPages/Genres';
 import MyAlbums from './SubPages/MyAlbums';
