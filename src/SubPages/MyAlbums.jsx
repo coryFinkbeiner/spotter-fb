@@ -1,41 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useData } from '../DataProvider';
-import axios from 'axios';
 
 function MyAlbums() {
-  const [ myAlbums, setMyAlbums ] = useState([])
-  const { accessToken } = useData();
+  const { myAlbums } = useData();
 
-
-  // const MyAlbum = () => {
-
-  // }
-
-
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const albumResponse = await axios({
-          method: 'GET',
-          url: `https://api.spotify.com/v1/me/albums`,
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-          params: {
-            limit: 50,
-          },
-        });
-
-        setMyAlbums(albumResponse.data.items)
-
-      } catch (error) {
-        console.log('API error', error);
-      }
-    })();
-
-
-  }, [accessToken]);
 
   return (
     <>

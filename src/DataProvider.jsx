@@ -6,10 +6,60 @@ import axios from 'axios';
 const DataProvider = ({ code, children }) => {
   const accessToken = useSpotifyAuth(code);
   const [ seeds, setSeeds ] = useState([])
+  const [ myAlbums, setMyAlbums ] = useState([])
+  const [ myPlaylists, setMyPlaylists ] = useState([])
+
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const albumResponse = await axios({
+          method: 'GET',
+          url: `https://api.spotify.com/v1/me/albums`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          params: {
+            limit: 50,
+          },
+        });
+        setMyAlbums(albumResponse.data.items)
+
+      } catch (error) {
+        console.log('API error', error);
+      }
+    })();
+
+  }, [accessToken]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const albumResponse = await axios({
+          method: 'GET',
+          url: `https://api.spotify.com/v1/me/playlists`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          params: {
+            limit: 50,
+          },
+        });
+        setMyPlaylists(albumResponse.data.items)
+
+      } catch (error) {
+        console.log('API error', error);
+      }
+    })();
+
+  }, [accessToken]);
+
+
 
   const value = {
     accessToken,
     seeds, setSeeds,
+    myAlbums,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
