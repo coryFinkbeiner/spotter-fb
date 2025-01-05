@@ -4,16 +4,11 @@ import { useData } from '../DataProvider';
 function MyAlbums() {
   const { myAlbums } = useData();
 
-
   return (
     <>
       {myAlbums?.map((item, index) => {
 
-
-
         return (
-
-
 
           <div
             style={{
@@ -40,12 +35,10 @@ function MyAlbums() {
             >
             </div>
 
-
             <div>
 
               <div
                 style={{
-
                 }}
               >
                 {item.album.name}
@@ -58,14 +51,7 @@ function MyAlbums() {
             </div>
 
           </div>
-
-
-
-
         )
-
-
-
 
       })}
     </>

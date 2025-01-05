@@ -60,6 +60,7 @@ const DataProvider = ({ code, children }) => {
     accessToken,
     seeds, setSeeds,
     myAlbums,
+    myPlaylists,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
