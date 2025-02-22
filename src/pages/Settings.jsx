@@ -1,26 +1,10 @@
 import React from 'react'
+import { useData } from '../DataProvider';
 
 
 function Settings() {
 
-  const mySettings = [
-    // { name: 'trackAmount', target: 20 },
-    { name: 'acousticness', min: 0, max: 100, target: undefined },
-    { name: 'danceability', min: 0, max: 100, target: undefined },
-    { name: 'duration', min: undefined, max: undefined, target: undefined },
-    { name: 'energy', min: 0, max: 100, target: undefined },
-    { name: 'instrumentalness', min: 0, max: 100, target: undefined },
-    { name: 'key', min: 0, max: 11, target: undefined },
-    { name: 'liveness', min: 0, max: 100, target: undefined },
-    { name: 'loudness', min: 0, max: 100, target: undefined },
-    { name: 'mode', min: 0, max: 100, target: undefined },
-    { name: 'popularity', min: 0, max: 100, target: undefined },
-    { name: 'speechiness', min: 0, max: 100, target: undefined },
-    { name: 'tempo', min: undefined, max: undefined, target: undefined },
-    { name: 'timeSignature', min: 0, max: 11, target: undefined },
-    { name: 'valence', min: 0, max: 100, target: undefined }
-  ];
-
+  const { mySettings, setMySettings } = useData();
 
   return (
     <div
@@ -51,16 +35,39 @@ function Settings() {
 
 
         {
-          mySettings.map((setting, index) => {
+          Object.keys(mySettings).map((key, value) => {
 
 
             return (
               <div
+                key={key}
                 style={{
-                  backgroundColor: 'black',
-
+                  backgroundColor: 'blue',
+                  display: 'grid',
+                  gridTemplateColumns: '4.5fr 1fr 1fr 1fr',
                 }}
-              >{setting.name}</div>
+              >
+                <div
+                  style={{
+
+                  }}
+                >{key}</div>
+                <div
+                  style={{
+
+                  }}
+                >1</div>
+                <div
+                  style={{
+
+                  }}
+                >2</div>
+                <div
+                  style={{
+
+                  }}
+                >3</div>
+              </div>
             )
           })
 

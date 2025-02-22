@@ -29,49 +29,49 @@ const DataProvider = ({ code, children }) => {
 
 
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const albumResponse = await axios({
-  //         method: 'GET',
-  //         url: `https://api.spotify.com/v1/me/albums`,
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //         },
-  //         params: {
-  //           limit: 50,
-  //         },
-  //       });
-  //       setMyAlbums(albumResponse.data.items)
+  useEffect(() => {
+    (async () => {
+      try {
+        const albumResponse = await axios({
+          method: 'GET',
+          url: `https://api.spotify.com/v1/me/albums`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          params: {
+            limit: 50,
+          },
+        });
+        setMyAlbums(albumResponse.data.items)
 
-  //     } catch (error) {
-  //       console.log('API error', error);
-  //     }
-  //   })();
+      } catch (error) {
+        console.log('API error', error);
+      }
+    })();
 
-  // }, [accessToken]);
+  }, [accessToken]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const albumResponse = await axios({
-  //         method: 'GET',
-  //         url: `https://api.spotify.com/v1/me/playlists`,
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //         },
-  //         params: {
-  //           limit: 50,
-  //         },
-  //       });
-  //       setMyPlaylists(albumResponse.data.items)
+  useEffect(() => {
+    (async () => {
+      try {
+        const albumResponse = await axios({
+          method: 'GET',
+          url: `https://api.spotify.com/v1/me/playlists`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          params: {
+            limit: 50,
+          },
+        });
+        setMyPlaylists(albumResponse.data.items)
 
-  //     } catch (error) {
-  //       console.log('API error', error);
-  //     }
-  //   })();
+      } catch (error) {
+        console.log('API error', error);
+      }
+    })();
 
-  // }, [accessToken]);
+  }, [accessToken]);
 
 
 
