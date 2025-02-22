@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const useSpotifyAuth = code => {
+  console.log({code})
 
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
@@ -13,6 +14,7 @@ const useSpotifyAuth = code => {
       .post("http://127.0.0.1:5001/spotify1-25293/us-central1/login", { code })
       .then((res) => {
         console.log('login successful')
+        console.log(res.data.accessToken)
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
         setExpiresIn(res.data.expiresIn);
@@ -43,6 +45,7 @@ const useSpotifyAuth = code => {
     return () => clearInterval(interval);
   }, [refreshToken, expiresIn]);
 
+  console.log(accessToken)
   return accessToken;
 };
 
