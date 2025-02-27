@@ -31,42 +31,52 @@ function Settings() {
           padding: '1rem',
         }}
       >
-
-
-
         {
-          Object.keys(mySettings).map((key, value) => {
+          Object.keys(mySettings).map((setting, index) => {
 
 
             return (
               <div
-                key={key}
+
                 style={{
                   backgroundColor: 'blue',
                   display: 'grid',
                   gridTemplateColumns: '4.5fr 1fr 1fr 1fr',
+                  gap: '1rem'
                 }}
               >
                 <div
                   style={{
 
                   }}
-                >{key}</div>
+                >{setting}</div>
+                <div
+                  style={{
+                    margin: '.4rem'
+
+                  }}
+                >
+                  <input
+                    type="text" // Or any other input type (number, checkbox, etc.)
+                    value={mySettings[setting].min}
+                    placeholder={mySettings[setting].min}
+                    // onChange={(e) => onChange(e.target.value)}
+                    style={{
+                      height: '100%'
+
+                    }}
+                  />
+                </div>
                 <div
                   style={{
 
                   }}
-                >1</div>
+                >max</div>
                 <div
                   style={{
 
                   }}
-                >2</div>
-                <div
-                  style={{
-
-                  }}
-                >3</div>
+                >target</div>
               </div>
             )
           })

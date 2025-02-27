@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const useSpotifyAuth = code => {
-  console.log({code})
 
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
@@ -45,7 +44,6 @@ const useSpotifyAuth = code => {
     return () => clearInterval(interval);
   }, [refreshToken, expiresIn]);
 
-  console.log(accessToken)
   return accessToken;
 };
 
