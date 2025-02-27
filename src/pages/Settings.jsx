@@ -34,7 +34,6 @@ function Settings() {
         {
           Object.keys(mySettings).map((setting, index) => {
 
-
             return (
               <div
 

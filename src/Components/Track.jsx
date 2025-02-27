@@ -26,7 +26,10 @@ function Track({track, index}) {
           style={{
             backgroundColor: 'black',
           }}
-          onClick={() => setSeeds(prevSeeds => [...prevSeeds, track])}
+          onClick={() =>{
+            if (seeds.length >= 5) return
+            setSeeds(prevSeeds => [...prevSeeds, track])
+          }}
         >
           {index+1}
         </div>

@@ -37,12 +37,7 @@ function App() {
                 <Route path='MyPlaylists' element={<MyPlaylists />} />
               </Route>
 
-              <Route path='Search' element={<Search />}>
-                <Route path='Artists' element={<Artists />} />
-                <Route path='Songs' element={<Songs />} />
-                <Route path='Genres' element={<Genres />} />
-              </Route>
-
+              <Route path='Search' element={<Search />} />
               <Route index element={<Navigate to="/Home/Settings" />} />
 
             </Route>
