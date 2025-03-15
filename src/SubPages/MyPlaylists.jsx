@@ -8,9 +8,6 @@ function MyPlaylists() {
     <>
       {myPlaylists?.map((item, index) => {
 
-
-
-
         return (
 
           <div

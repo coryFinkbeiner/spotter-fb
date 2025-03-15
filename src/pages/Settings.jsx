@@ -6,6 +6,16 @@ function Settings() {
 
   const { mySettings, setMySettings } = useData();
 
+  const fieldStyles = {
+    display: 'grid',
+    gridTemplateColumns: `1fr 1fr`,
+  }
+
+
+  // const inputElement = ()
+
+
+
   return (
     <div
       style={{
@@ -49,7 +59,7 @@ function Settings() {
 
                   }}
                 >{setting}</div>
-                <div
+                {/* <div
                   style={{
                     margin: '.4rem'
 
@@ -65,17 +75,69 @@ function Settings() {
 
                     }}
                   />
+                </div> */}
+                <div
+                  style={fieldStyles}
+                >
+                  <div
+                    style={{}}
+                  >
+                    MIN
+                  </div>
+                  <div
+                    style={{}}
+                  >
+                    <input
+                      type="text"
+                      value={mySettings[setting].min}
+                      style={{
+                        height: '100%',
+                        width: '3.5rem'
+                      }}
+                      onChange={(e) => {
+                        setMySettings((prevSettings) => ({
+                          ...prevSettings,
+                          [setting]: {
+                            ...prevSettings[setting],
+                            min: e.target.value,
+                          },
+                        }));
+                      }}
+                    />
+                  </div>
                 </div>
                 <div
-                  style={{
-
-                  }}
-                >max</div>
+                  style={fieldStyles}
+                >
+                  <div
+                    style={{}}
+                  >
+                    MAX
+                  </div>
+                  <input
+                      type="text"
+                      value={mySettings[setting].max}
+                      style={{
+                        height: '100%',
+                        width: '3.5rem'
+                      }}
+                    />
+                </div>
                 <div
-                  style={{
+                  style={fieldStyles}
+                >
+                  <div
+                    style={{}}
+                  >
+                    TGT
+                  </div>
+                  <div
+                    style={{}}
+                  >
+                    field
+                  </div>
+                </div>
 
-                  }}
-                >target</div>
               </div>
             )
           })
