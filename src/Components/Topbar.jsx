@@ -1,5 +1,6 @@
 import React from 'react'
 import Seeds from './Seeds'
+import { NavLink } from "react-router-dom"
 
 function Topbar() {
   return (
@@ -29,19 +30,21 @@ function Topbar() {
           style={{
             backgroundColor: 'red',
           }}
-        >
+        > X
         </div>
-        <div
+        <NavLink
+          to={'/Results'}
           style={{
-            backgroundColor: 'darkyellow'
+            backgroundColor: 'yellow',
+            textDecoration: 'none',
           }}
-        >
-        </div>
+        > Get Results
+        </NavLink>
         <div
           style={{
             backgroundColor: 'purple'
           }}
-        >
+        > Queue
         </div>
 
         </div>
