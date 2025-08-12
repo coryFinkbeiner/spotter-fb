@@ -16,6 +16,11 @@ function Search() {
 
   const getSearchResults = async () => {
     console.log({accessToken})
+    if (!accessToken) {
+      console.error('No access token available');
+      return;
+    }
+    
     try {
       const response = await axios({
         method: 'GET',
@@ -32,6 +37,9 @@ function Search() {
       setResults(response.data);
     } catch (error) {
       console.error('API error', error);
+      if (error.response?.status === 401) {
+        console.error('Authentication failed - token may be expired');
+      }
     }
   };
 
@@ -47,7 +55,7 @@ function Search() {
 
     }
 
-  }, [ query, type ])
+  }, [ query, type, accessToken ])
 
 
   return (

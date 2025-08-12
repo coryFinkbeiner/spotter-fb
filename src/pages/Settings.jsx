@@ -52,18 +52,15 @@ function Settings() {
 
         {
           mySettings.map((setting, index) => {
-
-
             return (
               <div
+                key={index}
                 style={{
                   backgroundColor: 'black',
-
                 }}
               >{setting.name}</div>
             )
           })
-
         }
 
 

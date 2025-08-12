@@ -9,7 +9,7 @@ const useSpotifyAuth = code => {
   const [expiresIn, setExpiresIn] = useState();
 
   useEffect(() => {
-    // if (!code) return
+    if (!code) return;
     axios
       .post("http://127.0.0.1:5001/spotify1-25293/us-central1/login", { code })
       .then((res) => {
@@ -21,7 +21,7 @@ const useSpotifyAuth = code => {
         window.history.pushState({}, null, "/");
       })
       .catch((err) => {
-        // console.log('login err', err)
+        console.log('login err', err)
         // window.location = "/";
       });
   }, [code]);

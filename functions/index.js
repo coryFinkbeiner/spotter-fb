@@ -16,38 +16,43 @@ const { onRequest } = require("firebase-functions/v2/https");
 const cors = require('cors')({ origin: true });
 
 exports.helloWorld = onRequest((req, res) => {
-  res.json({ message: "Hello, World!" });
+  cors(req, res, () => {
+    res.json({ message: "Hello, World!" });
+  });
 });
 
 exports.refreshToken = onRequest(async (req, res) => {
-  try {
-    const refreshToken = req.body.refreshToken;
-    const data = await spotifyApi.refreshAccessToken();
-    res.json({
-      accessToken: data.body.accessToken,
-      expiresIn: data.body.expiresIn,
-    });
-  } catch (error) {
-    console.error('Error refreshing token:', error);
-    res.sendStatus(400);
-  }
+  cors(req, res, async () => {
+    try {
+      const refreshToken = req.body.refreshToken;
+      const data = await spotifyApi.refreshAccessToken();
+      res.json({
+        accessToken: data.body.accessToken,
+        expiresIn: data.body.expiresIn,
+      });
+    } catch (error) {
+      console.error('Error refreshing token:', error);
+      res.sendStatus(400);
+    }
+  });
 });
 
 exports.login = onRequest(async (req, res) => {
-
-  console.log(req.body)
-  try {
-    const code = req.body.code;
-    const data = await spotifyApi.authorizationCodeGrant(code);
-    res.json({
-      accessToken: data.body.access_token,
-      refreshToken: data.body.refresh_token,
-      expiresIn: data.body.expires_in,
-    });
-  } catch (error) {
-    console.error('Error during login:', error);
-    res.sendStatus(400);
-  }
+  cors(req, res, async () => {
+    console.log(req.body)
+    try {
+      const code = req.body.code;
+      const data = await spotifyApi.authorizationCodeGrant(code);
+      res.json({
+        accessToken: data.body.access_token,
+        refreshToken: data.body.refresh_token,
+        expiresIn: data.body.expires_in,
+      });
+    } catch (error) {
+      console.error('Error during login:', error);
+      res.sendStatus(400);
+    }
+  });
 });
 
 
