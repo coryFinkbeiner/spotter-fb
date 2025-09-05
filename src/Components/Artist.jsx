@@ -1,47 +1,20 @@
 import React from 'react'
 import { useData } from '../DataProvider'
 
-function Artist({ artist, key }) {
+function Artist({ artist }) {
   const { seeds, setSeeds } = useData()
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateRows: `3fr, 1fr`,
-        position: 'relative',
-        cursor: 'pointer',
-      }}
-    >
-
-      <div
-        style={{
-          backgroundColor: 'darkgrey',
-          height: '180px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+    <div className="card" style={{ cursor: 'pointer' }}>
+      <div style={{ padding: '16px', display: 'grid', placeItems: 'center' }}>
         <div
-          style={{
-            borderRadius: '100%',
-            height: '160px',
-            width: '160px',
-            backgroundImage: `url(${artist.images[0]?.url})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-          onClick={() =>{
-            if (seeds.length >= 5) return
-            setSeeds(prevSeeds => [...prevSeeds, artist])
-          }}
-        >
-        </div>
+          className="seed-artist"
+          style={{ height: 160, width: 160, backgroundImage: `url(${artist.images[0]?.url})` }}
+          onClick={() => { if (seeds.length < 5) setSeeds(prev => [...prev, artist]) }}
+        />
       </div>
-      <div>
-          {artist.name}</div>
-      </div>
+      <div className="card-body truncate">{artist.name}</div>
+    </div>
   )
 }
 

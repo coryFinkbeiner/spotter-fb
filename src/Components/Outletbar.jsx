@@ -11,17 +11,14 @@ function Outletbar() {
     return <Librarybar />;
   }
 
-
-  // Render different content based on the current route
   switch(location.pathname) {
     case '/Home/Settings':
       return <Settingsbar />
     case '/Home/Search':
       return <Searchbar />
     default:
-      return <div>Default Header</div>;
+      return <div className="muted">Welcome</div>;
   }
 }
 
 export default Outletbar
-

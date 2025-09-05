@@ -4,26 +4,19 @@ import Topbar from './Topbar'
 
 function Container() {
   return (
-    <div
-      style={{
-        height: '93vh',
-        width: '65vw',
-        display: 'grid',
-        gridTemplateRows: '1fr 8.8fr',
-        minWidth: '57rem',
-        maxWidth: '57rem',
-        // padding: '1rem'
-      }}
-    >
-      <Topbar />
-      <div
-        style={{
-          padding: '1rem'
-        }}
-      >
-        <Outlet />
+    <div className="app-shell">
+      <div className="topbar">
+        <div className="panel" style={{ padding: '8px' }}>
+          <Topbar />
+        </div>
+        <div className="panel" />
       </div>
 
+      <div className="content-scroll">
+        <div className="content-scroll-inner">
+          <Outlet />
+        </div>
+      </div>
     </div>
   )
 }

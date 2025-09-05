@@ -3,17 +3,10 @@ import Seed from './Seed'
 import { useData } from '../DataProvider';
 
 function Seeds() {
-  const { seeds, setSeeds } = useData()
+  const { seeds } = useData()
 
   return (
-    <div
-      style={{
-        backgroundColor: 'orange',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
-        height: '100%',
-      }}
-    >
+    <div className="seeds">
       {seeds?.map((seed, index) => {
         let imageUrl = ''
         let name = ''

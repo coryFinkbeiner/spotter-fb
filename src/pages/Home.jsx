@@ -5,53 +5,26 @@ import Outletbar from '../Components/Outletbar'
 
 function Home() {
   return (
-    <div
-      style={{
-        backgroundColor: 'blue',
-        height: '100%',
-        display: 'grid',
-        gridTemplateRows: '1fr 8.8fr',
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: 'white',
-          display: 'grid',
-          gridTemplateColumns: '2.4fr 1fr',
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: 'purple',
-          }}
-        >
+    <div className="home-shell">
+      <div className="home-header">
+        <div className="panel outletbar-area">
           <Outletbar />
-
         </div>
-        <div
-          style={{
-          }}>
-            <Navbar />
+        <div className="panel navbar-area">
+          <Navbar />
         </div>
-
       </div>
 
-      <div
-        style={{
-          backgroundColor: 'orange',
-          height: '100%',
-          padding: '1rem'
-        }}
-      >
-        <Outlet />
+      <div className="content-scroll">
+        <div className="content-scroll-inner">
+          <Outlet />
+        </div>
       </div>
-
     </div>
   )
 }
 
 export default Home
-
 
 
 

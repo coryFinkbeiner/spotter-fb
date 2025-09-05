@@ -2,33 +2,11 @@ import React from 'react'
 import { NavLink } from "react-router-dom"
 
 function Librarybar() {
+  const linkClass = ({ isActive }) => `subnav-link${isActive ? ' active' : ''}`
   return (
-    <div
-      style={{
-        // backgroundColor: 'white',
-        height: '100%',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-      }}
-    >
-      <NavLink
-        to={'/Home/Library/MyAlbums'}
-        style={{
-          backgroundColor: 'yellow',
-          textDecoration: 'none',
-        }}
-      > my albums
-      </NavLink>
-      <NavLink
-        to={'/Home/Library/MyPlaylists'}
-        style={{
-          backgroundColor: 'white',
-          textDecoration: 'none',
-        }}
-      > my playlists
-      </NavLink>
-
-
+    <div className="subnav">
+      <NavLink to={'/Home/Library/MyAlbums'} className={linkClass}>My albums</NavLink>
+      <NavLink to={'/Home/Library/MyPlaylists'} className={linkClass}>My playlists</NavLink>
     </div>
   )
 }

@@ -7,51 +7,16 @@ function MyAlbums() {
   return (
     <>
       {myAlbums?.map((item, index) => {
+        const cover = item?.album.images?.[0]?.url
         return (
-          <div
-            key={index}
-            style={{
-              // backgroundColor: 'white',
-              display: 'grid',
-              gridTemplateColumns: `3fr 1fr`,
-              cursor: 'pointer',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-
-
-            <div
-              style={{
-                borderRadius: '.4rem',
-                height: '10rem',
-                width: '10rem',
-                backgroundImage: `url(${item?.album.images[0]?.url})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-
-            >
+          <div className="card" key={index}>
+            <div className="card-cover" style={{ backgroundImage: `url(${cover})` }} />
+            <div className="card-body">
+              <div className="truncate">{item.album.name}</div>
+              <div className="muted truncate">{item.album.artists?.[0]?.name}</div>
             </div>
-
-            <div>
-
-              <div
-                style={{
-                }}
-              >
-                {item.album.name}
-              </div>
-              <div
-
-              >
-                {item.album.name}
-              </div>
-            </div>
-
           </div>
         )
-
       })}
     </>
   )
