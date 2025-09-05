@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const useSpotifyAuth = code => {
-  console.log({code})
 
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
@@ -14,14 +13,12 @@ const useSpotifyAuth = code => {
       .post("http://127.0.0.1:5001/spotify1-25293/us-central1/login", { code })
       .then((res) => {
         console.log('login successful')
-        console.log(res.data.accessToken)
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
         setExpiresIn(res.data.expiresIn);
         window.history.pushState({}, null, "/");
       })
       .catch((err) => {
-        console.log('login err', err)
         // window.location = "/";
       });
   }, [code]);
@@ -37,7 +34,6 @@ const useSpotifyAuth = code => {
           setExpiresIn(res.data.expiresIn);
         })
         .catch((err) => {
-          // console.log('refresh error', err)
           // window.location = "/";
         });
     }, (expiresIn - 60) * 1000);
@@ -45,7 +41,6 @@ const useSpotifyAuth = code => {
     return () => clearInterval(interval);
   }, [refreshToken, expiresIn]);
 
-  console.log(accessToken)
   return accessToken;
 };
 

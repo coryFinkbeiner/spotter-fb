@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const DataProvider = ({ code, children }) => {
   const accessToken = useSpotifyAuth(code);
-  console.log(accessToken)
+  // console.log(accessToken)
   const [ seeds, setSeeds ] = useState([])
   const [ myAlbums, setMyAlbums ] = useState([])
   const [ myPlaylists, setMyPlaylists ] = useState([])
@@ -29,51 +29,55 @@ const DataProvider = ({ code, children }) => {
 
 
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const albumResponse = await axios({
-  //         method: 'GET',
-  //         url: `https://api.spotify.com/v1/me/albums`,
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //         },
-  //         params: {
-  //           limit: 50,
-  //         },
-  //       });
-  //       setMyAlbums(albumResponse.data.items)
+  useEffect(() => {
+    if (!accessToken) return;
+    
+    (async () => {
+      try {
+        const albumResponse = await axios({
+          method: 'GET',
+          url: `https://api.spotify.com/v1/me/albums`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          params: {
+            limit: 50,
+          },
+        });
+        console.log({albumResponse})
+        setMyAlbums(albumResponse.data.items)
+        console.log('Albums loaded:', albumResponse.data.items.length);
+      } catch (error) {
+        console.log('Albums API error:', error);
+      }
+    })();
+  }, [accessToken]);
 
-  //     } catch (error) {
-  //       console.log('API error', error);
-  //     }
-  //   })();
+  useEffect(() => {
+    if (!accessToken) return;
+    
+    (async () => {
+      try {
+        const playlistResponse = await axios({
+          method: 'GET',
+          url: `https://api.spotify.com/v1/me/playlists`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          params: {
+            limit: 50,
+          },
+        });
+        console.log({playlistResponse})
+        setMyPlaylists(playlistResponse.data.items)
+        console.log('Playlists loaded:', playlistResponse.data.items.length);
+      } catch (error) {
+        console.log('Playlists API error:', error);
+      }
+    })();
+  }, [accessToken]);
 
-  // }, [accessToken]);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const albumResponse = await axios({
-  //         method: 'GET',
-  //         url: `https://api.spotify.com/v1/me/playlists`,
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //         },
-  //         params: {
-  //           limit: 50,
-  //         },
-  //       });
-  //       setMyPlaylists(albumResponse.data.items)
-
-  //     } catch (error) {
-  //       console.log('API error', error);
-  //     }
-  //   })();
-
-  // }, [accessToken]);
-
-
+  console.log({myAlbums})
 
   const value = {
     accessToken,

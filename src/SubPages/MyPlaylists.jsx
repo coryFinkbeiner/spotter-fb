@@ -7,17 +7,13 @@ function MyPlaylists() {
   return (
     <>
       {myPlaylists?.map((item, index) => {
-
-
-
-
         return (
-
           <div
+            key={index}
             style={{
-              backgroundColor: 'pink',
+              backgroundColor: 'blue',
               display: 'grid',
-              gridTemplateColumn: `3fr, 1fr`,
+              gridTemplateColumns: `3fr 1fr`,
               cursor: 'pointer',
               justifyContent: 'center',
               alignItems: 'center',

@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 function Settings() {
 
   const mySettings = [
@@ -50,7 +49,7 @@ function Settings() {
 
 
 
-        {
+        {/* {
           mySettings.map((setting, index) => {
             return (
               <div
@@ -61,7 +60,7 @@ function Settings() {
               >{setting.name}</div>
             )
           })
-        }
+        } */}
 
 
 
