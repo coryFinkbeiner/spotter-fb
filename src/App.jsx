@@ -11,6 +11,8 @@ import './App.css';
 import Container from './Components/Container';
 import Home from './Pages/Home';
 import Library from './Pages/Library';
+import Album from './Pages/Album';
+import Playlist from './Pages/Playlist';
 import Results from './Pages/Results';
 import Search from './Pages/Search';
 import Settings from './Pages/Settings';
@@ -33,8 +35,11 @@ function App() {
               <Route path={'Settings'} element={<Settings />} />
 
               <Route path='Library' element={<Library />}>
+                <Route index element={<Navigate to="MyAlbums" replace />} />
                 <Route path='MyAlbums' element={<MyAlbums />} />
                 <Route path='MyPlaylists' element={<MyPlaylists />} />
+                <Route path='Album/:id' element={<Album />} />
+                <Route path='Playlist/:id' element={<Playlist />} />
               </Route>
 
               <Route path='Search' element={<Search />}>
@@ -43,7 +48,7 @@ function App() {
                 <Route path='Genres' element={<Genres />} />
               </Route>
 
-              <Route index element={<Navigate to="/Home/Settings" />} />
+              <Route index element={<Navigate to="/Home/Library" replace />} />
 
             </Route>
 

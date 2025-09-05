@@ -7,18 +7,13 @@ import Librarybar from './Librarybar'
 function Outletbar() {
   const location = useLocation();
 
-  if (location.pathname.startsWith('/Home/Library')) {
-    return <Librarybar />;
-  }
+  const path = location.pathname;
 
-  switch(location.pathname) {
-    case '/Home/Settings':
-      return <Settingsbar />
-    case '/Home/Search':
-      return <Searchbar />
-    default:
-      return <div className="muted">Welcome</div>;
-  }
+  if (path.startsWith('/Home/Library')) return <Librarybar />;
+  if (path.startsWith('/Home/Search')) return <Searchbar />;
+  if (path.startsWith('/Home/Settings')) return <Settingsbar />;
+
+  return <div className="muted">Welcome</div>;
 }
 
 export default Outletbar
