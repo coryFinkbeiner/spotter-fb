@@ -59,15 +59,39 @@ function Search() {
 
 
   return (
-    <div>
-      <div className={type === 'artist' ? 'grid-auto-fill-180' : ''}>
-        {type === 'track' && results?.tracks?.items.map((track, index) => (
-          <Track track={track} index={index} key={index} />
-        ))}
+    <div
+      style={{
+        position: 'relative',
+        backgroundColor: 'var(--panel-2)',
+        height: '100%',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          backgroundColor: 'var(--panel-2)',
+          display: 'grid',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          overflowY: 'scroll',
+          gridTemplateColumns: `repeat(${rows}, 1fr)`,
+          gap: '1rem',
+          padding: '1rem',
+        }}
+      >
+        {type === 'track' &&
+          results?.tracks?.items.map((track, index) => {
+            return <Track track={track} index={index} key={index} />
+          }
+        )}
 
-        {type === 'artist' && results?.artists?.items.map((artist, index) => (
-          <Artist artist={artist} key={index} />
-        ))}
+        {type === 'artist' &&
+          results?.artists?.items.map((artist, index) => {
+            return <Artist artist={artist} key={index} />
+          }
+        )}
       </div>
     </div>
   )

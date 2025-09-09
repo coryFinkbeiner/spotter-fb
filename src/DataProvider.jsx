@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 const DataContext = createContext();
+const TrackHoverContext = createContext();
 import useSpotifyAuth from './hooks/useSpotifyAuth';
 import axios from 'axios';
 
@@ -10,6 +11,7 @@ const DataProvider = ({ code, children }) => {
   const [ myAlbums, setMyAlbums ] = useState([])
   const [ myPlaylists, setMyPlaylists ] = useState([])
   const [ trackAmount, setTrackAmount ] = useState(20)
+  const [ trackHovered, setTrackHovered ] = useState(false)
   const [ mySettings, setMySettings ] = useState({
     acousticness: { min: 0, max: 100, target: undefined },
     danceability: { min: 0, max: 100, target: undefined },
@@ -86,10 +88,15 @@ const DataProvider = ({ code, children }) => {
     myPlaylists,
     trackAmount, setTrackAmount,
     mySettings, setMySettings,
-
   };
 
-  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
+  return (
+    <DataContext.Provider value={value}>
+      <TrackHoverContext.Provider value={{ trackHovered, setTrackHovered }}>
+        {children}
+      </TrackHoverContext.Provider>
+    </DataContext.Provider>
+  );
 };
 
 const useData = () => {
@@ -100,4 +107,12 @@ const useData = () => {
   return context;
 };
 
-export { DataProvider, useData };
+const useTrackHover = () => {
+  const context = useContext(TrackHoverContext);
+  if (!context) {
+    throw new Error('useTrackHover must be used within a DataProvider');
+  }
+  return context;
+};
+
+export { DataProvider, useData, useTrackHover };

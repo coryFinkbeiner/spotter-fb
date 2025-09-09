@@ -9,7 +9,7 @@ function Container() {
         <Topbar />
       </div>
 
-      <div>
+      <div style={{ height: 'calc(100vh - 64px - 32px)', overflow: 'hidden' }}>
         <Outlet />
       </div>
     </div>

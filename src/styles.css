@@ -23,9 +23,17 @@
 
 * { box-sizing: border-box; }
 
-html, body, #root { height: 100%; }
+html, body, #root { 
+  height: 100%; 
+  overflow: hidden;
+}
 
-body { margin: 0; background: var(--bg); color: var(--text); }
+body { 
+  margin: 0; 
+  background: var(--bg); 
+  color: var(--text); 
+  overflow: hidden;
+}
 
 .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
@@ -69,7 +77,15 @@ body { margin: 0; background: var(--bg); color: var(--text); }
 .navbar-area { padding: var(--space-3); }
 
 .content-scroll { height: 100%; overflow: hidden; }
-.content-scroll-inner { height: 100%; overflow: auto; padding: var(--space-4); background: var(--panel-2); border: 1px solid var(--border); border-radius: var(--radius); }
+.content-scroll-inner { 
+  height: 100%; 
+  overflow-y: auto; 
+  overflow-x: hidden;
+  padding: var(--space-4); 
+  background: var(--panel-2); 
+  border: 1px solid var(--border); 
+  border-radius: var(--radius); 
+}
 
 /* Navigation */
 .navbar { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
@@ -172,11 +188,39 @@ body { margin: 0; background: var(--bg); color: var(--text); }
   place-items: center;
   color: var(--muted);
   font-size: 24px;
+  transition: all 0.2s ease;
+}
+.seed-placeholder-highlight {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(29, 185, 84, 0.1);
 }
 
-/* Grids */
-.grid-auto-fill-160 { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-4); }
-.grid-auto-fill-180 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-4); }
+/* Page content containers */
+.page-content {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.grid-auto-fill-160 { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+  gap: var(--space-4); 
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4);
+}
+.grid-auto-fill-180 { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+  gap: var(--space-4); 
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4);
+}
 
 /* Cards */
 .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
@@ -185,9 +229,81 @@ body { margin: 0; background: var(--bg); color: var(--text); }
 .muted { color: var(--muted); }
 
 /* Track row */
-.track-row { display: grid; grid-template-columns: 40px 56px 1.6fr 1fr; gap: var(--space-3); align-items: center; padding: 8px 10px; border-radius: var(--radius-sm); }
-.track-row:hover { background: var(--panel); }
+.track-row { 
+  display: grid; 
+  grid-template-columns: 40px 56px 1.6fr 1fr; 
+  gap: var(--space-3); 
+  align-items: center; 
+  padding: 8px 10px; 
+  border-radius: var(--radius-sm); 
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.track-row:hover { 
+  background: var(--panel); 
+  border-color: var(--primary);
+}
+.track-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--panel-2);
+  color: var(--text);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.track-number:hover {
+  background: var(--primary);
+  color: #0b0b0e;
+}
+.track-number:hover::after {
+  content: '+';
+  position: absolute;
+  font-size: 18px;
+  font-weight: bold;
+}
 .track-cover { width: 48px; height: 48px; border-radius: var(--radius-sm); background-size: cover; background-position: center; }
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.3) 0%, 
+    rgba(0, 0, 0, 0.3) 40%, 
+    var(--primary) 50%, 
+    var(--primary) 60%, 
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--primary-600);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1);
+}
 
 /* Responsive tweaks */
 @media (max-width: 960px) {
