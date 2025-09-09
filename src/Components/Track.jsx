@@ -22,14 +22,12 @@ function Track({track, index}) {
   }
 
   return (
-    <div 
-      className="track-row" 
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="track-row">
       <div 
         className="track-number" 
         onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         style={{ position: 'relative' }}
       >
         {isHovered ? '+' : index + 1}

@@ -225,6 +225,18 @@ body {
 /* Cards */
 .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
 .card-cover { width: 100%; aspect-ratio: 1/1; background-size: cover; background-position: center; }
+.artist-cover { border-radius: 50%; border: 2px solid var(--border); position: relative; display: grid; place-items: center; }
+.artist-plus {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--primary);
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  pointer-events: none;
+}
 .card-body { padding: var(--space-3); }
 .muted { color: var(--muted); }
 
@@ -256,16 +268,27 @@ body {
   font-weight: 600;
   transition: all 0.2s ease;
   cursor: pointer;
+  position: relative;
 }
 .track-number:hover {
   background: var(--primary);
   color: #0b0b0e;
 }
-.track-number:hover::after {
-  content: '+';
+.track-number:hover::before {
+  content: '';
   position: absolute;
-  font-size: 18px;
-  font-weight: bold;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px dotted var(--primary);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.6; transform: scale(1); }
 }
 .track-cover { width: 48px; height: 48px; border-radius: var(--radius-sm); background-size: cover; background-position: center; }
 

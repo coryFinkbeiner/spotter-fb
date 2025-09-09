@@ -1,19 +1,38 @@
-import React from 'react'
-import { useData } from '../DataProvider'
+import React, { useState } from 'react'
+import { useData, useTrackHover } from '../DataProvider'
 
 function Artist({ artist }) {
   const { seeds, setSeeds } = useData()
+  const { setTrackHovered } = useTrackHover()
+  const [isHovered, setIsHovered] = useState(false)
+
+  const handleMouseEnter = () => {
+    setIsHovered(true)
+    setTrackHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setTrackHovered(false)
+  }
 
   return (
-    <div className="card" style={{ cursor: 'pointer' }}>
-      <div style={{ padding: '16px', display: 'grid', placeItems: 'center' }}>
-        <div
-          className="seed-artist"
-          style={{ height: 160, width: 160, backgroundImage: `url(${artist.images[0]?.url})` }}
-          onClick={() => { if (seeds.length < 5) setSeeds(prev => [...prev, artist]) }}
-        />
+    <div 
+      className="card" 
+      style={{ cursor: 'pointer', borderColor: isHovered ? 'var(--primary)' : 'var(--border)' }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={() => { if (seeds.length < 5) setSeeds(prev => [...prev, { ...artist, type: 'artist' }]) }}
+    >
+      <div className="card-cover artist-cover" style={{ backgroundImage: `url(${artist.images[0]?.url})`, borderColor: isHovered ? 'var(--primary)' : 'var(--border)' }}>
+        {isHovered && (
+          <div className="artist-plus">+</div>
+        )}
       </div>
-      <div className="card-body truncate">{artist.name}</div>
+      <div className="card-body">
+        <div className="truncate">{artist.name}</div>
+        <div className="muted truncate">Artist</div>
+      </div>
     </div>
   )
 }

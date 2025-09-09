@@ -58,41 +58,25 @@ function Search() {
   }, [ query, type, accessToken ])
 
 
-  return (
-    <div
-      style={{
-        position: 'relative',
-        backgroundColor: 'var(--panel-2)',
-        height: '100%',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          backgroundColor: 'var(--panel-2)',
-          display: 'grid',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          overflowY: 'scroll',
-          gridTemplateColumns: `repeat(${rows}, 1fr)`,
-          gap: '1rem',
-          padding: '1rem',
-        }}
-      >
-        {type === 'track' &&
-          results?.tracks?.items.map((track, index) => {
-            return <Track track={track} index={index} key={index} />
-          }
-        )}
-
-        {type === 'artist' &&
-          results?.artists?.items.map((artist, index) => {
-            return <Artist artist={artist} key={index} />
-          }
-        )}
+  // Artists: let the page wrapper own scrolling; grid just lays out cards
+  if (type === 'artist') {
+    return (
+      <div className="page-content">
+        <div className="grid-auto-fill-180" style={{ height: 'auto', overflow: 'visible' }}>
+          {results?.artists?.items.map((artist, index) => (
+            <Artist artist={artist} key={index} />
+          ))}
+        </div>
       </div>
+    )
+  }
+
+  // Tracks keep the simple scrolling list container
+  return (
+    <div className="page-content">
+      {results?.tracks?.items.map((track, index) => (
+        <Track track={track} index={index} key={index} />
+      ))}
     </div>
   )
 }
