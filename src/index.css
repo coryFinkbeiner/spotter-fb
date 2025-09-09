@@ -37,3 +37,56 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* Seeds styling - using styles.css as primary */
+
+/* Topbar button styles */
+.topbar-button {
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 70px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.topbar-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+  background-color: #ff4444;
+  color: white;
+}
+
+.close-button:hover {
+  background-color: #ff6666;
+}
+
+.seed-button {
+  background-color: #1db954;
+  color: white;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.seed-button:hover {
+  background-color: #1ed760;
+}
+
+.queue-button {
+  background-color: #333;
+  color: white;
+  font-size: 16px;
+}
+
+.queue-button:hover {
+  background-color: #555;
+}

@@ -5,34 +5,47 @@ import { useData } from '../DataProvider';
 function Seeds() {
   const { seeds } = useData()
 
+  // Create array of 5 slots, filling with seeds or placeholders
+  const seedSlots = Array.from({ length: 5 }, (_, index) => {
+    const seed = seeds[index];
+    return seed ? { ...seed, slotIndex: index } : { slotIndex: index, isPlaceholder: true };
+  });
+
   return (
     <div className="seeds">
-      {seeds?.map((seed, index) => {
+      {seedSlots.map((item, index) => {
+        if (item.isPlaceholder) {
+          return (
+            <div key={`placeholder-${index}`} className="seed">
+              <div className="seed-placeholder">•</div>
+            </div>
+          );
+        }
+
         let imageUrl = ''
         let name = ''
         let type = ''
 
-        if (seed.type === 'artist') {
-          imageUrl = seed?.images[0]?.url
-          name = seed.name
+        if (item.type === 'artist') {
+          imageUrl = item?.images[0]?.url
+          name = item.name
           type = 'artist'
         }
-        if (seed.type === 'track') {
-          imageUrl = seed?.album.images[0]?.url
-          name = seed.name
+        if (item.type === 'track') {
+          imageUrl = item?.album.images[0]?.url
+          name = item.name
           type = 'track'
         }
 
         return <Seed
-            seed={seed}
-            index={index}
-            key={index}
+            seed={item}
+            index={item.slotIndex}
+            key={item.slotIndex}
             name={name}
             imageUrl={imageUrl}
             type={type}
           />
       })}
-
     </div>
   )
 }
