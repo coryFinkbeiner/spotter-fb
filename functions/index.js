@@ -25,10 +25,14 @@ exports.refreshToken = onRequest(async (req, res) => {
   cors(req, res, async () => {
     try {
       const refreshToken = req.body.refreshToken;
+      if (!refreshToken) {
+        return res.status(400).json({ error: 'Missing refreshToken' });
+      }
+      spotifyApi.setRefreshToken(refreshToken);
       const data = await spotifyApi.refreshAccessToken();
       res.json({
-        accessToken: data.body.accessToken,
-        expiresIn: data.body.expiresIn,
+        accessToken: data.body.access_token,
+        expiresIn: data.body.expires_in,
       });
     } catch (error) {
       console.error('Error refreshing token:', error);
@@ -54,5 +58,4 @@ exports.login = onRequest(async (req, res) => {
     }
   });
 });
-
 

@@ -1,7 +1,16 @@
 import React from 'react'
 import Seeds from './Seeds'
+import { useNavigate } from 'react-router-dom'
+import { useData } from '../DataProvider'
 
 function Topbar() {
+  const navigate = useNavigate()
+  const { seeds } = useData()
+
+  const handleSeedClick = () => {
+    if (seeds.length === 0) return
+    navigate('/Results')
+  }
   return (
     <div style={{ height: '100%', display: 'flex', alignItems: 'center', gap: '16px' }}>
       <div style={{ flex: 0.92, minWidth: 0 }}>
@@ -18,8 +27,9 @@ function Topbar() {
         </button>
         <button 
           className="topbar-button seed-button"
-          onClick={() => console.log('Seed clicked')}
+          onClick={handleSeedClick}
           title="Seed"
+          disabled={seeds.length === 0}
         >
           SEED
         </button>
