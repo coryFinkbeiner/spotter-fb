@@ -43,7 +43,7 @@ function Playlist() {
         {playlist.tracks?.items?.map((it, i) => {
           const track = it.track
           if (!track) return null
-          return <Track key={track.id || i} track={track} index={i} />
+          return <Track key={`${track.id || 'row'}-${i}`} track={track} index={i + 1} />
         })}
       </div>
     </div>
@@ -51,4 +51,3 @@ function Playlist() {
 }
 
 export default Playlist
-
