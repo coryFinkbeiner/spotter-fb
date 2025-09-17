@@ -41,6 +41,8 @@ body {
 .app-shell {
   height: 100vh;
   max-width: 1040px;
+  /* Prevent shrinking past seeds' safe width */
+  min-width: 720px;
   margin: 0 auto;
   display: grid;
   grid-template-rows: 64px 1fr;
@@ -73,8 +75,8 @@ body {
   gap: var(--space-4);
 }
 
-.outletbar-area { padding: var(--space-3); }
-.navbar-area { padding: var(--space-3); }
+.outletbar-area { padding: var(--space-3); min-width: 0; }
+.navbar-area { padding: var(--space-3); min-width: 0; }
 
 .content-scroll { height: 100%; overflow: hidden; }
 .content-scroll-inner { 
@@ -101,11 +103,12 @@ body {
 .subnav-link.active { background: var(--primary); color: #0b0b0e; border-color: transparent; }
 
 /* Seeds */
-.seeds { 
-  display: grid; 
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--space-4); 
-  align-items: center; 
+.seeds {
+  display: grid;
+  /* Fixed-width columns exactly matching seed size */
+  grid-template-columns: repeat(5, 60px);
+  gap: var(--space-4);
+  align-items: center;
   padding: var(--space-3);
   min-height: 60px;
 }
@@ -240,6 +243,30 @@ body {
 .card-body { padding: var(--space-3); }
 .muted { color: var(--muted); }
 
+/* Album artist hover add control */
+.album-artist-row { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  margin-top: 4px;
+  cursor: pointer;
+}
+.artist-add-circle { 
+  width: 28px; 
+  height: 28px; 
+  border-radius: 50%; 
+  display: grid; 
+  place-items: center; 
+  background: var(--panel-2); 
+  color: var(--text);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease; 
+  opacity: 0; 
+}
+.card:hover .artist-add-circle { opacity: 1; }
+.album-artist-row:hover .artist-add-circle { background: var(--primary); color: #0b0b0e; border-color: transparent; }
+.album-artist-link { text-decoration: none; }
+
 /* Track row */
 .track-row { 
   display: grid; 
@@ -332,9 +359,15 @@ body {
 @media (max-width: 960px) {
   .app-shell { max-width: 100%; padding: var(--space-3); grid-template-rows: 56px 1fr; }
   .topbar { grid-template-columns: 1fr; }
-  .home-header { grid-template-columns: 1fr; }
+  /* Keep outletbar and navbar on the same row by shrinking navbar column */
+  .home-header { grid-template-columns: 1fr 260px; }
   .navbar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .seeds { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  /* On very small widths, keep side-by-side with tighter navbar */
+  .home-header { grid-template-columns: 1fr 220px; }
 }
 
 @media (max-width: 640px) {

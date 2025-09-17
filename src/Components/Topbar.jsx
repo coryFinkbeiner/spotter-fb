@@ -13,7 +13,13 @@ function Topbar() {
   }
   return (
     <div style={{ height: '100%', display: 'flex', alignItems: 'center', gap: '16px' }}>
-      <div style={{ flex: 0.92, minWidth: 0 }}>
+      <div
+        style={{
+          flex: 0.92,
+          /* Prevent seeds from compressing below their required width */
+          minWidth: 'calc(5 * 60px + 4 * var(--space-4) + 2 * var(--space-3))'
+        }}
+      >
         <Seeds />
       </div>
       <div style={{ width: '1px', height: '40px', backgroundColor: 'var(--border)', flexShrink: 0 }}></div>
