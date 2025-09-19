@@ -32,12 +32,12 @@ function Seeds() {
         let type = ''
 
         if (item.type === 'artist') {
-          imageUrl = item?.images[0]?.url
+          imageUrl = item?.images?.[0]?.url
           name = item.name
           type = 'artist'
         }
         if (item.type === 'track') {
-          imageUrl = item?.album.images[0]?.url
+          imageUrl = item?.album?.images?.[0]?.url
           name = item.name
           type = 'track'
         }
